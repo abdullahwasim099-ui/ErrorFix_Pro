@@ -1,0 +1,312 @@
+[
+  {
+    "code": "0x0000000A",
+    "severity": "critical",
+    "issue": "IRQL Not Less or Equal (IrqlNotLessOrEqual)",
+    "description": "The system encountered an error where a lower-level driver tried to access memory at a higher-level interrupt request level (IRQL), causing an IRQL not less than or equal to exception.",
+    "fix": [
+      "Restart your PC, then update or roll back any recently installed drivers.",
+      "Use BlueScreenView or similar tools to identify the problematic driver and contact its manufacturer for updates."
+    ]
+  },
+  {
+    "code": "0x0000001E",
+    "severity": "critical",
+    "issue": "Kernel Mode Exception (KMODE)",
+    "description": "A kernel mode exception occurred, indicating a serious error in device drivers or system software.",
+    "fix": [
+      "Restart your PC and undo any recent driver or software installs that might be causing the issue.",
+      "Use BlueScreenView to identify the problematic driver and update it from the manufacturer's website."
+    ]
+  },
+  {
+    "code": "0x00000024",
+    "severity": "critical",
+    "issue": "NTFS File System Error (NTFS)",
+    "description": "An error occurred while accessing or reading data from an NTFS volume.",
+    "fix": [
+      "Run 'chkdsk /f' on the affected drive to scan for and repair disk errors, bad sectors, and other issues.",
+      "Check if the affected drive is listed as healthy in Disk Management; if not, replace it."
+    ]
+  },
+  {
+    "code": "0x0000002E",
+    "severity": "critical",
+    "issue": "Data Bus Error (DATA_BUS_ERROR)",
+    "description": "A data bus error occurred while accessing memory or hardware components, often caused by faulty RAM.",
+    "fix": [
+      "Check your RAM by running Windows Memory Diagnostic and reseating the memory sticks.",
+      "Use a third-party tool like MemTest86 to test your RAM for errors."
+    ]
+  },
+  {
+    "code": "0x0000003B",
+    "severity": "critical",
+    "issue": "System Service Exception (SYSTEM_SERVICE_EXCEPTION)",
+    "description": "A system service encountered an unexpected error and crashed, usually caused by faulty drivers or software.",
+    "fix": [
+      "Update your graphics and system drivers to the latest version from their respective manufacturers' websites.",
+      "Use BlueScreenView to identify the problematic driver and update it."
+    ]
+  },
+  {
+    "code": "0x00000050",
+    "severity": "critical",
+    "issue": "Page Fault in Nonpaged Area",
+    "description": "The system encountered a page fault error while trying to access memory that is not paged out, often caused by hardware issues or faulty drivers.",
+    "fix": [
+      "Run Windows Memory Diagnostic to test your RAM for faults and physical errors.",
+      "Check for overheating components and update any problematic drivers."
+    ]
+  },
+  {
+    "code": "0x0000007B",
+    "severity": "critical",
+    "issue": "Inaccessible Boot Device",
+    "description": "Windows cannot access the system partition during startup, typically caused by a corrupted or missing boot configuration or changed SATA/AHCI settings.",
+    "fix": [
+      "Boot from Windows installation media and use Startup Repair.",
+      "Check BIOS/UEFI settings to ensure the correct boot drive is selected and SATA mode hasn't changed."
+    ]
+  },
+  {
+    "code": "0x0000007E",
+    "severity": "critical",
+    "issue": "System Thread Exception Not Handled",
+    "description": "A system thread generated an exception that the error handler did not catch, often pointing to a faulty driver.",
+    "fix": [
+      "Boot into Safe Mode and uninstall recently added drivers or software.",
+      "Run 'sfc /scannow' to repair corrupted system files."
+    ]
+  },
+  {
+    "code": "0x0000007F",
+    "severity": "critical",
+    "issue": "Unexpected Kernel Mode Trap",
+    "description": "The CPU generated a trap the kernel failed to catch, commonly tied to hardware failure or overclocking instability.",
+    "fix": [
+      "Reset any overclocking settings in BIOS to default values.",
+      "Test RAM with MemTest86 and check CPU temperatures under load."
+    ]
+  },
+  {
+    "code": "0x00000080",
+    "severity": "critical",
+    "issue": "NMI Hardware Failure",
+    "description": "A Non-Maskable Interrupt hardware failure occurred, usually indicating a serious hardware problem.",
+    "fix": [
+      "Run hardware diagnostics for CPU, RAM, and motherboard.",
+      "Check event logs for hardware errors and consider professional hardware inspection."
+    ]
+  },
+  {
+    "code": "0x000000C2",
+    "severity": "critical",
+    "issue": "Bad Pool Caller",
+    "description": "A kernel-mode process or driver attempted to perform an illegal memory allocation.",
+    "fix": [
+      "Update or uninstall recently installed drivers, particularly network or storage drivers.",
+      "Use Driver Verifier to isolate the problematic driver."
+    ]
+  },
+  {
+    "code": "0x000000D1",
+    "severity": "critical",
+    "issue": "Driver IRQL Not Less or Equal",
+    "description": "A driver accessed memory at an incorrect IRQL level.",
+    "fix": [
+      "Identify and update the driver listed in the BSOD minidump file.",
+      "Run Windows Update and check for driver updates from your hardware manufacturer."
+    ]
+  },
+  {
+    "code": "0x000000EF",
+    "severity": "critical",
+    "issue": "Critical Process Died",
+    "description": "A critical system process, such as winlogon.exe or csrss.exe, terminated unexpectedly.",
+    "fix": [
+      "Run 'sfc /scannow' and 'DISM /Online /Cleanup-Image /RestoreHealth' from an elevated command prompt.",
+      "Check for malware using Windows Defender or a trusted third-party tool."
+    ]
+  },
+  {
+    "code": "0x000000F4",
+    "severity": "critical",
+    "issue": "Critical Object Termination",
+    "description": "A critical system object, such as a process or thread, was unexpectedly terminated.",
+    "fix": [
+      "Run 'chkdsk /r' to check the storage drive for errors.",
+      "Test RAM with MemTest86 and update storage drivers."
+    ]
+  },
+  {
+    "code": "0x0000009F",
+    "severity": "critical",
+    "issue": "Driver Power State Failure",
+    "description": "A driver is stuck in an inconsistent or invalid power state, commonly triggered during sleep/wake cycles.",
+    "fix": [
+      "Update all drivers, especially USB and network adapters.",
+      "Disable fast startup via Power Options and test if the issue recurs."
+    ]
+  },
+  {
+    "code": "0x00000116",
+    "severity": "critical",
+    "issue": "Video TDR Failure (atikmpag.sys / nvlddmkm.sys)",
+    "description": "The GPU driver failed to respond in time, causing the display driver to reset. Common with AMD and Nvidia GPUs.",
+    "fix": [
+      "Perform a clean install of the latest GPU driver using DDU (Display Driver Uninstaller).",
+      "Check GPU temperatures and reseat the graphics card if applicable."
+    ]
+  },
+  {
+    "code": "0x0000010D",
+    "severity": "warning",
+    "issue": "WDF Violation",
+    "description": "A Windows Driver Framework violation occurred, often related to a third-party driver not following WDF rules.",
+    "fix": [
+      "Use Windows Driver Verifier to identify the offending driver.",
+      "Update or reinstall drivers from the hardware manufacturer's official site."
+    ]
+  },
+  {
+    "code": "0x00000133",
+    "severity": "critical",
+    "issue": "DPC Watchdog Violation",
+    "description": "A Deferred Procedure Call watchdog timeout occurred. Often caused by outdated SSD firmware or incompatible drivers.",
+    "fix": [
+      "Update SSD firmware and storage controller drivers.",
+      "Check for Windows updates and update all device drivers."
+    ]
+  },
+  {
+    "code": "0xC000021A",
+    "severity": "critical",
+    "issue": "STATUS_SYSTEM_PROCESS_TERMINATED",
+    "description": "A critical user-mode subsystem process, such as Winlogon or CSRSS, terminated unexpectedly.",
+    "fix": [
+      "Boot from Windows installation media and run Startup Repair.",
+      "Restore the system using System Restore to a point before the issue began."
+    ]
+  },
+  {
+    "code": "0x80070005",
+    "severity": "warning",
+    "issue": "Access Denied (E_ACCESSDENIED)",
+    "description": "An application or service was denied access to a resource, usually due to insufficient permissions.",
+    "fix": [
+      "Run the affected application as Administrator.",
+      "Check file/folder permissions and ensure your user account has the appropriate rights."
+    ]
+  },
+  {
+    "code": "0x8007000E",
+    "severity": "warning",
+    "issue": "Not Enough Memory (E_OUTOFMEMORY)",
+    "description": "The system ran out of available memory to complete the requested operation.",
+    "fix": [
+      "Close unnecessary background applications to free up RAM.",
+      "Increase the virtual memory (page file) size via System Properties > Advanced > Performance Settings."
+    ]
+  },
+  {
+    "code": "0x80070057",
+    "severity": "warning",
+    "issue": "Invalid Parameter (E_INVALIDARG)",
+    "description": "An invalid parameter was passed to a function or service, often triggered by corrupt system files or registry entries.",
+    "fix": [
+      "Run 'sfc /scannow' to check for and repair corrupted system files.",
+      "If related to Windows Update, reset the Windows Update cache using the Windows Update Troubleshooter."
+    ]
+  },
+  {
+    "code": "0x8007007B",
+    "severity": "warning",
+    "issue": "Invalid File Name or Directory Name",
+    "description": "The file name, directory name, or volume label syntax is incorrect.",
+    "fix": [
+      "Ensure the file or path name does not contain illegal characters (e.g., /, \\, :, *, ?, \", <, >, |).",
+      "Try accessing the file from a shorter path or rename the file to remove special characters."
+    ]
+  },
+  {
+    "code": "0x800705B4",
+    "severity": "warning",
+    "issue": "Timeout (ERROR_TIMEOUT)",
+    "description": "An operation timed out before it could complete, often related to Windows Update or network operations.",
+    "fix": [
+      "Check your internet connection and retry the operation.",
+      "Restart the Windows Update service via Services (services.msc) and try again."
+    ]
+  },
+  {
+    "code": "0x80004002",
+    "severity": "info",
+    "issue": "No Such Interface Supported (E_NOINTERFACE)",
+    "description": "A COM object does not support the requested interface, typically encountered during software installation or COM registration.",
+    "fix": [
+      "Re-register the affected COM component using 'regsvr32 <dll_name>.dll' in an elevated command prompt.",
+      "Reinstall the software that triggered the error."
+    ]
+  },
+  {
+    "code": "0x80040154",
+    "severity": "info",
+    "issue": "Class Not Registered (REGDB_E_CLASSNOTREG)",
+    "description": "The required class is not registered in the system registry, usually because a component or DLL is missing.",
+    "fix": [
+      "Re-register the missing COM component with 'regsvr32' or reinstall the associated application.",
+      "Check Windows Event Viewer for additional details about the missing class."
+    ]
+  },
+  {
+    "code": "0xC0000005",
+    "severity": "critical",
+    "issue": "Access Violation",
+    "description": "A program attempted to read or write to a memory address that it is not authorized to access.",
+    "fix": [
+      "Update the affected application to the latest version.",
+      "Disable Data Execution Prevention (DEP) exceptions for trusted applications via System Properties > Advanced > Performance."
+    ]
+  },
+  {
+    "code": "0xC0000034",
+    "severity": "critical",
+    "issue": "Object Name Not Found",
+    "description": "The system could not find the requested object, commonly occurring during failed Windows updates.",
+    "fix": [
+      "Run the Windows Update Troubleshooter from Settings > System > Troubleshoot.",
+      "Manually reset Windows Update components using the Windows Update Reset Script."
+    ]
+  },
+  {
+    "code": "0xC000009A",
+    "severity": "warning",
+    "issue": "Insufficient Resources",
+    "description": "The system lacks sufficient resources (memory, handles, etc.) to complete the operation.",
+    "fix": [
+      "Restart the system to free up resources.",
+      "Identify and close resource-heavy processes using Task Manager."
+    ]
+  },
+  {
+    "code": "0xC0000142",
+    "severity": "critical",
+    "issue": "DLL Initialization Failed",
+    "description": "A DLL required by the application failed to initialize during startup.",
+    "fix": [
+      "Run 'sfc /scannow' to repair any corrupted system DLLs.",
+      "Reinstall the application that is reporting the error."
+    ]
+  },
+  {
+    "code": "0x80070570",
+    "severity": "warning",
+    "issue": "File or Directory is Corrupted",
+    "description": "A file or directory is corrupted and unreadable, often encountered during Windows installation or file operations.",
+    "fix": [
+      "Run 'chkdsk /r' on the affected drive to repair file system errors.",
+      "If during Windows installation, check the installation media for errors or re-download the ISO."
+    ]
+  }
+]

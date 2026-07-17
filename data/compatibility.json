@@ -1,0 +1,211 @@
+[
+  {
+    "component": "RAM",
+    "question": "How do I check if my RAM is compatible with my motherboard?",
+    "answer": "To check RAM compatibility with your motherboard, identify the RAM generation supported (e.g., DDR4, DDR5) from your motherboard's spec sheet or manual. Match the RAM's generation, pin count, and speed (MT/s) to the supported range. Also verify the maximum capacity per slot and total system capacity. Tools like Crucial's System Scanner or your motherboard's QVL (Qualified Vendor List) can confirm specific part numbers.",
+    "steps": [
+      "Find your motherboard model in CPU-Z or the BIOS/UEFI.",
+      "Check the manufacturer's website for the supported RAM generation (DDR4/DDR5), max speed, and capacity per slot.",
+      "Cross-reference the RAM kit's part number with the motherboard's QVL if available.",
+      "Ensure the RAM voltage matches the motherboard's default (e.g., 1.2V for DDR4, 1.1V for DDR5)."
+    ]
+  },
+  {
+    "component": "RAM",
+    "question": "Can I mix RAM speeds or capacities?",
+    "answer": "You can mix RAM speeds and capacities, but all modules will run at the speed of the slowest stick. Mixing different RAM generations (e.g., DDR4 with DDR5) is not possible due to physical slot differences. For optimal stability, use identical modules in matching channels.",
+    "steps": [
+      "Identify the slowest RAM module's speed and set expectations accordingly.",
+      "Install matching capacity sticks in paired slots to enable dual-channel mode where possible.",
+      "Run Windows Memory Diagnostic or MemTest86 after installation to verify stability.",
+      "If instability occurs, revert to matching modules or enable XMP/EXPO for the lowest-spec kit."
+    ]
+  },
+  {
+    "component": "RAM",
+    "question": "What is XMP and should I enable it?",
+    "answer": "XMP (Extreme Memory Profile) is an Intel technology that allows RAM to run at its advertised speeds rather than the default JEDEC baseline. Enable XMP in the BIOS/UEFI to achieve the rated speed of your RAM kit. For AMD systems, the equivalent is EXPO (Extended Profiles for Overclocking).",
+    "steps": [
+      "Enter BIOS/UEFI by pressing DEL or F2 during boot.",
+      "Navigate to the AI Overclock / Tweaker / Extreme Tweaker section.",
+      "Enable XMP (or EXPO for AMD) and select Profile 1.",
+      "Save and exit. Verify the new speed in CPU-Z or Task Manager > Performance > Memory."
+    ]
+  },
+  {
+    "component": "Storage",
+    "question": "What's the difference between SATA SSD and NVMe SSD?",
+    "answer": "SATA SSDs use the SATA III interface with a maximum throughput of ~600 MB/s, while NVMe SSDs connect via PCIe and can reach 3,500 MB/s (Gen3) to 7,000 MB/s (Gen4) or higher (Gen5). NVMe drives are significantly faster but require an M.2 NVMe slot on the motherboard.",
+    "steps": [
+      "Check your motherboard manual for M.2 NVMe slots and their PCIe generation (Gen3/4/5).",
+      "If no M.2 slot is available, use a 2.5-inch SATA SSD which connects via standard SATA cables.",
+      "For external storage needs, use a USB 3.2 or Thunderbolt enclosure compatible with NVMe drives.",
+      "Verify the NVMe drive's PCIe generation matches or is backward compatible with your motherboard slot."
+    ]
+  },
+  {
+    "component": "Storage",
+    "question": "Can I use a Gen4 NVMe SSD in a Gen3 motherboard slot?",
+    "answer": "Yes, a Gen4 NVMe SSD is backward compatible with a Gen3 motherboard slot, but it will run at Gen3 speeds (max ~3,500 MB/s) instead of its full Gen4 potential (~7,000 MB/s). No damage will occur, but you won't get the advertised maximum speed.",
+    "steps": [
+      "Confirm the motherboard's M.2 slot PCIe generation in the manual.",
+      "Install the Gen4 drive in the Gen3 slot; it will negotiate to Gen3 speeds automatically.",
+      "Benchmark with CrystalDiskMark to confirm actual speeds match Gen3 limits.",
+      "If you later upgrade to a Gen4 motherboard, the drive will operate at full Gen4 speeds."
+    ]
+  },
+  {
+    "component": "Storage",
+    "question": "How do I clone my existing drive to a new SSD?",
+    "answer": "Use a disk cloning tool such as Macrium Reflect Free, Clonezilla, or the SSD manufacturer's software (e.g., Samsung Data Migration, Kingston SSD Manager). Connect the new SSD via USB enclosure or internal slot, clone the source drive, then swap the drives and boot from the new SSD.",
+    "steps": [
+      "Download and install a cloning tool (Macrium Reflect Free is recommended for most users).",
+      "Connect the new SSD via a USB enclosure or a spare internal SATA/NVMe slot.",
+      "Select the source drive (your current OS drive) and target the new SSD.",
+      "Start the clone process, then power off, swap the drives, and boot from the new SSD."
+    ]
+  },
+  {
+    "component": "GPU",
+    "question": "How do I know if a GPU will fit in my case?",
+    "answer": "Check the GPU's physical dimensions (length, width, and thickness/2.5-slot vs 3-slot) from the manufacturer's spec sheet. Compare these with your case's maximum GPU clearance, which is listed in the case's spec sheet. Also verify the PSU has enough wattage and the correct PCIe power connectors.",
+    "steps": [
+      "Find your case model and check the maximum GPU length clearance in the spec sheet.",
+      "Check the GPU's length, width, and slot thickness from the manufacturer's website.",
+      "Verify your PSU has sufficient wattage (NVIDIA/AMD recommend specific PSU ratings for each GPU tier).",
+      "Ensure the PSU has the correct PCIe power connectors (6-pin, 8-pin, or 12VHPWR for newer GPUs)."
+    ]
+  },
+  {
+    "component": "GPU",
+    "question": "Do I need to uninstall old GPU drivers before installing a new GPU?",
+    "answer": "Yes, especially if switching between AMD and NVIDIA. Use Display Driver Uninstaller (DDU) in Safe Mode to completely remove the old drivers, then install the new GPU and download fresh drivers from the manufacturer's website. This prevents driver conflicts and stability issues.",
+    "steps": [
+      "Download DDU and the latest driver for your new GPU from the manufacturer's website.",
+      "Boot into Safe Mode and run DDU to remove the old GPU drivers completely.",
+      "Power off, install the new GPU, and connect the required PCIe power cables.",
+      "Boot normally and install the fresh drivers downloaded in step 1."
+    ]
+  },
+  {
+    "component": "GPU",
+    "question": "What is PCIe lane bifurcation and does it affect GPU performance?",
+    "answer": "PCIe lane bifurcation splits a single x16 slot into multiple smaller slots (e.g., x8/x8 or x4/x4/x4/x4). Running a GPU at x8 Gen4 has minimal performance impact (<1-3%) compared to x16 Gen4 for most gaming workloads. However, x4 may cause a slight performance drop in bandwidth-heavy scenarios.",
+    "steps": [
+      "Check your motherboard manual to see if the primary slot supports x16 or drops to x8 when a second slot is populated.",
+      "For single-GPU setups, use the primary x16 slot closest to the CPU for maximum bandwidth.",
+      "If using multiple GPUs, verify the bifurcation mode in BIOS and accept the minor performance tradeoff.",
+      "Benchmark with 3DMark or game benchmarks to quantify any performance difference."
+    ]
+  },
+  {
+    "component": "CPU",
+    "question": "How do I check if a CPU is compatible with my motherboard?",
+    "answer": "Verify the CPU's socket type matches the motherboard's socket (e.g., LGA1700, AM5). Check the motherboard's CPU support list (QVL) on the manufacturer's website to confirm the specific CPU model is supported. A BIOS update may be required for newer CPUs on older boards.",
+    "steps": [
+      "Identify your motherboard model and its socket type from the spec sheet or CPU-Z.",
+      "Check the manufacturer's CPU support list (QVL) for the specific CPU model.",
+      "If the CPU requires a newer BIOS version, update the BIOS before installing the CPU (some boards have BIOS FlashBack).",
+      "Verify the CPU cooler's mounting kit is compatible with the new socket."
+    ]
+  },
+  {
+    "component": "CPU",
+    "question": "Do I need to update my BIOS before installing a new CPU?",
+    "answer": "If the new CPU was released after your motherboard's BIOS version, a BIOS update is required for compatibility. Check the motherboard's CPU support list for the minimum BIOS version needed. Some boards support BIOS FlashBack, which allows updating without a compatible CPU installed.",
+    "steps": [
+      "Find the minimum BIOS version required for the new CPU on the manufacturer's CPU support page.",
+      "Download the BIOS file and extract it to a USB flash drive formatted as FAT32.",
+      "If the current CPU is incompatible, use BIOS FlashBack (if supported) or install an older compatible CPU temporarily.",
+      "Update the BIOS, power off, and install the new CPU."
+    ]
+  },
+  {
+    "component": "CPU",
+    "question": "What is thermal throttling and how do I prevent it?",
+    "answer": "Thermal throttling occurs when a CPU reduces its clock speed to prevent overheating. To prevent it, ensure adequate cooling (air or AIO liquid cooler), apply quality thermal paste, and maintain good case airflow. Monitor temperatures with HWMonitor or Core Temp.",
+    "steps": [
+      "Check current CPU temperatures under load with HWMonitor or Core Temp.",
+      "If temperatures exceed 90°C, reapply thermal paste and reseat the cooler.",
+      "Improve case airflow by adding intake/exhaust fans and managing cable routing.",
+      "Consider upgrading to a higher-end air cooler or AIO liquid cooler if throttling persists."
+    ]
+  },
+  {
+    "component": "PSU",
+    "question": "How do I calculate the PSU wattage I need?",
+    "answer": "Use a PSU calculator like OuterVision or PCPartPicker to estimate total system power draw. Add the TDP of the CPU and GPU, then add 50-100W for other components (RAM, storage, fans). Choose a PSU with 20-30% headroom above the estimated total for stability and future upgrades.",
+    "steps": [
+      "Find the TDP of your CPU and GPU from their spec sheets.",
+      "Add 50-100W for motherboard, RAM, storage, and peripherals.",
+      "Multiply the total by 1.2-1.3 to account for headroom and efficiency curves.",
+      "Choose a PSU with an 80 PLUS Bronze or higher rating for efficiency and reliability."
+    ]
+  },
+  {
+    "component": "PSU",
+    "question": "What is the 12VHPWR connector and do I need it?",
+    "answer": "The 12VHPWR connector is a new 16-pin power connector introduced with ATX 3.0 PSUs, required for NVIDIA RTX 40-series GPUs. It can deliver up to 600W. If your GPU requires it, ensure your PSU has a native 12VHPWR cable or use the included adapter from multiple 8-pin PCIe connectors.",
+    "steps": [
+      "Check if your GPU requires a 12VHPWR connector (RTX 40-series and newer).",
+      "If yes, verify your PSU has a native 12VHPWR cable or use the bundled adapter.",
+      "Ensure the connector is fully seated to avoid overheating issues (listen for a click).",
+      "Avoid sharp bends near the connector; maintain at least 35mm of straight cable before bending."
+    ]
+  },
+  {
+    "component": "Motherboard",
+    "question": "What is the difference between B-chipset and Z-chipset motherboards?",
+    "answer": "Z-chipsets (e.g., Z690, Z790) support CPU overclocking and typically offer more PCIe lanes, USB ports, and better VRMs. B-chipsets (e.g., B660, B760) are more budget-oriented, lack CPU overclocking support (but allow RAM overclocking), and have fewer features. Choose Z for overclocking and max features; choose B for value.",
+    "steps": [
+      "Determine if you plan to overclock your CPU (K-series Intel or X-series AMD).",
+      "If yes, choose a Z-chipset (Intel) or X-chipset (AMD) motherboard.",
+      "If no, a B-chipset offers better value while still allowing RAM overclocking via XMP/EXPO.",
+      "Compare VRM quality, M.2 slot count, and rear I/O when choosing between specific models."
+    ]
+  },
+  {
+    "component": "Motherboard",
+    "question": "How do I update my BIOS safely?",
+    "answer": "Download the latest BIOS from the motherboard manufacturer's website, extract it to a FAT32-formatted USB drive, and use the BIOS flash utility in the UEFI. Never power off during the update. Some boards support BIOS FlashBack, which allows updating without a CPU or RAM installed.",
+    "steps": [
+      "Download the latest BIOS from the manufacturer's website for your exact motherboard model.",
+      "Extract the BIOS file to a USB flash drive formatted as FAT32.",
+      "Enter BIOS/UEFI and use the EZ Flash / M-Flash / BIOS Flashback utility to update.",
+      "Do not power off during the update. After completion, load optimized defaults and reconfigure settings."
+    ]
+  },
+  {
+    "component": "Cooling",
+    "question": "Air cooler vs AIO liquid cooler: which should I choose?",
+    "answer": "Air coolers are more reliable (no pump to fail), easier to install, and sufficient for most CPUs. AIO liquid coolers offer superior thermal performance for high-TDP CPUs and look aesthetically pleasing, but cost more and have a finite lifespan (pump degradation over 3-7 years). Choose air for reliability and value; AIO for high-end builds and aesthetics.",
+    "steps": [
+      "Identify your CPU's TDP and your case's cooler clearance (air) or radiator support (AIO).",
+      "For CPUs under 150W TDP, a quality air cooler (e.g., Noctua NH-D15, be quiet! Dark Rock Pro 4) is sufficient.",
+      "For CPUs above 150W TDP or for aesthetics, choose a 240mm or 360mm AIO from a reputable brand.",
+      "Verify case compatibility for radiator size (240/280/360mm) and mounting position."
+    ]
+  },
+  {
+    "component": "Cooling",
+    "question": "How many case fans do I need and what's the ideal configuration?",
+    "answer": "A balanced configuration of 2-3 intake fans at the front and 1-2 exhaust fans at the rear/top provides optimal airflow. Positive pressure (more intake than exhaust) reduces dust buildup. Use dust filters on intake fans. High-static-pressure fans are best for intake through filters; high-airflow fans for exhaust.",
+    "steps": [
+      "Install 2-3 intake fans at the front of the case behind dust filters.",
+      "Install 1 exhaust fan at the rear and optionally 1-2 at the top for a balanced airflow setup.",
+      "Ensure intake CFM slightly exceeds exhaust CFM to maintain positive pressure and reduce dust.",
+      "Use high-static-pressure fans for intake (through filters/radiators) and high-airflow fans for exhaust."
+    ]
+  },
+  {
+    "component": "Networking",
+    "question": "Should I use Wi-Fi or Ethernet for gaming?",
+    "answer": "Ethernet provides the lowest latency, highest stability, and highest bandwidth, making it ideal for competitive gaming. Wi-Fi 6/6E is a viable alternative if running a cable is impractical, with latency as low as 2-5ms on a strong signal. Avoid Wi-Fi 5 or older for serious gaming due to higher latency and congestion.",
+    "steps": [
+      "If possible, use a wired Ethernet connection (Cat6 or better) for the lowest latency.",
+      "If Wi-Fi is necessary, ensure your router supports Wi-Fi 6 (802.11ax) or better.",
+      "Position the router in the same room or line-of-sight for the strongest signal.",
+      "Use a Wi-Fi analyzer app to select the least congested channel for your network."
+    ]
+  }
+]

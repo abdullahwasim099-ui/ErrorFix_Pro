@@ -1,0 +1,316 @@
+[
+  {
+    "processName": "HPJumpStartLaunch.exe",
+    "category": "Bloatware",
+    "manufacturer": "HP",
+    "recommendation": {
+      "win10": "Disable via Task Manager > Startup, or uninstall once initial setup is complete. Useful for new HP laptop owners only.",
+      "win11": "Disable via Task Manager > Startup, or uninstall using PowerToys' Uninstaller. Keep if you rely on HP's promotional content."
+    },
+    "common_issues": "Can cause measurable startup delay on lower-end HP laptops, especially when launched for the first time after a clean install.",
+    "removal_methods": {
+      "task_manager": true,
+      "uninstaller": true
+    }
+  },
+  {
+    "processName": "HPSupportSolutionsFramework.exe",
+    "category": "Bloatware",
+    "manufacturer": "HP",
+    "recommendation": {
+      "win10": "Keep only if you rely on HP's automated driver updates; otherwise, disable the scheduled task under Task Scheduler > HP folders.",
+      "win11": "Keep for automated driver updates or switch to manual checks via Windows Update. Disable associated scheduled tasks using PowerToys Task Manager."
+    },
+    "common_issues": "Causes periodic disk/network activity while polling for updates, which can be annoying if you prefer manual control over driver installations.",
+    "removal_methods": {
+      "task_scheduler": true,
+      "power_toys_task_manager": true
+    }
+  },
+  {
+    "processName": "HpTouchpointAnalyticsService.exe",
+    "category": "Bloatware",
+    "manufacturer": "HP",
+    "recommendation": {
+      "win10": "Disable via Services (services.msc). This analytics service sends usage data to HP servers.",
+      "win11": "Stop and disable via Services (services.msc). No functional benefit to the end user."
+    },
+    "common_issues": "Runs in the background and may send telemetry data to HP. Can occasionally cause high CPU usage spikes.",
+    "removal_methods": {
+      "services_msc": true,
+      "settings_apps": true
+    }
+  },
+  {
+    "processName": "DellSupportAssistAgent.exe",
+    "category": "Bloatware",
+    "manufacturer": "Dell",
+    "recommendation": {
+      "win10": "Keep if you want automated driver and BIOS updates from Dell. Otherwise, disable the scheduled task or uninstall.",
+      "win11": "Consider keeping for warranty support integrations. Disable auto-start if CPU usage during idle is a concern."
+    },
+    "common_issues": "Known for excessive background polling and occasional false-positive hardware alerts. May slow boot time.",
+    "removal_methods": {
+      "task_manager": true,
+      "settings_apps": true
+    }
+  },
+  {
+    "processName": "DellDataVaultWizard.exe",
+    "category": "Bloatware",
+    "manufacturer": "Dell",
+    "recommendation": {
+      "win10": "Safe to uninstall via Settings > Apps. This is a Dell analytics collector that offers no user-facing features.",
+      "win11": "Uninstall via Settings > Apps. No end-user benefit; primarily used for Dell's internal analytics."
+    },
+    "common_issues": "Collects and transmits usage analytics to Dell. Can cause background disk activity.",
+    "removal_methods": {
+      "settings_apps": true
+    }
+  },
+  {
+    "processName": "McAfeeAntiVirus.exe",
+    "category": "Bloatware",
+    "manufacturer": "McAfee",
+    "recommendation": {
+      "win10": "Uninstall via Settings > Apps and use Windows Defender instead, which is built-in, free, and highly rated.",
+      "win11": "Remove using the McAfee Consumer Product Removal (MCPR) tool for a complete uninstall. Windows Security provides sufficient protection."
+    },
+    "common_issues": "Notorious for high CPU and RAM usage, aggressive renewal pop-ups, and difficulty of complete removal. Can cause browser slowdowns.",
+    "removal_methods": {
+      "settings_apps": true,
+      "mcpr_tool": true
+    }
+  },
+  {
+    "processName": "NortonSecurity.exe",
+    "category": "Bloatware",
+    "manufacturer": "NortonLifeLock",
+    "recommendation": {
+      "win10": "Uninstall via Settings > Apps. Use the Norton Remove and Reinstall tool for a complete cleanup.",
+      "win11": "Use the official Norton removal tool (NRnR) for full uninstall. Windows Defender is a capable free alternative."
+    },
+    "common_issues": "Adds significant overhead to boot time, background CPU usage, and browser extensions. Trial versions push aggressive upgrade prompts.",
+    "removal_methods": {
+      "settings_apps": true,
+      "norton_removal_tool": true
+    }
+  },
+  {
+    "processName": "LenovoVantageService.exe",
+    "category": "Bloatware",
+    "manufacturer": "Lenovo",
+    "recommendation": {
+      "win10": "Keep if you use Lenovo Vantage for battery management, driver updates, or warranty info. Otherwise, disable in Task Manager Startup.",
+      "win11": "Lenovo Vantage is useful for Lenovo hardware management. Disable only if you manage drivers manually."
+    },
+    "common_issues": "Can cause slowdowns on older Lenovo hardware. Background activity may affect battery life on laptops.",
+    "removal_methods": {
+      "task_manager": true,
+      "settings_apps": true
+    }
+  },
+  {
+    "processName": "ASUSLiveUpdateAgent.exe",
+    "category": "Bloatware",
+    "manufacturer": "ASUS",
+    "recommendation": {
+      "win10": "Keep for automated ASUS driver updates. Disable if you prefer to manage drivers manually via Windows Update or the ASUS website.",
+      "win11": "Disable auto-start if not needed. ASUS LiveUpdate can be run manually when driver updates are required."
+    },
+    "common_issues": "Known to install unwanted ASUS software packages during updates. Occasional high CPU usage during background scans.",
+    "removal_methods": {
+      "task_manager": true,
+      "settings_apps": true
+    }
+  },
+  {
+    "processName": "CortanaUI.exe",
+    "category": "Bloatware",
+    "manufacturer": "Microsoft",
+    "recommendation": {
+      "win10": "Disable via Settings > Cortana > Talk to Cortana if you don't use voice assistance features.",
+      "win11": "Cortana is significantly reduced in Windows 11. Can be fully disabled or uninstalled via PowerShell if not used."
+    },
+    "common_issues": "Consumes background resources and network bandwidth for web suggestions. Indexing can cause HDD slowdowns on mechanical drives.",
+    "removal_methods": {
+      "settings": true,
+      "powershell": true
+    }
+  },
+  {
+    "processName": "OneDrive.exe",
+    "category": "Bloatware",
+    "manufacturer": "Microsoft",
+    "recommendation": {
+      "win10": "Keep if you use OneDrive for cloud storage. Disable auto-start via Task Manager > Startup if unused.",
+      "win11": "Unlink your account from OneDrive settings if not needed. Remove from startup without full uninstall to preserve files."
+    },
+    "common_issues": "Syncs files in the background, consuming CPU, RAM, and network bandwidth. Indexing large libraries can cause slowdowns.",
+    "removal_methods": {
+      "task_manager": true,
+      "settings": true,
+      "settings_apps": true
+    }
+  },
+  {
+    "processName": "XboxGameBarWidgets.exe",
+    "category": "Bloatware",
+    "manufacturer": "Microsoft",
+    "recommendation": {
+      "win10": "Disable via Settings > Gaming > Xbox Game Bar if you don't use it for screen capture or chat.",
+      "win11": "Disable in Settings > Gaming or uninstall via PowerShell if you prefer third-party tools like OBS or NVIDIA ShadowPlay."
+    },
+    "common_issues": "Can cause frame-rate drops in some games when active. Uses background CPU for the overlay service.",
+    "removal_methods": {
+      "settings": true,
+      "powershell": true
+    }
+  },
+  {
+    "processName": "WidgetService.exe",
+    "category": "Bloatware",
+    "manufacturer": "Microsoft",
+    "recommendation": {
+      "win10": "Disable via Settings > Personalization > Taskbar > Widgets if unused. Lowers background network activity.",
+      "win11": "Disable via Settings > Personalization > Taskbar > Widgets or use PowerToys FancyZones to customize taskbar layout."
+    },
+    "common_issues": "Adds background network activity for content refresh, which can be data-intensive on metered connections.",
+    "removal_methods": {
+      "settings": true,
+      "power_toys_fancyzones": true
+    }
+  },
+  {
+    "processName": "MSIAfterburnerServer.exe",
+    "category": "Bloatware",
+    "manufacturer": "MSI",
+    "recommendation": {
+      "win10": "Safe to disable auto-start if not actively monitoring or overclocking a GPU. Leave the MSI Afterburner app installed for future use.",
+      "win11": "Disable auto-start using Task Manager, but keep the MSI Afterburner app for occasional GPU tuning or monitoring."
+    },
+    "common_issues": "Known in some versions for elevated idle CPU usage, which can be noticeable on low-end systems.",
+    "removal_methods": {
+      "task_manager": true,
+      "app_uninstaller": true
+    }
+  },
+  {
+    "processName": "WildTangentHelper.exe",
+    "category": "Potentially Unwanted Program (PUP)",
+    "manufacturer": "WildTangent",
+    "recommendation": {
+      "win10": "Uninstall via Settings > Apps and run a full anti-malware scan afterward. Check browser extensions for related coupon add-ons.",
+      "win11": "Uninstall using PowerToys Uninstaller and scan with a reputable anti-malware tool to remove any remnants."
+    },
+    "common_issues": "Known for aggressive advertising, unwanted toolbar installs, and bundled third-party offers during setup. Can inject coupon popups into browsing sessions.",
+    "removal_methods": {
+      "settings_apps": true,
+      "power_toys_uninstaller": true,
+      "anti_virus_scan": true
+    }
+  },
+  {
+    "processName": "Candy Crush Soda Saga",
+    "category": "Potentially Unwanted Program (PUP)",
+    "manufacturer": "King / Microsoft",
+    "recommendation": {
+      "win10": "Uninstall via Settings > Apps. Preinstalled game with no system utility.",
+      "win11": "Remove via Settings > Apps or right-click on the Start Menu tile and select Uninstall."
+    },
+    "common_issues": "Wastes storage space and occasionally appears in notification toasts. No performance impact unless actively running.",
+    "removal_methods": {
+      "settings_apps": true,
+      "start_menu_uninstall": true
+    }
+  },
+  {
+    "processName": "AdobeARM.exe",
+    "category": "Bloatware",
+    "manufacturer": "Adobe",
+    "recommendation": {
+      "win10": "Disable via Task Manager > Startup. Manually check for Adobe updates when needed instead of relying on the background updater.",
+      "win11": "Disable auto-start. Use the Adobe Creative Cloud app to manage updates manually instead."
+    },
+    "common_issues": "Runs silently in the background and periodically consumes CPU/network resources to check for updates.",
+    "removal_methods": {
+      "task_manager": true
+    }
+  },
+  {
+    "processName": "iTunesHelper.exe",
+    "category": "Bloatware",
+    "manufacturer": "Apple",
+    "recommendation": {
+      "win10": "Disable via Task Manager > Startup if you don't use iTunes to auto-launch when connecting an Apple device.",
+      "win11": "Disable auto-start in Task Manager. iTunes will still function normally when launched manually."
+    },
+    "common_issues": "Triggers iTunes to launch every time an Apple device is connected, even when not needed. Adds startup delay.",
+    "removal_methods": {
+      "task_manager": true
+    }
+  },
+  {
+    "processName": "GamingServicesNet.exe",
+    "category": "Bloatware",
+    "manufacturer": "Microsoft",
+    "recommendation": {
+      "win10": "Disable via Services (services.msc) if you don't use Xbox Game Pass or the Microsoft Store for games.",
+      "win11": "Can be safely disabled for non-gamers. Power users can uninstall via PowerShell, though this may impact Xbox app functionality."
+    },
+    "common_issues": "Consumes background RAM and can cause stuttering in games on low-end PCs.",
+    "removal_methods": {
+      "services_msc": true,
+      "powershell": true
+    }
+  },
+  {
+    "processName": "explorer.exe",
+    "category": "Safe System Process",
+    "manufacturer": "Microsoft",
+    "recommendation": {
+      "win10": "Core Windows Shell process. Never disable or remove. Repeated crashes indicate a system corruption issue to fix via 'sfc /scannow'.",
+      "win11": "Essential system component. Do not terminate. High GPU usage may indicate a driver issue worth updating."
+    },
+    "common_issues": "High CPU or GPU usage can indicate various issues, from driver problems to malware infections. Always investigate thoroughly before assuming the process is at fault.",
+    "removal_methods": {
+      "sfc_scannow": true
+    }
+  },
+  {
+    "processName": "svchost.exe",
+    "category": "Safe System Process",
+    "manufacturer": "Microsoft",
+    "recommendation": {
+      "win10": "Essential Windows host process for multiple services. Never terminate manually.",
+      "win11": "System critical process. Multiple instances are normal. Use Resource Monitor to identify which service is hosted if CPU usage is high."
+    },
+    "common_issues": "High CPU or memory usage from svchost.exe is often caused by Windows Update running in the background. Let updates complete before investigating.",
+    "removal_methods": {}
+  },
+  {
+    "processName": "lsass.exe",
+    "category": "Safe System Process",
+    "manufacturer": "Microsoft",
+    "recommendation": {
+      "win10": "Local Security Authority Subsystem. Critical process — never terminate.",
+      "win11": "Critical for authentication and security policy enforcement. Do not interfere with this process."
+    },
+    "common_issues": "Malware sometimes masquerades as lsass.exe. Verify the file is located in C:\\Windows\\System32 to ensure it's legitimate.",
+    "removal_methods": {}
+  },
+  {
+    "processName": "SearchIndexer.exe",
+    "category": "Bloatware",
+    "manufacturer": "Microsoft",
+    "recommendation": {
+      "win10": "Disable or limit indexing locations via Control Panel > Indexing Options if search speed is acceptable for you.",
+      "win11": "Reduce indexed locations in Settings > Privacy & Security > Searching Windows if background disk activity is a concern."
+    },
+    "common_issues": "Can cause high disk and CPU usage on mechanical HDDs during initial indexing or after large file changes.",
+    "removal_methods": {
+      "services_msc": true,
+      "settings": true
+    }
+  }
+]
