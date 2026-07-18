@@ -1,0 +1,1258 @@
+[
+  {
+    "code": "0 (0x0)",
+    "issue": "ERROR_SUCCESS",
+    "description": "The operation completed successfully.",
+    "fix": [
+      "No action is required as the process completed with status code 0."
+    ]
+  },
+  {
+    "code": "1 (0x1)",
+    "issue": "ERROR_INVALID_FUNCTION",
+    "description": "Incorrect function. The requested system call, API, or driver function is invalid, unconfigured, or not implemented in the current execution context.",
+    "fix": [
+      "Verify that the calling function is supported by the target operating system version.",
+      "Check driver configuration and ensure system updates are fully applied.",
+      "Ensure API parameters conform to standard calling conventions."
+    ]
+  },
+  {
+    "code": "2 (0x2)",
+    "issue": "ERROR_FILE_NOT_FOUND",
+    "description": "The system cannot find the file specified.",
+    "fix": [
+      "Verify the accuracy of the target file path, including the directory path and file extension.",
+      "Check if the file has been deleted, moved, or restricted by active antivirus scanners.",
+      "Validate user access permissions on the parent directory containing the file."
+    ]
+  },
+  {
+    "code": "3 (0x3)",
+    "issue": "ERROR_PATH_NOT_FOUND",
+    "description": "The system cannot find the path specified.",
+    "fix": [
+      "Confirm the logical or physical directory structure exists in the storage path.",
+      "Correct any spelling errors or incorrect directory separators in the file path.",
+      "Ensure that network-mounted paths or external drives are properly attached and mapped."
+    ]
+  },
+  {
+    "code": "4 (0x4)",
+    "issue": "ERROR_TOO_MANY_OPEN_FILES",
+    "description": "The system cannot open the file due to limits on open file descriptors or active file handles.",
+    "fix": [
+      "Close inactive applications and terminate unnecessary background operations.",
+      "Refactor application code to ensure file handles are explicitly closed in finally blocks.",
+      "Increase maximum handle or file descriptor limits in the registry or application configurations."
+    ]
+  },
+  {
+    "code": "5 (0x5)",
+    "issue": "ERROR_ACCESS_DENIED",
+    "description": "Access is denied due to insufficient user security privileges or resource lock conditions.",
+    "fix": [
+      "Execute the application or process using elevated administrative privileges (Run as Administrator).",
+      "Verify and modify security permissions on the target folder or file using NTFS properties.",
+      "Ensure the resource is not locked by another active process or system security policy."
+    ]
+  },
+  {
+    "code": "6 (0x6)",
+    "issue": "ERROR_INVALID_HANDLE",
+    "description": "The handle provided is invalid or has already been closed by another system thread.",
+    "fix": [
+      "Debug application code to ensure the file or process handle is initialized before use.",
+      "Prevent double-closing or premature release of standard input/output handles.",
+      "Verify synchronization between parallel processing threads that share handle variables."
+    ]
+  },
+  {
+    "code": "8 (0x8)",
+    "issue": "ERROR_NOT_ENOUGH_MEMORY",
+    "description": "Not enough memory resources are available to process this command. The heap allocations cannot locate available memory block headers.",
+    "fix": [
+      "Close memory-intensive system processes to free up system RAM.",
+      "Increase the system virtual memory pagefile allocation bounds in System Properties.",
+      "Optimize application code structures to reduce peak heap requirements and resolve memory leaks."
+    ]
+  },
+  {
+    "code": "11 (0xB)",
+    "issue": "ERROR_BAD_FORMAT",
+    "description": "An attempt was made to load a program with an incorrect format.",
+    "fix": [
+      "Verify that the application binary matches the operating system architecture (32-bit vs. 64-bit).",
+      "Reinstall the corrupted application to recover missing file blocks.",
+      "Confirm that dependent DLL packages are correctly registered and compatible."
+    ]
+  },
+  {
+    "code": "14 (0xE)",
+    "issue": "ERROR_OUTOFMEMORY",
+    "description": "Not enough storage is available to complete this operation. The virtual address space is exhausted.",
+    "fix": [
+      "Free up space on the system drive where active virtual pagefiles reside.",
+      "Review application memory utilization maps using standard diagnostics.",
+      "Scale up system memory allocations if working with highly nested virtualized configurations."
+    ]
+  },
+  {
+    "code": "19 (0x13)",
+    "issue": "ERROR_WRITE_PROTECT",
+    "description": "The storage media is write-protected and cannot accept block modification calls.",
+    "fix": [
+      "Verify physical write-protection switches are toggled off on SD cards or USB flash drives.",
+      "Remove write-protection attributes using diskpart or volume attribute commands.",
+      "Disable security configurations that enforce write locks on external media."
+    ]
+  },
+  {
+    "code": "21 (0x15)",
+    "issue": "ERROR_NOT_READY",
+    "description": "The target physical device is not ready to process incoming instructions.",
+    "fix": [
+      "Confirm the storage media is fully inserted and mounted correctly.",
+      "Wait for system drives or virtual disks to initialize completely before execution.",
+      "Check the Device Manager to identify hardware device status issues."
+    ]
+  },
+  {
+    "code": "31 (0x1F)",
+    "issue": "ERROR_GEN_FAILURE",
+    "description": "A device attached to the system is not functioning.",
+    "fix": [
+      "Update system drivers using official publisher packages.",
+      "Disconnect and re-seat physical interface connections.",
+      "Inspect the Windows System Event Viewer logs to evaluate hardware controller issues."
+    ]
+  },
+  {
+    "code": "32 (0x20)",
+    "issue": "ERROR_SHARING_VIOLATION",
+    "description": "The process cannot access the file because it is being used by another process.",
+    "fix": [
+      "Close the file in locking programs or terminate blocking utility processes.",
+      "Configure sharing parameters (FILE_SHARE_READ or FILE_SHARE_WRITE) in custom file calls.",
+      "Restart active background services if file handles remain locked."
+    ]
+  },
+  {
+    "code": "33 (0x21)",
+    "issue": "ERROR_LOCK_VIOLATION",
+    "description": "The process cannot access the file because another process has locked a portion of the file.",
+    "fix": [
+      "Ensure coordinate synchronization blocks are executed before accessing locked file regions.",
+      "Implement delay and retry logic in multi-threaded file read/write routines.",
+      "Release locked segments using standard file unlocking functions before proceeding."
+    ]
+  },
+  {
+    "code": "50 (0x32)",
+    "issue": "ERROR_NOT_SUPPORTED",
+    "description": "The network or file request is not supported.",
+    "fix": [
+      "Upgrade interface drivers and confirm compatibility on both host and target systems.",
+      "Use alternative programming APIs or protocol definitions.",
+      "Verify system capabilities match requirements of advanced features."
+    ]
+  },
+  {
+    "code": "53 (0x35)",
+    "issue": "ERROR_BAD_NETPATH",
+    "description": "The network path was not found.",
+    "fix": [
+      "Check host name or IP address spelling parameters within the path.",
+      "Verify system DNS configurations and confirm name resolution is functional.",
+      "Ensure server share properties remain active and accessible."
+    ]
+  },
+  {
+    "code": "80 (0x50)",
+    "issue": "ERROR_FILE_EXISTS",
+    "description": "The file exists and cannot be overwritten without explicit override instructions.",
+    "fix": [
+      "Specify an alternative name or directory location for file creation.",
+      "Enable overwrite attributes or recreate flags within calling code parameters.",
+      "Clean or rename conflicting target directories."
+    ]
+  },
+  {
+    "code": "87 (0x57)",
+    "issue": "ERROR_INVALID_PARAMETER",
+    "description": "The parameter is incorrect. One or more arguments supplied to the system function contain invalid structures.",
+    "fix": [
+      "Validate parameter structures and ranges against official documentation specifications.",
+      "Confirm parameters passed to script commands do not contain format or parsing errors.",
+      "Debug calling function structures to isolate null pointers and bounds issues."
+    ]
+  },
+  {
+    "code": "112 (0x70)",
+    "issue": "ERROR_DISK_FULL",
+    "description": "There is not enough space on the disk.",
+    "fix": [
+      "Free up storage space on the target volume by deleting unneeded data.",
+      "Clear system caches and temporary file systems.",
+      "Expand partition bounds using disk management utilities if virtualization models are active."
+    ]
+  },
+  {
+    "code": "121 (0x79)",
+    "issue": "ERROR_SEM_TIMEOUT",
+    "description": "The semaphore timeout period has expired.",
+    "fix": [
+      "Increase execution timeout thresholds inside client application settings.",
+      "Optimize local processing routines to reduce semaphore holding states.",
+      "Improve underlying storage and network transaction speeds to minimize execution wait states."
+    ]
+  },
+  {
+    "code": "122 (0x7A)",
+    "issue": "ERROR_INSUFFICIENT_BUFFER",
+    "description": "The data area passed to a system call is too small.",
+    "fix": [
+      "Increase output memory allocations to handle peak query sizes.",
+      "Call system function twice: first to evaluate the necessary buffer size, and second to retrieve the output data."
+    ]
+  },
+  {
+    "code": "123 (0x7B)",
+    "issue": "ERROR_INVALID_NAME",
+    "description": "The filename, directory name, or volume label syntax is incorrect.",
+    "fix": [
+      "Remove illegal characters such as asterisks, question marks, and angle brackets.",
+      "Ensure length constraints fit within the MAX_PATH parameters.",
+      "Confirm directories do not contain invalid spaces or reserved naming terms."
+    ]
+  },
+  {
+    "code": "126 (0x7E)",
+    "issue": "ERROR_MOD_NOT_FOUND",
+    "description": "The specified module could not be found.",
+    "fix": [
+      "Confirm that the target dynamic link library file exists in standard execution paths.",
+      "Audit and repair missing secondary framework dependencies using parsing software.",
+      "Verify the application has access permissions to look up files inside the directory."
+    ]
+  },
+  {
+    "code": "127 (0x7F)",
+    "issue": "ERROR_PROC_NOT_FOUND",
+    "description": "The specified procedure could not be found.",
+    "fix": [
+      "Verify that the calling program requests an export symbol name matching binary descriptors.",
+      "Verify module versions align with targeted system libraries.",
+      "Ensure compiler target options include valid entrypoint mappings."
+    ]
+  },
+  {
+    "code": "183 (0xB7)",
+    "issue": "ERROR_ALREADY_EXISTS",
+    "description": "Cannot create a file when that file already exists.",
+    "fix": [
+      "Ensure creation procedures check for target existence and handle exceptions smoothly.",
+      "Specify different filename variables for newly initiated file segments.",
+      "Clear temporary caches containing stale files with matching names."
+    ]
+  },
+  {
+    "code": "193 (0xC1)",
+    "issue": "ERROR_BAD_EXE_FORMAT",
+    "description": "The target is not a valid Win32 application.",
+    "fix": [
+      "Confirm executable binaries are compiled to target the active CPU platform model.",
+      "Resolve possible binary file corruption by downloading replacement installer modules.",
+      "Avoid attempting directly executes on pure configuration text files."
+    ]
+  },
+  {
+    "code": "225 (0xE1)",
+    "issue": "ERROR_VIRUS_INFECTED",
+    "description": "Operation did not complete successfully because the file contains a virus or potentially unwanted software.",
+    "fix": [
+      "Run complete diagnostic scans using security software.",
+      "If the target represents a safe custom binary, add directory path exceptions inside security suites.",
+      "Restore the file from clean master sources if corruption was confirmed."
+    ]
+  },
+  {
+    "code": "234 (0xEA)",
+    "issue": "ERROR_MORE_DATA",
+    "description": "More data is available from the system query.",
+    "fix": [
+      "Configure loop structures to execute repeatedly until the return status shifts.",
+      "Double output parameters size maps to successfully absorb all data streams."
+    ]
+  },
+  {
+    "code": "258 (0x102)",
+    "issue": "WAIT_TIMEOUT",
+    "description": "The wait operation timed out.",
+    "fix": [
+      "Ensure concurrent processes are not experiencing deadlock conditions.",
+      "Increase API timeout parameters to align with actual task execution constraints."
+    ]
+  },
+  {
+    "code": "500 (0x1F4)",
+    "issue": "ERROR_USER_PROFILE_LOAD",
+    "description": "User profile cannot be loaded.",
+    "fix": [
+      "Restart the operating system to clear active file locks.",
+      "Check for active ProfileList registry corruption under registry keys.",
+      "Verify User Profile Service is active and configured correctly."
+    ]
+  },
+  {
+    "code": "534 (0x216)",
+    "issue": "ERROR_ARITHMETIC_OVERFLOW",
+    "description": "Arithmetic result exceeded 32 bits.",
+    "fix": [
+      "Upgrade program variable logic to handle 64-bit integer values.",
+      "Add validation bounds-checking on mathematical calculations."
+    ]
+  },
+  {
+    "code": "537 (0x219)",
+    "issue": "ERROR_VERIFIER_STOP",
+    "description": "Application verifier has found an error in the current process.",
+    "fix": [
+      "Inspect program threads using standard system verifier tools to isolate the exact lock or validation failure.",
+      "Fix invalid memory reference models in code modules."
+    ]
+  },
+  {
+    "code": "596 (0x254)",
+    "issue": "ERROR_LOST_WRITEBEHIND_DATA",
+    "description": "Windows was unable to save all the data for the file. The data has been lost due to storage interface loss.",
+    "fix": [
+      "Check storage array hardware connection interfaces.",
+      "Review network link status to remote fileshares.",
+      "Save the active file safely to a separate physical storage target."
+    ]
+  },
+  {
+    "code": "665 (0x299)",
+    "issue": "ERROR_FILE_SYSTEM_LIMITATION",
+    "description": "The requested operation could not be completed due to a file system limitation.",
+    "fix": [
+      "Defragment the target partition volume.",
+      "Avoid excessive file fragmentation by optimizing allocation block configurations.",
+      "Update application write logic to split huge metadata streams."
+    ]
+  },
+  {
+    "code": "740 (0x2E4)",
+    "issue": "ERROR_ELEVATION_REQUIRED",
+    "description": "The requested operation requires elevated user privilege permissions.",
+    "fix": [
+      "Execute the target process or installer path using elevated Administrator access.",
+      "Configure standard execution level flags inside compilation manifest scripts."
+    ]
+  },
+  {
+    "code": "995 (0x3E3)",
+    "issue": "ERROR_OPERATION_ABORTED",
+    "description": "The I/O operation has been aborted because of either a thread exit or an application request.",
+    "fix": [
+      "Investigate unexpected process or worker thread shutdowns.",
+      "Optimize communication loops to handle cancellation and shutdown flags gracefully."
+    ]
+  },
+  {
+    "code": "997 (0x3E5)",
+    "issue": "ERROR_IO_PENDING",
+    "description": "Overlapped I/O operation is in progress.",
+    "fix": [
+      "Implement standard callback functions or event handle polling patterns to manage completion states."
+    ]
+  },
+  {
+    "code": "1001 (0x3E9)",
+    "issue": "ERROR_STACK_OVERFLOW",
+    "description": "Recursion too deep; the stack overflowed.",
+    "fix": [
+      "Verify recursive patterns in application code resolve correctly without creating infinite loops.",
+      "Convert deep recursion models into iterative loop designs.",
+      "Optimize stack requirements on application memory stacks."
+    ]
+  },
+  {
+    "code": "1005 (0x3ED)",
+    "issue": "ERROR_UNRECOGNIZED_VOLUME",
+    "description": "The volume does not contain a recognized file system. Please make sure that all required file system drivers are loaded and that the volume is not corrupted.",
+    "fix": [
+      "Confirm file system drivers matching the target storage are loaded.",
+      "Execute CHKDSK scans to evaluate partition integrity.",
+      "Format the drive using supported file systems (NTFS/exFAT) if data destruction is acceptable."
+    ]
+  },
+  {
+    "code": "1008 (0x3F0)",
+    "issue": "ERROR_NO_TOKEN",
+    "description": "An attempt was made to reference a token that does not exist.",
+    "fix": [
+      "Ensure thread impersonation processes execute successfully before requesting active tokens.",
+      "Verify calling user context mappings before executing access validation APIs."
+    ]
+  },
+  {
+    "code": "1015 (0x3F7)",
+    "issue": "ERROR_REGISTRY_CORRUPT",
+    "description": "The registry structure or image files are corrupt and unreadable.",
+    "fix": [
+      "Run Deployment Image Servicing and Management (DISM) tools to restore system files.",
+      "Restore registry hive configurations using healthy shadow copies or system backups."
+    ]
+  },
+  {
+    "code": "1053 (0x41D)",
+    "issue": "ERROR_SERVICE_REQUEST_TIMEOUT",
+    "description": "The service did not respond to the start or control request in a timely fashion.",
+    "fix": [
+      "Increase default Windows services startup delay values in the registry.",
+      "Optimize code blocks inside the service entry functions to avoid long processing delays.",
+      "Check the Event Viewer to verify application-side dependency locks."
+    ]
+  },
+  {
+    "code": "1056 (0x420)",
+    "issue": "ERROR_SERVICE_ALREADY_RUNNING",
+    "description": "An instance of the service is already running.",
+    "fix": [
+      "Identify duplicate start instructions inside scheduled task routines.",
+      "Confirm current service status using management terminals."
+    ]
+  },
+  {
+    "code": "1058 (0x422)",
+    "issue": "ERROR_SERVICE_DISABLED",
+    "description": "The service cannot be started, either because it is disabled or because it has no enabled devices associated with it.",
+    "fix": [
+      "Adjust service Startup Type properties configuration to Automatic or Manual using services.msc.",
+      "Start the target service program using command terminal systems."
+    ]
+  },
+  {
+    "code": "1060 (0x424)",
+    "issue": "ERROR_SERVICE_DOES_NOT_EXIST",
+    "description": "The specified service does not exist as an installed service.",
+    "fix": [
+      "Check service name spelling parameters.",
+      "Re-register the service utilizing creation scripts or target installations utilities."
+    ]
+  },
+  {
+    "code": "1062 (0x426)",
+    "issue": "ERROR_SERVICE_NOT_ACTIVE",
+    "description": "The service has not been started.",
+    "fix": [
+      "Initiate the service program via net start commands.",
+      "Inspect configuration setup to determine startup failures."
+    ]
+  },
+  {
+    "code": "1068 (0x42C)",
+    "issue": "ERROR_SERVICE_DEPENDENCY_FAIL",
+    "description": "The dependency service or group failed to start.",
+    "fix": [
+      "Check services dependencies trees inside Services Console properties.",
+      "Locate and start parent service objects before running dependent targets."
+    ]
+  },
+  {
+    "code": "1069 (0x42D)",
+    "issue": "ERROR_SERVICE_LOGON_FAILED",
+    "description": "The service did not start due to a logon failure.",
+    "fix": [
+      "Update service credential configurations with accurate account profiles.",
+      "Confirm assigned service accounts hold adequate logon privileges in security settings."
+    ]
+  },
+  {
+    "code": "1114 (0x45A)",
+    "issue": "ERROR_DLL_INIT_FAILED",
+    "description": "A dynamic link library (DLL) initialization routine failed.",
+    "fix": [
+      "Check for missing system framework components.",
+      "Verify target DLL dependencies are registered.",
+      "Inspect target initialize procedures in DLL scripts."
+    ]
+  },
+  {
+    "code": "1117 (0x45D)",
+    "issue": "ERROR_IO_DEVICE",
+    "description": "The request could not be performed because of an I/O device error.",
+    "fix": [
+      "Inspect drive physical cabling.",
+      "Check storage health metrics using manufacturer utilities.",
+      "Verify device driver configuration parameter rules are intact."
+    ]
+  },
+  {
+    "code": "1130 (0x46A)",
+    "issue": "ERROR_NOT_ENOUGH_SERVER_MEMORY",
+    "description": "Not enough server storage is available to process this command.",
+    "fix": [
+      "Increase the IRPStackSize parameters value in registry configurations.",
+      "Reallocate memory limits within server shares."
+    ]
+  },
+  {
+    "code": "1155 (0x483)",
+    "issue": "ERROR_NO_ASSOCIATION",
+    "description": "No application is associated with the specified file for this operation.",
+    "fix": [
+      "Assign default handler profiles to target file extensions.",
+      "Specify program executable targets within open instructions."
+    ]
+  },
+  {
+    "code": "1157 (0x485)",
+    "issue": "ERROR_DLL_NOT_FOUND",
+    "description": "One of the library files needed to run this application cannot be found.",
+    "fix": [
+      "Locate and place the necessary DLL in application deployment directories.",
+      "Reinstall the software application to recover library sets."
+    ]
+  },
+  {
+    "code": "1167 (0x48F)",
+    "issue": "ERROR_DEVICE_NOT_CONNECTED",
+    "description": "The device is not connected.",
+    "fix": [
+      "Confirm network connections are active.",
+      "Reconnect local storage interfaces."
+    ]
+  },
+  {
+    "code": "1203 (0x4B3)",
+    "issue": "ERROR_NO_NET_OR_BAD_PATH",
+    "description": "The network path was either typed incorrectly, does not exist, or the network provider is not currently available.",
+    "fix": [
+      "Re-evaluate spelled net path syntax definitions.",
+      "Validate interface connection paths."
+    ]
+  },
+  {
+    "code": "1219 (0x4C3)",
+    "issue": "ERROR_SESSION_CREDENTIAL_CONFLICT",
+    "description": "Multiple connections to a server or shared resource by the same user, using more than one user name, are not allowed.",
+    "fix": [
+      "Disconnect prior active network drives configurations.",
+      "Utilize consistent credentials across shared server profiles."
+    ]
+  },
+  {
+    "code": "1222 (0x4C6)",
+    "issue": "ERROR_NO_NETWORK",
+    "description": "The network is not present or not started.",
+    "fix": [
+      "Enable local interface hardware.",
+      "Check network adapter settings."
+    ]
+  },
+  {
+    "code": "1223 (0x4C7)",
+    "issue": "ERROR_CANCELLED",
+    "description": "The operation was canceled by the user.",
+    "fix": [
+      "Handle cancellation events within runtime scripts cleanly.",
+      "Re-run actions without manual interventions."
+    ]
+  },
+  {
+    "code": "1231 (0x4CF)",
+    "issue": "ERROR_NETWORK_UNREACHABLE",
+    "description": "The network location cannot be reached.",
+    "fix": [
+      "Verify target node route tables.",
+      "Ensure local switches are online and forwarding packets."
+    ]
+  },
+  {
+    "code": "1260 (0x4EC)",
+    "issue": "ERROR_ACCESS_DISABLED_BY_POLICY",
+    "description": "This program is blocked by group policy.",
+    "fix": [
+      "Modify app execution blocking parameters in Local Security policies.",
+      "Contact server system administrators to resolve group policy blocks."
+    ]
+  },
+  {
+    "code": "1282 (0x502)",
+    "issue": "ERROR_STACK_BUFFER_OVERRUN",
+    "description": "The system detected an overrun of a stack-based buffer in this application.",
+    "fix": [
+      "Debug memory code paths to enforce validation limits on inputs.",
+      "Apply secure buffer boundaries checks in program compilation scripts."
+    ]
+  },
+  {
+    "code": "1290 (0x50A)",
+    "issue": "ERROR_INCOMPATIBLE_SERVICE_SID_TYPE",
+    "description": "The service start failed since one or more services in the same process have an incompatible service SID type setting.",
+    "fix": [
+      "Configure conflicting service settings to separate execution environments.",
+      "Update service SID types to support shared context modes."
+    ]
+  },
+  {
+    "code": "1295 (0x50F)",
+    "issue": "ERROR_DISK_QUOTA_EXCEEDED",
+    "description": "The requested file operation failed because the storage quota was exceeded.",
+    "fix": [
+      "Request storage limit expansions from directory administrators.",
+      "Clean obsolete files from target user space paths."
+    ]
+  },
+  {
+    "code": "1311 (0x51F)",
+    "issue": "ERROR_NO_LOGON_SERVERS",
+    "description": "There are currently no logon servers available to service the logon request.",
+    "fix": [
+      "Verify connection link properties to the Active Directory domain controllers.",
+      "Confirm local DNS configurations resolved DC address parameters."
+    ]
+  },
+  {
+    "code": "1314 (0x522)",
+    "issue": "ERROR_PRIVILEGE_NOT_HELD",
+    "description": "A required privilege is not held by the client.",
+    "fix": [
+      "Adjust user group policy setups to assign required security permissions.",
+      "Run caller processes in elevated safety tokens configurations."
+    ]
+  },
+  {
+    "code": "1326 (0x52E)",
+    "issue": "ERROR_LOGON_FAILURE",
+    "description": "The user name or password is incorrect.",
+    "fix": [
+      "Confirm login profiles characters are accurate.",
+      "Perform user account password resets if values were updated."
+    ]
+  },
+  {
+    "code": "1327 (0x52F)",
+    "issue": "ERROR_ACCOUNT_RESTRICTION",
+    "description": "Account restrictions are preventing this user from signing in.",
+    "fix": [
+      "Check if user account permissions are bound to specific time windows.",
+      "Verify account has a valid, non-blank password where enforced by system rules."
+    ]
+  },
+  {
+    "code": "1329 (0x531)",
+    "issue": "ERROR_INVALID_WORKSTATION",
+    "description": "This user isn't allowed to sign in to this computer.",
+    "fix": [
+      "Adjust Log On To parameters inside directory server user profiles."
+    ]
+  },
+  {
+    "code": "1330 (0x532)",
+    "issue": "ERROR_PASSWORD_EXPIRED",
+    "description": "The password for this account has expired.",
+    "fix": [
+      "Update profile password settings on directory login terminals."
+    ]
+  },
+  {
+    "code": "1331 (0x533)",
+    "issue": "ERROR_ACCOUNT_DISABLED",
+    "description": "This user can't sign in because this account is currently disabled.",
+    "fix": [
+      "Enable account controls inside Active Directory administration tools."
+    ]
+  },
+  {
+    "code": "1332 (0x534)",
+    "issue": "ERROR_NONE_MAPPED",
+    "description": "No mapping between account names and security IDs was done.",
+    "fix": [
+      "Verify spelled group or user names conform to registry records.",
+      "Re-establish domain trust relationships configurations."
+    ]
+  },
+  {
+    "code": "1336 (0x538)",
+    "issue": "ERROR_INVALID_ACL",
+    "description": "The access control list (ACL) structure is invalid.",
+    "fix": [
+      "Re-evaluate security descriptions scripts formatting parameters.",
+      "Verify access flags match system formats."
+    ]
+  },
+  {
+    "code": "1337 (0x539)",
+    "issue": "ERROR_INVALID_SID",
+    "description": "The security ID structure is invalid.",
+    "fix": [
+      "Confirm that SID strings conform to standard network structures.",
+      "Generate new SID markers using automated system utilities."
+    ]
+  },
+  {
+    "code": "1392 (0x570)",
+    "issue": "ERROR_FILE_CORRUPT",
+    "description": "The file or directory is corrupted and unreadable.",
+    "fix": [
+      "Execute disk repair routines using command prompt parameters.",
+      "Recover missing data sets from storage backups."
+    ]
+  },
+  {
+    "code": "1393 (0x571)",
+    "issue": "ERROR_DISK_CORRUPT",
+    "description": "The disk structure is corrupted and unreadable.",
+    "fix": [
+      "Replace failing storage components.",
+      "Run partition table reconstructions tools."
+    ]
+  },
+  {
+    "code": "1450 (0x5AA)",
+    "issue": "ERROR_NO_SYSTEM_RESOURCES",
+    "description": "Insufficient system resources exist to complete the requested service.",
+    "fix": [
+      "Increase desk space or virtual swap limits configuration.",
+      "Limit concurrent task threads executing in memory blocks."
+    ]
+  },
+  {
+    "code": "1455 (0x5AF)",
+    "issue": "ERROR_COMMITMENT_LIMIT",
+    "description": "The paging file is too small for this operation to complete.",
+    "fix": [
+      "Verify storage sizes hosting Windows virtual pagefiles.",
+      "Extend memory capacities bounds in performance options."
+    ]
+  },
+  {
+    "code": "1460 (0x5B4)",
+    "issue": "ERROR_TIMEOUT",
+    "description": "This operation returned because the timeout period expired.",
+    "fix": [
+      "Optimize hardware execution layers to process inputs quickly.",
+      "Adjust operation limit parameters inside application scripts."
+    ]
+  },
+  {
+    "code": "1500 (0x5DC)",
+    "issue": "ERROR_EVENTLOG_FILE_CORRUPT",
+    "description": "The event log file is corrupted.",
+    "fix": [
+      "Clear corrupted logs databases using administration terminals.",
+      "Rebuild targeted service structures."
+    ]
+  },
+  {
+    "code": "1601 (0x641)",
+    "issue": "ERROR_INSTALL_SERVICE_FAILURE",
+    "description": "The Windows Installer Service could not be accessed.",
+    "fix": [
+      "Confirm installation framework is registered.",
+      "Start Windows Installer service manual settings."
+    ]
+  },
+  {
+    "code": "1603 (0x643)",
+    "issue": "ERROR_INSTALL_FAILURE",
+    "description": "Fatal error during installation.",
+    "fix": [
+      "Review target execution permissions models on installers folders.",
+      "Locate and fix detailed path blocks listed in logs."
+    ]
+  },
+  {
+    "code": "1618 (0x652)",
+    "issue": "ERROR_INSTALL_ALREADY_RUNNING",
+    "description": "Another installation is already in progress.",
+    "fix": [
+      "Wait for separate active installation programs to complete.",
+      "Terminate background running processes in task managers."
+    ]
+  },
+  {
+    "code": "1619 (0x653)",
+    "issue": "ERROR_INSTALL_PACKAGE_OPEN_FAILED",
+    "description": "This installation package could not be opened.",
+    "fix": [
+      "Confirm target file actually exists in specified path ranges.",
+      "Validate package integrity formats."
+    ]
+  },
+  {
+    "code": "1625 (0x659)",
+    "issue": "ERROR_INSTALL_PACKAGE_REJECTED",
+    "description": "This installation is forbidden by system policy.",
+    "fix": [
+      "Modify app restriction rules via Local Security Policies screens."
+    ]
+  },
+  {
+    "code": "1722 (0x6BA)",
+    "issue": "RPC_S_SERVER_UNAVAILABLE",
+    "description": "The RPC server is unavailable.",
+    "fix": [
+      "Confirm host network links status are healthy.",
+      "Validate status of service configurations."
+    ]
+  },
+  {
+    "code": "1726 (0x6BE)",
+    "issue": "RPC_S_CALL_FAILED",
+    "description": "The remote procedure call failed.",
+    "fix": [
+      "Ensure host processes are not crashing under load blocks.",
+      "Restart networking interfaces."
+    ]
+  },
+  {
+    "code": "1789 (0x6FD)",
+    "issue": "ERROR_TRUSTED_RELATIONSHIP_FAILURE",
+    "description": "The trust relationship between this workstation and the primary domain failed.",
+    "fix": [
+      "Re-join the local machine context inside directory domains.",
+      "Reset target computer profile objects on server panels."
+    ]
+  },
+  {
+    "code": "1816 (0x718)",
+    "issue": "ERROR_NOT_ENOUGH_QUOTA",
+    "description": "Not enough quota is available to process this command.",
+    "fix": [
+      "Analyze process memory loops for resource leaks.",
+      "Increase pool limits via registry adjustments."
+    ]
+  },
+  {
+    "code": "1907 (0x773)",
+    "issue": "ERROR_PASSWORD_MUST_CHANGE",
+    "description": "The user's password must be changed before signing in.",
+    "fix": [
+      "Update security password keys on login interfaces."
+    ]
+  },
+  {
+    "code": "1909 (0x775)",
+    "issue": "ERROR_ACCOUNT_LOCKED_OUT",
+    "description": "The referenced account is currently locked out.",
+    "fix": [
+      "Wait for locked intervals periods to resolve naturally.",
+      "Unlock account flags using directory management consoles."
+    ]
+  },
+  {
+    "code": "2011 (0x7DB)",
+    "issue": "ERROR_INVALID_PROFILE",
+    "description": "The specified color profile is invalid.",
+    "fix": [
+      "Replace target profile formats with standard settings packages."
+    ]
+  },
+  {
+    "code": "2250 (0x8CA)",
+    "issue": "ERROR_NOT_CONNECTED",
+    "description": "This network connection does not exist.",
+    "fix": [
+      "Confirm network connection setups exist.",
+      "Map shares names appropriately."
+    ]
+  },
+  {
+    "code": "3001 (0xBB9)",
+    "issue": "ERROR_PRINTER_DRIVER_IN_USE",
+    "description": "The specified printer driver is currently in use.",
+    "fix": [
+      "Remove active print queue items before updating.",
+      "Temporarily stop printing spooler services."
+    ]
+  },
+  {
+    "code": "3010 (0xBC2)",
+    "issue": "ERROR_SUCCESS_REBOOT_REQUIRED",
+    "description": "The requested operation is successful. Changes will not be effective until the system is rebooted.",
+    "fix": [
+      "Trigger system reboot parameters immediately."
+    ]
+  },
+  {
+    "code": "4100 (0x1004)",
+    "issue": "ERROR_DHCP_ADDRESS_CONFLICT",
+    "description": "The DHCP client has obtained an IP address that is already in use on the network.",
+    "fix": [
+      "Re-allocate local IP details using renew scripts.",
+      "Exclude allocated scopes inside DHCP parameters."
+    ]
+  },
+  {
+    "code": "4201 (0x1069)",
+    "issue": "ERROR_WMI_INSTANCE_NOT_FOUND",
+    "description": "The instance name passed was not recognized as valid by a WMI data provider.",
+    "fix": [
+      "Ensure proper instance variables conform to script definitions."
+    ]
+  },
+  {
+    "code": "4390 (0x1126)",
+    "issue": "ERROR_NOT_A_REPARSE_POINT",
+    "description": "The file or directory is not a reparse point.",
+    "fix": [
+      "Avoid symlink instructions on standard raw format files."
+    ]
+  },
+  {
+    "code": "4425 (0x1149)",
+    "issue": "ERROR_SECUREBOOT_NOT_ENABLED",
+    "description": "Secure Boot is not enabled on this machine.",
+    "fix": [
+      "Enable Secure Boot parameter options inside UEFI setup windows."
+    ]
+  },
+  {
+    "code": "5001 (0x1389)",
+    "issue": "ERROR_DEPENDENT_RESOURCE_EXISTS",
+    "description": "The operation cannot be completed because other resources are dependent on this resource.",
+    "fix": [
+      "Remove dependencies connections inside cluster managers screens."
+    ]
+  },
+  {
+    "code": "5004 (0x138C)",
+    "issue": "ERROR_RESOURCE_NOT_ONLINE",
+    "description": "The cluster resource is not online.",
+    "fix": [
+      "Bring target resources online via clustering tools."
+    ]
+  },
+  {
+    "code": "5023 (0x139F)",
+    "issue": "ERROR_INVALID_STATE",
+    "description": "The group or resource is not in the correct state to perform the requested operation.",
+    "fix": [
+      "Verify system cluster statuses before applying transitions instructions."
+    ]
+  },
+  {
+    "code": "6000 (0x1770)",
+    "issue": "ERROR_ENCRYPTION_FAILED",
+    "description": "The specified file could not be encrypted.",
+    "fix": [
+      "Ensure file systems support standard EFS components.",
+      "Verify system encryption certificates are properly created."
+    ]
+  },
+  {
+    "code": "6001 (0x1771)",
+    "issue": "ERROR_DECRYPTION_FAILED",
+    "description": "The specified file could not be decrypted.",
+    "fix": [
+      "Confirm matching user certificates keys exist inside local profiles directories."
+    ]
+  },
+  {
+    "code": "6022 (0x1786)",
+    "issue": "ERROR_ENCRYPTION_POLICY_DENIES_OPERATION",
+    "description": "The requested encryption operation was blocked by policy.",
+    "fix": [
+      "Adjust security parameters inside local administrative policy blocks."
+    ]
+  },
+  {
+    "code": "6118 (0x17E6)",
+    "issue": "ERROR_NO_BROWSER_SERVERS_FOUND",
+    "description": "The list of servers for this workgroup is not currently available.",
+    "fix": [
+      "Enable network discovery parameters inside system panel configurations.",
+      "Verify computer browser service settings."
+    ]
+  },
+  {
+    "code": "6628 (0x19E4)",
+    "issue": "ERROR_LOG_FULL",
+    "description": "Log space is exhausted.",
+    "fix": [
+      "Clear transactions logs databases manually.",
+      "Increase log partition sizes boundaries."
+    ]
+  },
+  {
+    "code": "6701 (0x1A2D)",
+    "issue": "ERROR_TRANSACTION_NOT_ACTIVE",
+    "description": "The requested operation was made in the context of a transaction that is no longer active.",
+    "fix": [
+      "Initiate new transactions objects structures before performing write operations."
+    ]
+  },
+  {
+    "code": "6800 (0x1A90)",
+    "issue": "ERROR_TRANSACTIONAL_CONFLICT",
+    "description": "The function attempted to use a name that is reserved for use by another transaction.",
+    "fix": [
+      "Close locking file sessions before starting overlapping operations."
+    ]
+  },
+  {
+    "code": "7024 (0x1B70)",
+    "issue": "ERROR_CTX_WINSTATION_BUSY",
+    "description": "The task you are trying to do can't be completed because Remote Desktop Services is currently busy.",
+    "fix": [
+      "Wait for terminal session execution cycles to resolve.",
+      "Restart targeted services blocks."
+    ]
+  },
+  {
+    "code": "8200 (0x2008)",
+    "issue": "ERROR_DS_NOT_INSTALLED",
+    "description": "An error occurred while installing the directory service.",
+    "fix": [
+      "Verify Active Directory database folders permissions rules.",
+      "Check server event logs to isolate system installer errors."
+    ]
+  },
+  {
+    "code": "8207 (0x200F)",
+    "issue": "ERROR_DS_UNAVAILABLE",
+    "description": "The directory service is unavailable.",
+    "fix": [
+      "Verify domain controller services are up and active.",
+      "Examine DNS network configurations."
+    ]
+  },
+  {
+    "code": "8333 (0x208D)",
+    "issue": "ERROR_DS_OBJ_NOT_FOUND",
+    "description": "Directory object not found.",
+    "fix": [
+      "Verify exact spelling parameters of DN strings.",
+      "Confirm object creation replication has processed completely."
+    ]
+  },
+  {
+    "code": "8453 (0x2105)",
+    "issue": "ERROR_DS_DRA_ACCESS_DENIED",
+    "description": "Replication access was denied.",
+    "fix": [
+      "Assign security replication permissions models inside domain containers."
+    ]
+  },
+  {
+    "code": "8524 (0x214C)",
+    "issue": "ERROR_DS_DNS_LOOKUP_FAILURE",
+    "description": "The DSA operation is unable to proceed because of a DNS lookup failure.",
+    "fix": [
+      "Configure DNS pointer entries accurately inside name servers tables.",
+      "Clear client systems cache records."
+    ]
+  },
+  {
+    "code": "8557 (0x216D)",
+    "issue": "ERROR_DS_MACHINE_ACCOUNT_QUOTA_EXCEEDED",
+    "description": "Your computer could not be joined to the domain because you have exceeded the maximum number of computer accounts.",
+    "fix": [
+      "Ask a domain administrator to register the computer account.",
+      "Reset user accounts creation limits values inside configuration variables."
+    ]
+  },
+  {
+    "code": "9003 (0x232B)",
+    "issue": "DNS_ERROR_RCODE_NAME_ERROR",
+    "description": "DNS name does not exist.",
+    "fix": [
+      "Verify target domain records exists inside lookup databases.",
+      "Clear host systems local DNS cache directories."
+    ]
+  },
+  {
+    "code": "9501 (0x251D)",
+    "issue": "DNS_INFO_NO_RECORDS",
+    "description": "No records found for given DNS query.",
+    "fix": [
+      "Confirm queried records types are correctly published."
+    ]
+  },
+  {
+    "code": "9852 (0x267C)",
+    "issue": "DNS_ERROR_NO_DNS_SERVERS",
+    "description": "No DNS servers configured for local system.",
+    "fix": [
+      "Configure active DNS IP locations inside target network adapters panels."
+    ]
+  },
+  {
+    "code": "10013 (0x271D)",
+    "issue": "WSAEACCES",
+    "description": "An attempt was made to access a socket in a way forbidden by its access permissions.",
+    "fix": [
+      "Confirm firewall rules do not restrict specific ports paths.",
+      "Launch sockets services using elevated administrative rights."
+    ]
+  },
+  {
+    "code": "10048 (0x2740)",
+    "issue": "WSAEADDRINUSE",
+    "description": "Only one usage of each socket address is normally permitted.",
+    "fix": [
+      "Stop concurrent processes locking identical target ports configurations.",
+      "Utilize alternative ports scopes for active socket connections."
+    ]
+  },
+  {
+    "code": "10054 (0x2746)",
+    "issue": "WSAECONNRESET",
+    "description": "An existing connection was forcibly closed by the remote host.",
+    "fix": [
+      "Examine remote software services execution paths for system failures.",
+      "Re-establish connections structures manually."
+    ]
+  },
+  {
+    "code": "10060 (0x274C)",
+    "issue": "WSAETIMEDOUT",
+    "description": "A connection attempt failed because the connected party did not properly respond after a period of time.",
+    "fix": [
+      "Confirm targeted endpoints are actively processing status loops.",
+      "Adjust firewall security parameters to allow direct passage."
+    ]
+  },
+  {
+    "code": "10061 (0x274D)",
+    "issue": "WSAECONNREFUSED",
+    "description": "No connection could be made because the target machine actively refused it.",
+    "fix": [
+      "Confirm receiving port listener procedures are actively running.",
+      "Validate connection port profiles entries."
+    ]
+  },
+  {
+    "code": "11001 (0x2AF9)",
+    "issue": "WSAHOST_NOT_FOUND",
+    "description": "No such host is known.",
+    "fix": [
+      "Confirm targeted network hosts names entries are correct.",
+      "Update DNS routing profiles configurations."
+    ]
+  },
+  {
+    "code": "12001 (0x2EE1)",
+    "issue": "ERROR_INTERNET_OUT_OF_HANDLES",
+    "description": "No more internet handles can be allocated.",
+    "fix": [
+      "Release stale connection objects handles cleanly.",
+      "Configure resource recycle loops inside programs profiles."
+    ]
+  },
+  {
+    "code": "12007 (0x2EE7)",
+    "issue": "ERROR_INTERNET_NAME_NOT_RESOLVED",
+    "description": "The server name or address could not be resolved.",
+    "fix": [
+      "Verify network interface parameters paths are connected to active gateways.",
+      "Check server names spelling accuracy."
+    ]
+  },
+  {
+    "code": "12029 (0x2EFD)",
+    "issue": "ERROR_INTERNET_CANNOT_CONNECT",
+    "description": "The attempt to connect to the server failed.",
+    "fix": [
+      "Confirm target site configurations port numbers match active rules.",
+      "Verify system firewall transit pathways are open."
+    ]
+  },
+  {
+    "code": "12152 (0x2F78)",
+    "issue": "ERROR_HTTP_INVALID_SERVER_RESPONSE",
+    "description": "The server response could not be parsed.",
+    "fix": [
+      "Analyze target server program logic outputs.",
+      "Verify standard headers formats match communication layouts definitions."
+    ]
+  },
+  {
+    "code": "13000 (0x32C8)",
+    "issue": "ERROR_IPSEC_QM_POLICY_EXISTS",
+    "description": "The specified quick mode policy already exists.",
+    "fix": [
+      "Configure active connection profiles to utilize current IPsec structures.",
+      "Delete redundant entries inside IPsec management consoles."
+    ]
+  },
+  {
+    "code": "13001 (0x32C9)",
+    "issue": "ERROR_IPSEC_QM_POLICY_NOT_FOUND",
+    "description": "The specified quick mode policy was not found.",
+    "fix": [
+      "Construct missing IPsec connection policy parameters targets.",
+      "Verify policy spelling patterns match registered references."
+    ]
+  },
+  {
+    "code": "14099 (0x3713)",
+    "issue": "ERROR_ADVANCED_INSTALLER_FAILED",
+    "description": "An advanced installer failed during setup or servicing.",
+    "fix": [
+      "Examine servicing framework files structures using SFC tools.",
+      "Examine active setups variables inside servicing CBS logs documents."
+    ]
+  },
+  {
+    "code": "14100 (0x3714)",
+    "issue": "ERROR_XML_ENCODING_MISMATCH",
+    "description": "The character encoding in the XML declaration did not match the encoding used in the document.",
+    "fix": [
+      "Correct character declarations headers inside XML sources to align with document contents."
+    ]
+  },
+  {
+    "code": "14101 (0x3715)",
+    "issue": "ERROR_SXS_MANIFEST_IDENTITY_SAME_BUT_CONTENTS_DIFFERENT",
+    "description": "The identities of the manifests are identical but their contents are different.",
+    "fix": [
+      "Verify side-by-side component configurations matches manifest specifications parameters."
+    ]
+  },
+  {
+    "code": "14102 (0x3716)",
+    "issue": "ERROR_SXS_IDENTITIES_DIFFERENT",
+    "description": "The component identities are different.",
+    "fix": [
+      "Ensure manifest configuration parameters match identical deployment identities."
+    ]
+  },
+  {
+    "code": "15000 (0x3A98)",
+    "issue": "ERROR_EVT_INVALID_CHANNEL_PATH",
+    "description": "The specified channel path is invalid.",
+    "fix": [
+      "Confirm spelled channels directories paths conform to active logs folders definitions."
+    ]
+  },
+  {
+    "code": "15001 (0x3A99)",
+    "issue": "ERROR_EVT_INVALID_QUERY",
+    "description": "The specified query is invalid.",
+    "fix": [
+      "Verify query filter parsing parameters match active logging standards."
+    ]
+  },
+  {
+    "code": "15002 (0x3A9A)",
+    "issue": "ERROR_EVT_PUBLISHER_METADATA_NOT_FOUND",
+    "description": "The publisher metadata cannot be found in the resource.",
+    "fix": [
+      "Ensure that log provider drivers resources are fully registered."
+    ]
+  },
+  {
+    "code": "15003 (0x3A9B)",
+    "issue": "ERROR_EVT_EVENT_TEMPLATE_NOT_FOUND",
+    "description": "The template for an event definition cannot be found in the resource.",
+    "fix": [
+      "Reinstall system components assemblies structures to recover templates maps."
+    ]
+  }
+]
