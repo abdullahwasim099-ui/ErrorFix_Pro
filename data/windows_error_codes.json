@@ -308,5 +308,1585 @@
       "Run 'chkdsk /r' on the affected drive to repair file system errors.",
       "If during Windows installation, check the installation media for errors or re-download the ISO."
     ]
+  },
+  {
+    "code": "0x00000001",
+    "severity": "critical",
+    "issue": "APC Index Mismatch (APC_INDEX_MISMATCH)",
+    "description": "A mismatch occurred in the Asynchronous Procedure Call (APC) disable count, typically caused by a kernel-mode driver or system service corrupting the APC state.",
+    "fix": [
+      "Use Driver Verifier to identify the driver causing the APC state corruption and update or remove it.",
+      "Uninstall recently installed third-party antivirus or virtualization software and test for recurrence."
+    ]
+  },
+  {
+    "code": "0x00000003",
+    "severity": "critical",
+    "issue": "Invalid Affinity Set (INVALID_AFFINITY_SET)",
+    "description": "An invalid processor affinity set was specified for a thread, indicating a kernel scheduling error often tied to a buggy driver.",
+    "fix": [
+      "Boot into Safe Mode and uninstall recently added drivers or system utilities.",
+      "Run 'sfc /scannow' to repair corrupted system files and restart."
+    ]
+  },
+  {
+    "code": "0x00000004",
+    "severity": "critical",
+    "issue": "No More System PTEs (NO_MORE_SYSTEM_PTES)",
+    "description": "The system ran out of Page Table Entries (PTEs), preventing memory mapping operations — commonly caused by heavy video memory usage or driver leaks.",
+    "fix": [
+      "Update GPU and storage drivers to the latest manufacturer versions.",
+      "Reduce the number of simultaneously running graphics-intensive applications."
+    ]
+  },
+  {
+    "code": "0x00000005",
+    "severity": "critical",
+    "issue": "Invalid Process Termination (INVALID_PROCESS_TERMINATION)",
+    "description": "A process was terminated using an invalid method, often caused by a driver calling incorrect kernel termination routines.",
+    "fix": [
+      "Use BlueScreenView to identify the faulting driver from the minidump and update it.",
+      "Run 'DISM /Online /Cleanup-Image /RestoreHealth' to repair the system image."
+    ]
+  },
+  {
+    "code": "0x00000006",
+    "severity": "critical",
+    "issue": "Invalid Process Handle (INVALID_PROCESS_HANDLE)",
+    "description": "A kernel-mode component attempted to use an invalid process handle, indicating driver corruption or handle table tampering.",
+    "fix": [
+      "Run Driver Verifier to isolate the offending driver and update it from the manufacturer's site.",
+      "Perform a clean boot to identify conflicting third-party services."
+    ]
+  },
+  {
+    "code": "0x00000007",
+    "severity": "critical",
+    "issue": "Kernel Stack Page Error (KERNEL_STACK_PAGE_ERROR)",
+    "description": "The kernel encountered an error while accessing a stack page, often caused by faulty RAM or disk I/O failures.",
+    "fix": [
+      "Run Windows Memory Diagnostic or MemTest86 to check for faulty RAM modules.",
+      "Run 'chkdsk /r' to detect and repair disk errors affecting page file access."
+    ]
+  },
+  {
+    "code": "0x00000008",
+    "severity": "critical",
+    "issue": "IRQL Not Less or Equal — Kernel (IRQL_NOT_LESS_OR_EQUAL_KERNEL)",
+    "description": "A kernel-mode routine attempted to access paged memory at an elevated IRQL, typically from a driver bug.",
+    "fix": [
+      "Identify the faulting driver using the minidump and update or roll it back.",
+      "Disable hardware acceleration in browsers and affected applications."
+    ]
+  },
+  {
+    "code": "0x00000009",
+    "severity": "critical",
+    "issue": "Kernel Auto Boost Invalid (KERNEL_AUTO_BOOST_INVALID)",
+    "description": "The kernel auto-boost lock acquisition mechanism encountered an invalid state, usually caused by a driver holding a lock too long.",
+    "fix": [
+      "Update all storage and file system filter drivers to their latest versions.",
+      "Use Driver Verifier with low resources simulation to reproduce and isolate the fault."
+    ]
+  },
+  {
+    "code": "0x0000000C",
+    "severity": "critical",
+    "issue": "Max Wait Context Exceeded (MAXWITNESS_EXCEEDED)",
+    "description": "The maximum number of wait context entries was exceeded, indicating a driver deadlock or resource leak.",
+    "fix": [
+      "Update or remove recently installed third-party drivers, especially filter drivers.",
+      "Run 'verifier /standard /all' in Safe Mode to identify the problematic driver."
+    ]
+  },
+  {
+    "code": "0x0000000D",
+    "severity": "critical",
+    "issue": "Mutant Like Corrupt (MUTEX_LEVEL_NUMBER_VIOLATION)",
+    "description": "A mutex level number violation occurred, indicating a kernel synchronization object was corrupted by a driver.",
+    "fix": [
+      "Boot into Safe Mode and uninstall recently added kernel-mode drivers.",
+      "Run 'sfc /scannow' and 'DISM /Online /Cleanup-Image /RestoreHealth' to repair system integrity."
+    ]
+  },
+  {
+    "code": "0x0000000E",
+    "severity": "critical",
+    "issue": "No User Mode Context (NO_USER_MODE_CONTEXT)",
+    "description": "The kernel could not find a valid user-mode context for the current thread, often caused by stack corruption.",
+    "fix": [
+      "Test RAM with MemTest86 and replace faulty modules.",
+      "Update chipset and CPU microcode drivers from your motherboard manufacturer."
+    ]
+  },
+  {
+    "code": "0x0000000F",
+    "severity": "critical",
+    "issue": "No Free Stack Pages (NO_FREE_STACK_PAGES)",
+    "description": "The kernel ran out of free stack pages, indicating a memory leak or excessive thread creation by a driver.",
+    "fix": [
+      "Increase the system page file size via System Properties > Advanced > Virtual Memory.",
+      "Use Task Manager to identify processes creating excessive threads and update or remove them."
+    ]
+  },
+  {
+    "code": "0x00000011",
+    "severity": "critical",
+    "issue": "Thread Not Suspended (THREAD_NOT_SUSPENDED)",
+    "description": "A resume operation was attempted on a thread that was not in a suspended state, pointing to a driver synchronization error.",
+    "fix": [
+      "Use Driver Verifier to identify the driver issuing incorrect thread suspend/resume calls.",
+      "Uninstall recently installed security or monitoring software that hooks kernel threads."
+    ]
+  },
+  {
+    "code": "0x00000012",
+    "severity": "critical",
+    "issue": "Trap Cause Unknown (TRAP_CAUSE_UNKNOWN)",
+    "description": "The kernel received a trap with an unknown cause, typically caused by hardware instability or a severely corrupted driver.",
+    "fix": [
+      "Reset BIOS/UEFI to default settings and disable any CPU overclocking.",
+      "Run extended RAM diagnostics with MemTest86 for at least 4 passes."
+    ]
+  },
+  {
+    "code": "0x00000019",
+    "severity": "critical",
+    "issue": "Working Set Pool Corrupt (WORKER_THREAD_RETURNED_AT_BAD_IRQL)",
+    "description": "A worker thread returned at an invalid IRQL, corrupting the working set pool — usually from a buggy driver.",
+    "fix": [
+      "Run Driver Verifier to catch the driver returning at the wrong IRQL and update it.",
+      "Perform a clean boot to isolate conflicting third-party kernel services."
+    ]
+  },
+  {
+    "code": "0x0000001A",
+    "severity": "critical",
+    "issue": "Memory Management Error (MEMORY_MANAGEMENT)",
+    "description": "A severe memory management error occurred, often caused by faulty RAM, corrupted page tables, or a driver corrupting memory.",
+    "fix": [
+      "Run Windows Memory Diagnostic and MemTest86 to test all RAM modules.",
+      "Run 'sfc /scannow' and check for corrupted system files that may affect memory management."
+    ]
+  },
+  {
+    "code": "0x0000001B",
+    "severity": "critical",
+    "issue": "PFN Share Count Mismatch (PFN_SHARE_COUNT)",
+    "description": "A Page Frame Number (PFN) share count mismatch was detected, indicating memory corruption from faulty hardware or drivers.",
+    "fix": [
+      "Reseat RAM modules and test with MemTest86 to rule out hardware faults.",
+      "Update storage and chipset drivers to prevent memory map corruption."
+    ]
+  },
+  {
+    "code": "0x0000001C",
+    "severity": "critical",
+    "issue": "PFN Reference Count Mismatch (PFN_REFERENCE_COUNT)",
+    "description": "A PFN reference count mismatch occurred, meaning the kernel detected an inconsistency in page frame tracking — often hardware-related.",
+    "fix": [
+      "Replace suspect RAM modules and run extended memory diagnostics.",
+      "Check motherboard BIOS for updated memory compatibility and flash if available."
+    ]
+  },
+  {
+    "code": "0x00000020",
+    "severity": "critical",
+    "issue": "Kernel APC Pending (KERNEL_APC_PENDING_DURING_EXIT)",
+    "description": "A kernel APC was still pending when a thread exited, indicating a driver failed to properly flush APCs.",
+    "fix": [
+      "Update all network and storage filter drivers to their latest versions.",
+      "Use Driver Verifier to isolate the driver leaking APCs."
+    ]
+  },
+  {
+    "code": "0x00000021",
+    "severity": "critical",
+    "issue": "Quota Underflow (QUOTA_UNDERFLOW)",
+    "description": "The system quota manager detected an underflow condition, meaning a process released more quota than it held — typically a driver bug.",
+    "fix": [
+      "Run 'sfc /scannow' to repair system file integrity.",
+      "Uninstall recently installed third-party drivers and test for recurrence."
+    ]
+  },
+  {
+    "code": "0x00000022",
+    "severity": "critical",
+    "issue": "File System Driver Corrupt (FILE_SYSTEM_DRIVER_CORRUPT)",
+    "description": "A file system driver was found to be corrupt, causing instability in disk I/O operations.",
+    "fix": [
+      "Update storage controller and file system filter drivers from the manufacturer.",
+      "Run 'chkdsk /f' and 'sfc /scannow' to repair file system and driver integrity."
+    ]
+  },
+  {
+    "code": "0x00000023",
+    "severity": "critical",
+    "issue": "FAT File System Error (FAT_FILE_SYSTEM)",
+    "description": "An error occurred in the FAT file system driver, often caused by disk corruption or faulty storage controllers.",
+    "fix": [
+      "Run 'chkdsk /r' on all FAT-formatted drives to repair file system errors.",
+      "Update storage controller drivers and check drive health with CrystalDiskInfo."
+    ]
+  },
+  {
+    "code": "0x00000026",
+    "severity": "critical",
+    "issue": "CDFS File System Error (CDFS_FILE_SYSTEM)",
+    "description": "The CD-ROM file system driver encountered a critical error, typically from corrupted optical media or a failing disc drive.",
+    "fix": [
+      "Update the optical disc drive firmware and motherboard chipset drivers.",
+      "Try different media or use a USB-based installation instead of optical media."
+    ]
+  },
+  {
+    "code": "0x00000027",
+    "severity": "critical",
+    "issue": "RDR File System Error (RDR_FILE_SYSTEM)",
+    "description": "The redirector (RDR) file system driver encountered an error, commonly related to network file access problems.",
+    "fix": [
+      "Update network adapter drivers and verify SMB protocol settings.",
+      "Check network connectivity and firewall rules affecting shared drive access."
+    ]
+  },
+  {
+    "code": "0x00000028",
+    "severity": "critical",
+    "issue": "Corrupt Access Token (CORRUPT_ACCESS_TOKEN)",
+    "description": "The system detected a corrupted access token, often caused by security software or kernel-level hooking drivers.",
+    "fix": [
+      "Uninstall third-party security suites and test with Windows Defender only.",
+      "Run 'sfc /scannow' and 'DISM /Online /Cleanup-Image /RestoreHealth' to repair system integrity."
+    ]
+  },
+  {
+    "code": "0x00000029",
+    "severity": "critical",
+    "issue": "Security System Error (SECURITY_SYSTEM)",
+    "description": "The security system encountered a fatal error, typically from corrupted security subsystem files or incompatible security drivers.",
+    "fix": [
+      "Boot into Safe Mode and uninstall recently added security or encryption software.",
+      "Run 'sfc /scannow' to repair security-related system files."
+    ]
+  },
+  {
+    "code": "0x0000002A",
+    "severity": "critical",
+    "issue": "Kernel Data Inpage Error (KERNEL_DATA_INPAGE_ERROR)",
+    "description": "The kernel could not read a page of data from memory into the page file, often caused by failing storage drives or faulty RAM.",
+    "fix": [
+      "Run 'chkdsk /r' to scan for and repair bad sectors on the system drive.",
+      "Test RAM with MemTest86 and check SSD/HDD health with CrystalDiskInfo."
+    ]
+  },
+  {
+    "code": "0x0000002B",
+    "severity": "critical",
+    "issue": "Panic Stack Switch (PANIC_STACK_SWITCH)",
+    "description": "A kernel stack switch occurred during a panic condition, typically caused by a stack overflow from a recursive driver call.",
+    "fix": [
+      "Update the driver identified in the minidump to prevent recursive stack usage.",
+      "Increase kernel stack resources by disabling unnecessary filter drivers."
+    ]
+  },
+  {
+    "code": "0x0000002C",
+    "severity": "critical",
+    "issue": "MCA Bus Error (MCA_BUS_ERROR)",
+    "description": "A Machine Check Architecture (MCA) bus error was detected, indicating a hardware fault on the system bus.",
+    "fix": [
+      "Reseat all expansion cards and RAM modules to ensure proper contact.",
+      "Run motherboard diagnostic tools and check for failing hardware components."
+    ]
+  },
+  {
+    "code": "0x0000002D",
+    "severity": "critical",
+    "issue": "SCSI Disk Driver Error (SCSI_DISK_DRIVER_ERROR)",
+    "description": "The SCSI disk driver encountered a critical error, often from a failing SCSI controller or cable issues.",
+    "fix": [
+      "Check and replace SCSI cables and verify proper termination of the SCSI chain.",
+      "Update the SCSI controller firmware and driver from the manufacturer."
+    ]
+  },
+  {
+    "code": "0x00000030",
+    "severity": "critical",
+    "issue": "Set Power State VHD Error (SET_POWER_STATE_VHD)",
+    "description": "An error occurred while setting the power state of a virtual hard disk device, commonly related to virtualization drivers.",
+    "fix": [
+      "Update virtualization platform (Hyper-V, VirtualBox, VMware) to the latest version.",
+      "Check VHD file integrity and ensure the host drive has adequate free space."
+    ]
+  },
+  {
+    "code": "0x00000031",
+    "severity": "critical",
+    "issue": "PCI Bus Driver Error (PCI_BUS_DRIVER_ERROR)",
+    "description": "The PCI bus driver encountered a critical error, often from a faulty PCI device or corrupted bus configuration.",
+    "fix": [
+      "Reseat PCI/PCIe cards and update motherboard BIOS/UEFI to the latest version.",
+      "Remove non-essential PCIe cards one by one to identify the faulty device."
+    ]
+  },
+  {
+    "code": "0x00000032",
+    "severity": "critical",
+    "issue": "Processor Internal Error (PROCESSOR_INTERNAL_ERROR)",
+    "description": "The CPU reported an internal error, indicating a hardware-level processor fault that may require replacement.",
+    "fix": [
+      "Update motherboard BIOS to the latest version for CPU microcode patches.",
+      "Disable overclocking and run CPU stress tests to verify stability."
+    ]
+  },
+  {
+    "code": "0x00000033",
+    "severity": "critical",
+    "issue": "Uncorrectable Machine Check (UNCORRECTABLE_MACHINE_CHECK)",
+    "description": "An unrecoverable machine check exception occurred, indicating a critical hardware failure in the CPU, cache, or memory subsystem.",
+    "fix": [
+      "Run manufacturer hardware diagnostics for CPU and motherboard.",
+      "Check for BIOS updates addressing machine check exceptions and replace failing hardware."
+    ]
+  },
+  {
+    "code": "0x00000035",
+    "severity": "critical",
+    "issue": "No More IRP Stack Locations (NO_MORE_IRP_STACK_LOCATIONS)",
+    "description": "A driver attempted to use more IRP stack locations than available, indicating a driver chain that is too deep or corrupted.",
+    "fix": [
+      "Identify and remove unnecessary file system filter drivers using 'fltmc filters'.",
+      "Update all storage and antivirus filter drivers to their latest versions."
+    ]
+  },
+  {
+    "code": "0x00000036",
+    "severity": "critical",
+    "issue": "Device Reference Count Leak (DEVICE_REFERENCE_COUNT_LEAK)",
+    "description": "A device object reference count leak was detected, meaning a driver failed to properly release references — leading to resource exhaustion.",
+    "fix": [
+      "Use Driver Verifier to identify the driver leaking device references and update it.",
+      "Restart the system periodically to mitigate resource exhaustion until the driver is fixed."
+    ]
+  },
+  {
+    "code": "0x00000037",
+    "severity": "critical",
+    "issue": "Floppy Driver Error (FLOPPY_DRIVER_ERROR)",
+    "description": "The floppy disk driver encountered a critical error, typically from failing floppy hardware or corrupted driver files.",
+    "fix": [
+      "Disable the floppy drive controller in BIOS/UEFI if no floppy drive is present.",
+      "Update or uninstall the floppy disk driver from Device Manager."
+    ]
+  },
+  {
+    "code": "0x00000038",
+    "severity": "critical",
+    "issue": "Serial Driver Error (SERIAL_DRIVER_ERROR)",
+    "description": "The serial port driver encountered a critical error, often from a faulty serial device or IRQ conflict.",
+    "fix": [
+      "Check for IRQ conflicts in Device Manager and reassign conflicting resources.",
+      "Update serial port (COM port) drivers and check physical cable connections."
+    ]
+  },
+  {
+    "code": "0x00000039",
+    "severity": "critical",
+    "issue": "System Exit Hibernation Error (SYSTEM_EXIT_HIBERNATION_ERROR)",
+    "description": "The system failed to properly exit hibernation, often caused by driver power state inconsistencies or corrupted hibernation file.",
+    "fix": [
+      "Disable hibernation with 'powercfg /hibernate off' and re-enable it to recreate the hibernation file.",
+      "Update all drivers, especially storage and chipset, to ensure proper power state transitions."
+    ]
+  },
+  {
+    "code": "0x0000003A",
+    "severity": "critical",
+    "issue": "System Hibernation Failed (SYSTEM_HIBERNATION_FAILED)",
+    "description": "The system failed to enter hibernation, typically from insufficient disk space for the hibernation file or driver power issues.",
+    "fix": [
+      "Ensure the system drive has free space equal to or greater than installed RAM.",
+      "Run 'powercfg /energy' to identify drivers preventing hibernation and update them."
+    ]
+  },
+  {
+    "code": "0x0000003C",
+    "severity": "critical",
+    "issue": "Bugcode USB Driver (BUGCODE_USB_DRIVER)",
+    "description": "The USB driver encountered a critical error, often from a faulty USB device, cable, or controller.",
+    "fix": [
+      "Disconnect all USB devices and reconnect them one by one to identify the faulty device.",
+      "Update USB controller drivers and motherboard chipset drivers from the manufacturer."
+    ]
+  },
+  {
+    "code": "0x0000003D",
+    "severity": "critical",
+    "issue": "Interrupt Exception (INTERRUPT_EXCEPTION_NOT_HANDLED)",
+    "description": "An interrupt was not properly handled by the kernel, indicating a driver or hardware interrupt routing problem.",
+    "fix": [
+      "Update all device drivers and check for IRQ conflicts in Device Manager.",
+      "Reset BIOS/UEFI interrupt settings to default and test for stability."
+    ]
+  },
+  {
+    "code": "0x0000003E",
+    "severity": "critical",
+    "issue": "Multiprocessor Configuration Mismatch (MULTIPROCESSOR_CONFIGURATION_MISMATCH)",
+    "description": "The system detected a mismatch in multiprocessor configuration, often from mismatched CPU steppings or BIOS issues.",
+    "fix": [
+      "Update motherboard BIOS to the latest version for proper multiprocessor support.",
+      "Ensure all CPUs (in multi-socket systems) are of the same model and stepping."
+    ]
+  },
+  {
+    "code": "0x0000003F",
+    "severity": "critical",
+    "issue": "Windows Update Error (REGISTRY_FILTERING_EXCEPTION)",
+    "description": "A registry filtering exception occurred, typically caused by a registry filter driver failing to properly handle a registry operation.",
+    "fix": [
+      "Uninstall third-party registry cleaners or system optimizers that install registry filter drivers.",
+      "Run 'sfc /scannow' to repair corrupted registry-related system files."
+    ]
+  },
+  {
+    "code": "0x00000040",
+    "severity": "critical",
+    "issue": "MUP File System Error (MUP_FILE_SYSTEM)",
+    "description": "The Multiple UNC Provider (MUP) file system driver encountered an error, commonly related to network path resolution failures.",
+    "fix": [
+      "Update network redirector and network adapter drivers.",
+      "Check DNS and network configuration to ensure UNC paths resolve correctly."
+    ]
+  },
+  {
+    "code": "0x00000041",
+    "severity": "critical",
+    "issue": "Must Succeed Pool (MUST_SUCCEED_POOL_EMPTY)",
+    "description": "The must-succeed pool was empty, meaning the kernel could not allocate critical memory — often from severe memory exhaustion.",
+    "fix": [
+      "Increase physical RAM or reduce the number of running applications and services.",
+      "Increase the page file size and check for memory leaks using Task Manager."
+    ]
+  },
+  {
+    "code": "0x00000042",
+    "severity": "critical",
+    "issue": "Atapi Driver Error (ATAPI_DRIVER_ERROR)",
+    "description": "The ATAPI (IDE/SATA) disk driver encountered a critical error, often from failing storage hardware or corrupted drivers.",
+    "fix": [
+      "Replace SATA cables and update storage controller drivers from the motherboard manufacturer.",
+      "Check drive health with CrystalDiskInfo and run 'chkdsk /r' on affected drives."
+    ]
+  },
+  {
+    "code": "0x00000043",
+    "severity": "critical",
+    "issue": "No Such Device (NO_SUCH_DEVICE)",
+    "description": "The system could not find a device that was expected to be present, often from a removed or failed hardware component.",
+    "fix": [
+      "Reseat the device and check its power and data connections.",
+      "Update the device driver and check Device Manager for disabled or failed devices."
+    ]
+  },
+  {
+    "code": "0x00000044",
+    "severity": "critical",
+    "issue": "Multiple Uncorrected IO Errors (MULTIPLE_UNCORRECTED_IO_ERRORS)",
+    "description": "Multiple uncorrected I/O errors were detected, indicating widespread storage or controller failure.",
+    "fix": [
+      "Back up data immediately and replace the failing storage drive.",
+      "Update storage controller firmware and check SATA/NVMe connections."
+    ]
+  },
+  {
+    "code": "0x00000045",
+    "severity": "critical",
+    "issue": "Insufficient System Resources (INSUFFICIENT_SYSTEM_RESOURCES)",
+    "description": "The system lacks sufficient resources (memory, handles, pools) to complete the operation, often from a resource leak.",
+    "fix": [
+      "Restart the system and monitor resource usage in Task Manager over time.",
+      "Use Poolmon to identify the kernel pool tag leaking memory and update the associated driver."
+    ]
+  },
+  {
+    "code": "0x00000046",
+    "severity": "critical",
+    "issue": "Driver Corrupt Sysrqlog (DEREGISTERED_DRIVER_CORRUPT)",
+    "description": "A deregistered driver was found to be corrupt, indicating the driver was improperly unloaded or its code was overwritten.",
+    "fix": [
+      "Use Driver Verifier to identify the corrupt driver and reinstall it from the manufacturer.",
+      "Run 'sfc /scannow' to repair corrupted system driver files."
+    ]
+  },
+  {
+    "code": "0x00000047",
+    "severity": "critical",
+    "issue": "Inconsistent Kernel Stack (INCONSISTENT_KERNEL_STACK)",
+    "description": "The kernel detected an inconsistent stack state, often from a driver corrupting the kernel stack or a hardware memory fault.",
+    "fix": [
+      "Run MemTest86 to test for faulty RAM that may be corrupting kernel stacks.",
+      "Update all kernel-mode drivers and disable overclocking in BIOS."
+    ]
+  },
+  {
+    "code": "0x00000048",
+    "severity": "critical",
+    "issue": "Cancel State in APC (CANCEL_STATE_IN_APC)",
+    "description": "A cancel state was found in an APC, indicating a driver improperly handled I/O cancellation within an APC routine.",
+    "fix": [
+      "Update the driver identified in the minidump that mishandled the APC cancel.",
+      "Use Driver Verifier to reproduce the issue and isolate the faulty driver."
+    ]
+  },
+  {
+    "code": "0x00000049",
+    "severity": "critical",
+    "issue": "Hardware Profile Damaged (HARDWARE_PROFILE_DAMAGED)",
+    "description": "The hardware profile was found to be damaged or corrupted, preventing proper device enumeration.",
+    "fix": [
+      "Boot into Safe Mode and restore the default hardware profile.",
+      "Run 'sfc /scannow' and check Device Manager for devices with error states."
+    ]
+  },
+  {
+    "code": "0x0000004A",
+    "severity": "critical",
+    "issue": "Invalid Process Attach (INVALID_PROCESS_ATTACH)",
+    "description": "A driver attempted to attach to a process in an invalid context, indicating improper use of kernel process attachment APIs.",
+    "fix": [
+      "Identify the driver using KeStackAttachProcess incorrectly via the minidump and update it.",
+      "Uninstall third-party monitoring or security software that hooks process operations."
+    ]
+  },
+  {
+    "code": "0x0000004B",
+    "severity": "critical",
+    "issue": "USB Driver Error (USB_DRIVER_ERROR)",
+    "description": "The USB host controller driver encountered a critical error, often from a power surge on a USB port or faulty USB hardware.",
+    "fix": [
+      "Disconnect all USB devices and update USB host controller drivers.",
+      "Check for USB power surge notifications and replace damaged USB cables or hubs."
+    ]
+  },
+  {
+    "code": "0x0000004C",
+    "severity": "critical",
+    "issue": "Fatal Uncorrectable Hardware Error (FATAL_UNCORRECTABLE_HARDWARE_ERROR)",
+    "description": "A fatal hardware error was detected that the system could not correct, indicating imminent hardware failure.",
+    "fix": [
+      "Run comprehensive hardware diagnostics for CPU, RAM, and storage.",
+      "Replace the failing hardware component identified by diagnostics."
+    ]
+  },
+  {
+    "code": "0x0000004D",
+    "severity": "critical",
+    "issue": "No Free Pages (NO_FREE_PAGES)",
+    "description": "The system ran out of free physical memory pages, causing a critical memory exhaustion crash.",
+    "fix": [
+      "Increase physical RAM or reduce memory-intensive applications.",
+      "Use RAMMap to identify memory consumption patterns and close leaking processes."
+    ]
+  },
+  {
+    "code": "0x0000004E",
+    "severity": "critical",
+    "issue": "PFN List Corrupt (PFN_LIST_CORRUPT)",
+    "description": "The PFN (Page Frame Number) list was found to be corrupted, typically caused by faulty RAM or a driver passing invalid memory descriptors.",
+    "fix": [
+      "Run MemTest86 for at least 4 passes to identify faulty RAM modules.",
+      "Update all drivers and run 'sfc /scannow' to repair system file corruption."
+    ]
+  },
+  {
+    "code": "0x0000004F",
+    "severity": "critical",
+    "issue": "NDIS Internal Error (NDIS_INTERNAL_ERROR)",
+    "description": "The Network Driver Interface Specification (NDIS) layer encountered an internal error, typically from a faulty network adapter driver.",
+    "fix": [
+      "Update the network adapter driver from the manufacturer's website.",
+      "Reset the network stack with 'netsh winsock reset' and 'netsh int ip reset' in an elevated prompt."
+    ]
+  },
+  {
+    "code": "0x00000051",
+    "severity": "critical",
+    "issue": "Registry Error (REGISTRY_ERROR)",
+    "description": "A severe registry error occurred, often from corrupted registry hive files or a failing storage drive holding the registry.",
+    "fix": [
+      "Run 'chkdsk /r' to repair disk errors affecting the registry.",
+      "Boot from installation media and use the Recovery Environment to restore the registry from backup."
+    ]
+  },
+  {
+    "code": "0x00000052",
+    "severity": "critical",
+    "issue": "Mailslot Corrupt (MAILSLOT_CORRUPT)",
+    "description": "A mailslot (inter-process communication mechanism) was found to be corrupted, typically from a driver or service mishandling IPC.",
+    "fix": [
+      "Run 'sfc /scannow' to repair corrupted system IPC components.",
+      "Restart the affected service or reboot to reset mailslot state."
+    ]
+  },
+  {
+    "code": "0x00000053",
+    "severity": "critical",
+    "issue": "MUP Invalid (MUP_INVALID)",
+    "description": "The Multiple UNC Provider received an invalid request, often from a corrupted network redirector or DNS resolution failure.",
+    "fix": [
+      "Update the network redirector driver and verify DNS settings.",
+      "Flush DNS with 'ipconfig /flushdns' and reset the network stack."
+    ]
+  },
+  {
+    "code": "0x00000054",
+    "severity": "critical",
+    "issue": "SMB Server Error (SMB_SERVER_ERROR)",
+    "description": "The SMB (Server Message Block) protocol encountered a critical error, often from corrupted SMB configuration or network driver issues.",
+    "fix": [
+      "Update network adapter drivers and verify SMB protocol settings in Windows Features.",
+      "Run 'sfc /scannow' and check Event Viewer for SMB-related service errors."
+    ]
+  },
+  {
+    "code": "0x00000055",
+    "severity": "critical",
+    "issue": "Data Coherency Exception (DATA_COHERENCY_EXCEPTION)",
+    "description": "A data coherency error was detected, meaning cached and stored data were inconsistent — often from CPU cache or RAM faults.",
+    "fix": [
+      "Disable CPU cache overclocking and reset BIOS to defaults.",
+      "Run CPU and memory diagnostics to identify failing hardware."
+    ]
+  },
+  {
+    "code": "0x00000056",
+    "severity": "critical",
+    "issue": "Inconsistent Kernel Buffer (INCONSISTENT_KERNEL_BUFFER)",
+    "description": "A kernel buffer was found to be in an inconsistent state, typically from a driver overwriting buffer boundaries.",
+    "fix": [
+      "Use Driver Verifier with special pool to catch the driver corrupting kernel buffers.",
+      "Update the faulting driver identified in the minidump."
+    ]
+  },
+  {
+    "code": "0x00000057",
+    "severity": "critical",
+    "issue": "NDIS Driver Error (NDIS_DRIVER_ERROR)",
+    "description": "An NDIS miniport driver encountered a critical error, commonly from a faulty or outdated network adapter driver.",
+    "fix": [
+      "Download and install the latest network adapter driver from the manufacturer.",
+      "Disable and re-enable the network adapter in Device Manager to reset its state."
+    ]
+  },
+  {
+    "code": "0x00000058",
+    "severity": "critical",
+    "issue": "File System Verification Error (FTDISK_INTERNAL_ERROR)",
+    "description": "An internal error occurred in the file system disk driver, often from corrupted partition tables or failing storage hardware.",
+    "fix": [
+      "Run 'chkdsk /r' and verify partition integrity with 'diskpart'.",
+      "Back up data and replace the storage drive if SMART indicates failure."
+    ]
+  },
+  {
+    "code": "0x00000059",
+    "severity": "critical",
+    "issue": "Pinball File System Error (PINBALL_FILE_SYSTEM)",
+    "description": "The Pinball (HPFS) file system driver encountered an error, typically from corrupted disk structures or incompatible drivers.",
+    "fix": [
+      "Run 'chkdsk /f' on the affected HPFS volume if accessible.",
+      "Update file system drivers and convert the volume to NTFS if compatibility is not required."
+    ]
+  },
+  {
+    "code": "0x0000005A",
+    "severity": "critical",
+    "issue": "Critical Service Failed (CRITICAL_SERVICE_FAILED)",
+    "description": "A critical system service failed to initialize during startup, often from a corrupted driver or missing system file.",
+    "fix": [
+      "Boot from Windows installation media and run Startup Repair.",
+      "Use the Recovery Environment to run 'sfc /scannow' and restore missing system files."
+    ]
+  },
+  {
+    "code": "0x0000005B",
+    "severity": "critical",
+    "issue": "Setup Error (SETUP_ERROR)",
+    "description": "A critical error occurred during Windows setup, typically from corrupted installation media or incompatible hardware.",
+    "fix": [
+      "Re-download the Windows ISO using the Media Creation Tool and recreate installation media.",
+      "Disconnect non-essential hardware during setup and verify minimum system requirements."
+    ]
+  },
+  {
+    "code": "0x0000005C",
+    "severity": "critical",
+    "issue": "HAL Memory Allocation (HAL_MEMORY_ALLOCATION)",
+    "description": "The Hardware Abstraction Layer (HAL) failed to allocate required memory during initialization, often from BIOS misconfiguration.",
+    "fix": [
+      "Update motherboard BIOS/UEFI to the latest version.",
+      "Reseat RAM modules and verify memory configuration matches motherboard specifications."
+    ]
+  },
+  {
+    "code": "0x0000005D",
+    "severity": "critical",
+    "issue": "Unsupported Processor (UNSUPPORTED_PROCESSOR)",
+    "description": "The system detected a processor that is not supported by the current Windows version or BIOS, preventing boot.",
+    "fix": [
+      "Update motherboard BIOS to add support for the installed CPU model.",
+      "Verify the CPU is on the Windows compatibility list for your installed version."
+    ]
+  },
+  {
+    "code": "0x0000005E",
+    "severity": "critical",
+    "issue": "Critical Process Initialization (CRITICAL_PROCESS_INITIALIZATION)",
+    "description": "A critical system process failed to initialize properly, often from corrupted system files or incompatible drivers.",
+    "fix": [
+      "Boot into Safe Mode and run 'sfc /scannow' followed by 'DISM /Online /Cleanup-Image /RestoreHealth'.",
+      "Uninstall recently added drivers or updates that may have caused the initialization failure."
+    ]
+  },
+  {
+    "code": "0x0000005F",
+    "severity": "critical",
+    "issue": "Security Initialization Error (SECURITY_INITIALIZATION_FAILED)",
+    "description": "The security subsystem failed to initialize, typically from corrupted security-related system files or registry entries.",
+    "fix": [
+      "Boot from installation media and run Startup Repair.",
+      "Run 'sfc /scannow' from the Recovery Environment to repair security subsystem files."
+    ]
+  },
+  {
+    "code": "0x00000060",
+    "severity": "critical",
+    "issue": "Worker Pool Test Failure (WORKER_POOL_TEST_FAILURE)",
+    "description": "A worker pool integrity check failed, indicating memory corruption in the kernel worker thread pool — usually from a buggy driver.",
+    "fix": [
+      "Run Driver Verifier to identify the driver corrupting worker pool memory.",
+      "Update all third-party kernel-mode drivers to their latest versions."
+    ]
+  },
+  {
+    "code": "0x00000061",
+    "severity": "critical",
+    "issue": "HAL Initialization Failed (HAL_INITIALIZATION_FAILED)",
+    "description": "The Hardware Abstraction Layer failed to initialize, often from BIOS misconfiguration or incompatible hardware.",
+    "fix": [
+      "Reset BIOS/UEFI to default settings and update to the latest firmware version.",
+      "Remove non-essential hardware and test boot with minimal configuration."
+    ]
+  },
+  {
+    "code": "0x00000062",
+    "severity": "critical",
+    "issue": "Object1 Initialization Failed (OBJECT1_INITIALIZATION_FAILED)",
+    "description": "The kernel object manager failed to initialize, typically from corrupted system files or severe registry corruption.",
+    "fix": [
+      "Boot from installation media and run Startup Repair.",
+      "Use the Recovery Environment to restore the registry from a known-good backup."
+    ]
+  },
+  {
+    "code": "0x00000063",
+    "severity": "critical",
+    "issue": "Security1 Initialization Failed (SECURITY1_INITIALIZATION_FAILED)",
+    "description": "The security kernel subsystem failed during early initialization, often from corrupted security tokens or system files.",
+    "fix": [
+      "Run 'sfc /scannow' from the Recovery Environment to repair security files.",
+      "Perform an in-place upgrade repair using Windows installation media."
+    ]
+  },
+  {
+    "code": "0x00000064",
+    "severity": "critical",
+    "issue": "Symbolic Link Handling Error (SYMBOLIC_LINK_HANDLING_ERROR)",
+    "description": "An error occurred while handling symbolic links during kernel initialization, often from corrupted file system metadata.",
+    "fix": [
+      "Run 'chkdsk /r' to repair file system metadata and symbolic link structures.",
+      "Boot from installation media and run Startup Repair if the system is unbootable."
+    ]
+  },
+  {
+    "code": "0x00000065",
+    "severity": "critical",
+    "issue": "Memory1 Initialization Failed (MEMORY1_INITIALIZATION_FAILED)",
+    "description": "The memory manager failed during early kernel initialization, typically from incompatible or faulty RAM.",
+    "fix": [
+      "Reseat RAM modules and test each stick individually with MemTest86.",
+      "Update BIOS memory timing settings and verify RAM compatibility with the motherboard."
+    ]
+  },
+  {
+    "code": "0x00000066",
+    "severity": "critical",
+    "issue": "Cache Initialization Failed (CACHE_INITIALIZATION_FAILED)",
+    "description": "The kernel cache manager failed to initialize, often from corrupted cache-related system files or storage driver issues.",
+    "fix": [
+      "Update storage controller drivers and run 'sfc /scannow' to repair system files.",
+      "Boot into Safe Mode and clear the system cache using 'Disk Cleanup'."
+    ]
+  },
+  {
+    "code": "0x00000067",
+    "severity": "critical",
+    "issue": "Config Initialization Failed (CONFIG_INITIALIZATION_FAILED)",
+    "description": "The configuration manager (registry subsystem) failed to initialize, typically from corrupted registry hive files.",
+    "fix": [
+      "Boot from installation media and restore the registry from backup using the Recovery Environment.",
+      "Run 'chkdsk /r' to repair disk errors that may have corrupted the registry."
+    ]
+  },
+  {
+    "code": "0x00000068",
+    "severity": "critical",
+    "issue": "File Initialization Failed (FILE_INITIALIZATION_FAILED)",
+    "description": "The file system failed to initialize during kernel startup, often from corrupted boot files or storage driver issues.",
+    "fix": [
+      "Boot from installation media and run Startup Repair to fix boot file corruption.",
+      "Update storage controller drivers and verify boot drive health."
+    ]
+  },
+  {
+    "code": "0x00000069",
+    "severity": "critical",
+    "issue": "IO1 Initialization Failed (IO1_INITIALIZATION_FAILED)",
+    "description": "The I/O manager failed to initialize during kernel startup, typically from corrupted I/O system files or storage controller failure.",
+    "fix": [
+      "Boot from installation media and run 'sfc /scannow' from the Recovery Environment.",
+      "Check storage controller configuration in BIOS and update relevant drivers."
+    ]
+  },
+  {
+    "code": "0x0000006A",
+    "severity": "critical",
+    "issue": "LPC Initialization Failed (LPC_INITIALIZATION_FAILED)",
+    "description": "The Local Procedure Call (LPC) subsystem failed to initialize, often from corrupted system files or security token issues.",
+    "fix": [
+      "Run 'sfc /scannow' from the Recovery Environment to repair LPC-related system files.",
+      "Perform an in-place upgrade repair if the system remains unbootable."
+    ]
+  },
+  {
+    "code": "0x0000006B",
+    "severity": "critical",
+    "issue": "Process1 Initialization Failed (PROCESS1_INITIALIZATION_FAILED)",
+    "description": "The process manager failed during kernel initialization, typically from corrupted system files or registry issues.",
+    "fix": [
+      "Boot from installation media and run Startup Repair.",
+      "Restore the system registry from a backup using the Recovery Environment."
+    ]
+  },
+  {
+    "code": "0x0000006C",
+    "severity": "critical",
+    "issue": "Refmon Initialization Failed (REFMON_INITIALIZATION_FAILED)",
+    "description": "The reference monitor (security reference monitor) failed to initialize, often from corrupted security-related system files.",
+    "fix": [
+      "Run 'sfc /scannow' and 'DISM /Online /Cleanup-Image /RestoreHealth' from the Recovery Environment.",
+      "Perform a clean reinstall of Windows if system repair tools cannot fix the corruption."
+    ]
+  },
+  {
+    "code": "0x0000006D",
+    "severity": "critical",
+    "issue": "Session1 Initialization Failed (SESSION1_INITIALIZATION_FAILED)",
+    "description": "The first session manager failed to initialize, typically from corrupted session-related system files or memory issues.",
+    "fix": [
+      "Boot into Safe Mode and run 'sfc /scannow' to repair system files.",
+      "Test RAM with MemTest86 and replace faulty modules if detected."
+    ]
+  },
+  {
+    "code": "0x0000006E",
+    "severity": "critical",
+    "issue": "Session2 Initialization Failed (SESSION2_INITIALIZATION_FAILED)",
+    "description": "The second session initialization failed, often from corrupted session manager files or driver conflicts during startup.",
+    "fix": [
+      "Boot from installation media and run Startup Repair.",
+      "Uninstall recently added drivers or software that may conflict with session initialization."
+    ]
+  },
+  {
+    "code": "0x0000006F",
+    "severity": "critical",
+    "issue": "Session3 Initialization Failed (SESSION3_INITIALIZATION_FAILED)",
+    "description": "The third session initialization failed, typically from corrupted system files or severe registry corruption.",
+    "fix": [
+      "Run 'sfc /scannow' from the Recovery Environment and attempt boot.",
+      "Perform an in-place upgrade repair using the Media Creation Tool."
+    ]
+  },
+  {
+    "code": "0x00000070",
+    "severity": "critical",
+    "issue": "Session4 Initialization Failed (SESSION4_INITIALIZATION_FAILED)",
+    "description": "The fourth session initialization failed, often from memory exhaustion or corrupted session configuration data.",
+    "fix": [
+      "Increase the page file size and verify adequate free disk space on the system drive.",
+      "Run 'sfc /scannow' and 'chkdsk /r' from the Recovery Environment."
+    ]
+  },
+  {
+    "code": "0x00000071",
+    "severity": "critical",
+    "issue": "Session5 Initialization Failed (SESSION5_INITIALIZATION_FAILED)",
+    "description": "The fifth session initialization failed, typically from corrupted system files or incompatible kernel-mode drivers.",
+    "fix": [
+      "Boot into Safe Mode and uninstall recently added kernel-mode drivers.",
+      "Run 'sfc /scannow' and 'DISM /Online /Cleanup-Image /RestoreHealth' to repair system integrity."
+    ]
+  },
+  {
+    "code": "0x00000073",
+    "severity": "critical",
+    "issue": "Config List Failed (CONFIG_LIST_FAILED)",
+    "description": "The configuration manager failed to process the registry configuration list, often from severe registry hive corruption.",
+    "fix": [
+      "Boot from installation media and restore the registry from a known-good backup.",
+      "Run 'chkdsk /r' to repair disk errors that may have corrupted registry hives."
+    ]
+  },
+  {
+    "code": "0x00000074",
+    "severity": "critical",
+    "issue": "Bad System Config Info (BAD_SYSTEM_CONFIG_INFO)",
+    "description": "The system configuration information is corrupt or incorrect, typically from corrupted registry entries or a failed Windows update.",
+    "fix": [
+      "Boot from installation media, go to Troubleshoot > Advanced Options > Startup Settings, and restart.",
+      "Use the Recovery Environment to restore the registry from backup or perform a System Restore."
+    ]
+  },
+  {
+    "code": "0x00000075",
+    "severity": "critical",
+    "issue": "Cannot Assign Device (CANNOT_ASSIGN_DEVICE)",
+    "description": "The system could not assign a device to the requested operation, often from resource conflicts or a missing device driver.",
+    "fix": [
+      "Check Device Manager for devices with error states and update their drivers.",
+      "Resolve IRQ or I/O port conflicts by reassigning resources in BIOS/UEFI."
+    ]
+  },
+  {
+    "code": "0x00000076",
+    "severity": "critical",
+    "issue": "Process Has Locked Pages (PROCESS_HAS_LOCKED_PAGES)",
+    "description": "A process failed to release locked memory pages, indicating a driver memory leak — the system tracks the offending driver tag.",
+    "fix": [
+      "Use Poolmon to identify the pool tag leaking locked pages and update the associated driver.",
+      "Run Driver Verifier to force the leaking driver into revealing itself."
+    ]
+  },
+  {
+    "code": "0x00000077",
+    "severity": "critical",
+    "issue": "Kernel Stack Inpage Error (KERNEL_STACK_INPAGE_ERROR)",
+    "description": "The kernel could not read a requested page of kernel stack data from the page file, often from storage drive failures or faulty RAM.",
+    "fix": [
+      "Run 'chkdsk /r' to check for and repair bad sectors on the system drive.",
+      "Test RAM with MemTest86 and check drive SMART health with CrystalDiskInfo."
+    ]
+  },
+  {
+    "code": "0x00000078",
+    "severity": "critical",
+    "issue": "Phase0 Exception (PHASE0_EXCEPTION)",
+    "description": "An exception occurred during phase 0 of kernel initialization, typically from corrupted system files or incompatible hardware.",
+    "fix": [
+      "Boot from installation media and run Startup Repair.",
+      "Update BIOS/UEFI to the latest version and verify hardware compatibility."
+    ]
+  },
+  {
+    "code": "0x00000079",
+    "severity": "critical",
+    "issue": "Mismatched HAL (MISMATCHED_HAL)",
+    "description": "The Hardware Abstraction Layer (HAL) does not match the system type, often from an incorrect Windows installation or BIOS change.",
+    "fix": [
+      "Perform a clean reinstall of Windows with the correct installation media for your system.",
+      "Reset BIOS/UEFI to default settings and verify the system type matches the installed Windows version."
+    ]
+  },
+  {
+    "code": "0x0000007C",
+    "severity": "critical",
+    "issue": "Bugcode Ndis Driver (BUGCODE_NDIS_DRIVER)",
+    "description": "The NDIS network driver encountered a critical error, typically from a faulty network adapter driver or hardware.",
+    "fix": [
+      "Update the network adapter driver from the manufacturer's website.",
+      "Replace the network adapter if hardware diagnostics indicate failure."
+    ]
+  },
+  {
+    "code": "0x0000007D",
+    "severity": "critical",
+    "issue": "Install More Memory (INSTALL_MORE_MEMORY)",
+    "description": "The system does not have enough physical memory to start Windows, preventing boot entirely.",
+    "fix": [
+      "Install additional RAM to meet the minimum requirement for your Windows version.",
+      "Reseat existing RAM modules and verify they are properly recognized in BIOS."
+    ]
+  },
+  {
+    "code": "0x00000081",
+    "severity": "critical",
+    "issue": "Spinlock Init Failure (SPIN_LOCK_INIT_FAILURE)",
+    "description": "A kernel spinlock initialization failed, indicating a kernel synchronization object was corrupted — usually from a driver bug.",
+    "fix": [
+      "Use Driver Verifier to identify the driver corrupting spinlock objects.",
+      "Update all kernel-mode drivers and run 'sfc /scannow' to repair system files."
+    ]
+  },
+  {
+    "code": "0x00000082",
+    "severity": "critical",
+    "issue": "DFS File System Error (DFS_FILE_SYSTEM)",
+    "description": "The Distributed File System (DFS) driver encountered a critical error, often from corrupted DFS configuration or network issues.",
+    "fix": [
+      "Verify DFS configuration and namespace settings in the DFS Management console.",
+      "Update network adapter drivers and check connectivity to DFS servers."
+    ]
+  },
+  {
+    "code": "0x00000085",
+    "severity": "critical",
+    "issue": "Setup Failure (SETUP_FAILURE)",
+    "description": "A critical error occurred during Windows setup, typically from corrupted installation files or incompatible hardware.",
+    "fix": [
+      "Re-download the Windows ISO and recreate installation media with the Media Creation Tool.",
+      "Disconnect all non-essential USB devices and verify hardware meets minimum requirements."
+    ]
+  },
+  {
+    "code": "0x0000008B",
+    "severity": "critical",
+    "issue": "MBR Check Error (MBR_CHECK_ERROR)",
+    "description": "The Master Boot Record (MBR) checksum did not match, indicating corruption of the boot sector — often from malware or disk errors.",
+    "fix": [
+      "Boot from installation media and run 'bootrec /fixmbr' and 'bootrec /fixboot' in the Recovery Environment.",
+      "Run a full system malware scan with Windows Defender or a trusted third-party tool."
+    ]
+  },
+  {
+    "code": "0x0000008E",
+    "severity": "critical",
+    "issue": "Kernel Mode Exception Not Handled (KERNEL_MODE_EXCEPTION_NOT_HANDLED)",
+    "description": "A kernel-mode exception was not handled by any exception handler, typically from a faulty driver or corrupted memory.",
+    "fix": [
+      "Use BlueScreenView to identify the faulting driver from the minidump and update it.",
+      "Run 'sfc /scannow' and MemTest86 to check for system file and RAM corruption."
+    ]
+  },
+  {
+    "code": "0x00000090",
+    "severity": "critical",
+    "issue": "Power State Timeout (POWER_STATE_TIMEOUT)",
+    "description": "A device or driver did not complete a power state transition within the allotted time, causing a watchdog timeout.",
+    "fix": [
+      "Update all drivers, especially those for USB, network, and storage devices.",
+      "Disable Fast Startup in Power Options and test if the issue recurs."
+    ]
+  },
+  {
+    "code": "0x00000092",
+    "severity": "critical",
+    "issue": "Worker Thread DPC Overload (WORKER_THREAD_DPC_OVERLOAD)",
+    "description": "The system was overloaded with Deferred Procedure Calls (DPCs) in worker threads, typically from a driver scheduling excessive DPCs.",
+    "fix": [
+      "Use xperf or Windows Performance Analyzer to identify the driver generating excessive DPCs.",
+      "Update or remove the offending driver identified through DPC tracing."
+    ]
+  },
+  {
+    "code": "0x00000093",
+    "severity": "critical",
+    "issue": "Invalid Kernel Handle (INVALID_KERNEL_HANDLE)",
+    "description": "A kernel-mode component used an invalid handle, indicating handle table corruption or a driver bug.",
+    "fix": [
+      "Run Driver Verifier to identify the driver using invalid kernel handles.",
+      "Update all kernel-mode drivers and run 'sfc /scannow' to repair system integrity."
+    ]
+  },
+  {
+    "code": "0x00000094",
+    "severity": "critical",
+    "issue": "Kernel Stack Lock at Exit (KERNEL_STACK_LOCK_AT_EXIT)",
+    "description": "A thread exited while still holding a kernel stack lock, indicating a driver failed to release a lock before thread termination.",
+    "fix": [
+      "Identify the faulting driver from the minidump and update it.",
+      "Use Driver Verifier to reproduce the issue and isolate the driver leaking stack locks."
+    ]
+  },
+  {
+    "code": "0x00000096",
+    "severity": "critical",
+    "issue": "Invalid Work Queue Item (INVALID_WORK_QUEUE_ITEM)",
+    "description": "A work queue item was found to be invalid, indicating a driver queued a corrupted or already-freed work item.",
+    "fix": [
+      "Use Driver Verifier to identify the driver queuing invalid work items and update it.",
+      "Uninstall recently added third-party drivers and test for recurrence."
+    ]
+  },
+  {
+    "code": "0x00000097",
+    "severity": "critical",
+    "issue": "Bound Image Unsupported (BOUND_IMAGE_UNSUPPORTED)",
+    "description": "The system encountered a bound image that is not supported, often from corrupted executable files or incompatible driver binaries.",
+    "fix": [
+      "Run 'sfc /scannow' to repair corrupted system executables.",
+      "Reinstall the application or driver that triggered the error."
+    ]
+  },
+  {
+    "code": "0x00000098",
+    "severity": "critical",
+    "issue": "End of NT Evaluation Period (END_OF_NT_EVALUATION_PERIOD)",
+    "description": "The evaluation period for this Windows installation has expired, causing the system to stop booting normally.",
+    "fix": [
+      "Activate Windows with a valid product key via Settings > System > Activation.",
+      "If this is an evaluation build, perform a clean install with a licensed version of Windows."
+    ]
+  },
+  {
+    "code": "0x00000099",
+    "severity": "critical",
+    "issue": "Invalid Region or Segment (INVALID_REGION_OR_SEGMENT)",
+    "description": "The kernel detected an invalid memory region or segment, typically from a driver corrupting virtual memory descriptors.",
+    "fix": [
+      "Run Driver Verifier to identify the driver corrupting memory regions and update it.",
+      "Test RAM with MemTest86 to rule out hardware memory faults."
+    ]
+  },
+  {
+    "code": "0x0000009A",
+    "severity": "critical",
+    "issue": "License Violation (LICENSE_VIOLATION)",
+    "description": "The system detected a Windows licensing violation, often from a tampered or counterfeit installation.",
+    "fix": [
+      "Run the Windows Activation Troubleshooter and enter a valid product key.",
+      "Perform a clean reinstall of Windows using genuine installation media."
+    ]
+  },
+  {
+    "code": "0x0000009C",
+    "severity": "critical",
+    "issue": "Machine Check Exception (MACHINE_CHECK_EXCEPTION)",
+    "description": "A fatal machine check exception occurred, indicating a hardware-level error in the CPU, cache, or bus — often from overclocking or failing hardware.",
+    "fix": [
+      "Reset all BIOS overclocking settings to defaults and test for stability.",
+      "Run CPU and motherboard diagnostics; replace failing hardware components."
+    ]
+  },
+  {
+    "code": "0x0000009E",
+    "severity": "critical",
+    "issue": "User Mode Health Monitor (USER_MODE_HEALTH_MONITOR)",
+    "description": "The user-mode health monitor detected a critical user-mode process failure, often from a corrupted system service or driver.",
+    "fix": [
+      "Run 'sfc /scannow' and 'DISM /Online /Cleanup-Image /RestoreHealth' to repair system files.",
+      "Check Event Viewer for the specific user-mode process that failed and reinstall related software."
+    ]
+  },
+  {
+    "code": "0x000000A0",
+    "severity": "critical",
+    "issue": "Internal Power Error (INTERNAL_POWER_ERROR)",
+    "description": "The power policy manager encountered an internal error, typically from a driver failing to handle power state transitions correctly.",
+    "fix": [
+      "Update all drivers, especially display, storage, and chipset drivers.",
+      "Run 'powercfg /energy' to identify power management issues and apply recommended fixes."
+    ]
+  },
+  {
+    "code": "0x000000A1",
+    "severity": "critical",
+    "issue": "PCI Bus Error (PCI_BUS_ERROR)",
+    "description": "A PCI bus error was detected, often from a faulty PCIe device, corrupted BIOS configuration, or motherboard hardware fault.",
+    "fix": [
+      "Reseat all PCIe cards and update motherboard BIOS to the latest version.",
+      "Remove PCIe cards one by one to identify the faulty device."
+    ]
+  },
+  {
+    "code": "0x000000A2",
+    "severity": "critical",
+    "issue": "Memory Image Corruption (MEMORY_IMAGE_CORRUPT)",
+    "description": "The memory image was found to be corrupted, typically from faulty RAM or a driver overwriting memory regions it does not own.",
+    "fix": [
+      "Run MemTest86 for at least 4 passes to identify faulty RAM modules.",
+      "Use Driver Verifier with special pool to catch the driver corrupting memory."
+    ]
+  },
+  {
+    "code": "0x000000A3",
+    "severity": "critical",
+    "issue": "ACPI Driver Error (ACPI_DRIVER_INTERNAL)",
+    "description": "The ACPI (Advanced Configuration and Power Interface) driver encountered an internal error, often from BIOS power management bugs.",
+    "fix": [
+      "Update motherboard BIOS/UEFI to the latest version for ACPI fixes.",
+      "Update chipset drivers and disable unnecessary ACPI power management features in BIOS."
+    ]
+  },
+  {
+    "code": "0x000000A4",
+    "severity": "critical",
+    "issue": "CNSS File System Error (CNSS_FILE_SYSTEM_ERROR)",
+    "description": "A critical file system error occurred in the CNSS (Certification Network Security System) driver, often from corrupted network security configuration.",
+    "fix": [
+      "Update network security and VPN drivers to their latest versions.",
+      "Reset network configuration with 'netsh winsock reset' and 'netsh int ip reset'."
+    ]
+  },
+  {
+    "code": "0x000000A5",
+    "severity": "critical",
+    "issue": "ACPI BIOS Error (ACPI_BIOS_ERROR)",
+    "description": "The system BIOS is not fully ACPI compliant, causing the kernel to halt during power management initialization.",
+    "fix": [
+      "Update motherboard BIOS/UEFI to the latest version that fixes ACPI compliance issues.",
+      "If no BIOS update is available, contact the motherboard manufacturer or replace the board."
+    ]
+  },
+  {
+    "code": "0x000000A6",
+    "severity": "critical",
+    "issue": "Firmware Corruption Error (FIRMWARE_CORRUPTION_ERROR)",
+    "description": "The system firmware was found to be corrupted, often from a failed BIOS update or failing NVRAM chip.",
+    "fix": [
+      "Re-flash the motherboard BIOS/UEFI using the manufacturer's recovery procedure.",
+      "If re-flashing fails, contact the motherboard manufacturer for hardware repair or replacement."
+    ]
+  },
+  {
+    "code": "0x000000A7",
+    "severity": "critical",
+    "issue": "Bad Exchange Error (BAD_EXCHANGE_ERROR)",
+    "description": "A kernel handle exchange operation failed, indicating handle table corruption from a buggy driver or security software.",
+    "fix": [
+      "Uninstall third-party security or monitoring software that hooks kernel handle operations.",
+      "Run 'sfc /scannow' and update all kernel-mode drivers."
+    ]
+  },
+  {
+    "code": "0x000000AB",
+    "severity": "critical",
+    "issue": "Unmountable Boot Volume (UNMOUNTABLE_BOOT_VOLUME)",
+    "description": "The system cannot mount the boot volume, often from corrupted file system structures, incorrect SATA mode, or failing storage drives.",
+    "fix": [
+      "Run 'chkdsk /r' from the Recovery Environment on the system drive.",
+      "Verify SATA mode (AHCI/RAID) in BIOS matches the storage controller driver configuration."
+    ]
+  },
+  {
+    "code": "0x000000AC",
+    "severity": "critical",
+    "issue": "Hal Memory Region Error (HAL_MEMORY_REGION_ERROR)",
+    "description": "The HAL detected an invalid memory region, typically from BIOS memory map misconfiguration or failing RAM.",
+    "fix": [
+      "Update motherboard BIOS and reset memory settings to default.",
+      "Reseat and test RAM modules individually with MemTest86."
+    ]
+  },
+  {
+    "code": "0x000000AD",
+    "severity": "critical",
+    "issue": "Hardlock Error (HARDLOCK_ERROR)",
+    "description": "A kernel hardlock was detected, meaning the system hung at a high IRQL with interrupts disabled — often from a driver deadlock.",
+    "fix": [
+      "Use Driver Verifier to identify the driver causing the deadlock and update it.",
+      "Update all storage and file system filter drivers to prevent I/O deadlocks."
+    ]
+  },
+  {
+    "code": "0x000000B4",
+    "severity": "critical",
+    "issue": "Video Driver Init Failure (VIDEO_DRIVER_INIT_FAILURE)",
+    "description": "The display driver failed to initialize, often from a corrupted GPU driver or failing graphics hardware.",
+    "fix": [
+      "Boot into Safe Mode and perform a clean reinstall of GPU drivers using DDU (Display Driver Uninstaller).",
+      "Reseat the graphics card and check GPU power connections if applicable."
+    ]
+  },
+  {
+    "code": "0x000000B8",
+    "severity": "critical",
+    "issue": "Attempted Switch from DPC (ATTEMPTED_SWITCH_FROM_DPC)",
+    "description": "A thread attempted to switch from a DPC (Deferred Procedure Call) routine, which is not allowed — indicating a driver bug.",
+    "fix": [
+      "Use Driver Verifier to identify the driver attempting invalid thread switches from DPC context.",
+      "Update the faulting driver identified in the minidump."
+    ]
+  },
+  {
+    "code": "0x000000B9",
+    "severity": "critical",
+    "issue": "Chipset Error (CHIPSET_DETECTED_ERROR)",
+    "description": "The system chipset reported a critical error, often from failing motherboard components or incompatible hardware.",
+    "fix": [
+      "Update motherboard BIOS/UEFI and chipset drivers to the latest versions.",
+      "Check motherboard capacitors and VRM components for physical damage."
+    ]
+  },
+  {
+    "code": "0x000000BA",
+    "severity": "critical",
+    "issue": "Session Has No Views (SESSION_HAS_NO_VIEWPORT)",
+    "description": "A session was found to have no viewports, indicating a display subsystem initialization failure — often from GPU driver issues.",
+    "fix": [
+      "Boot into Safe Mode and reinstall GPU drivers using DDU.",
+      "Update the display driver from the GPU manufacturer's website."
+    ]
+  },
+  {
+    "code": "0x000000BB",
+    "severity": "critical",
+    "issue": "Network Boot Initialization Error (NETWORK_BOOT_INITIALIZATION_FAILED)",
+    "description": "The network boot subsystem failed to initialize, typically from corrupted PXE boot drivers or network adapter firmware issues.",
+    "fix": [
+      "Update the network adapter firmware and PXE boot driver.",
+      "Disable network boot in BIOS/UEFI if PXE boot is not required."
+    ]
+  },
+  {
+    "code": "0x000000BE",
+    "severity": "critical",
+    "issue": "Attempted Write to Readonly Memory (ATTEMPTED_WRITE_TO_READONLY_MEMORY)",
+    "description": "A driver attempted to write to read-only memory, indicating a driver bug or memory corruption.",
+    "fix": [
+      "Use Driver Verifier to identify the driver writing to read-only memory and update it.",
+      "Run 'sfc /scannow' and MemTest86 to check for system file and RAM corruption."
+    ]
+  },
+  {
+    "code": "0x000000C1",
+    "severity": "critical",
+    "issue": "Special Pool Detected Memory Corruption (SPECIAL_POOL_DETECTED_MEMORY_CORRUPTION)",
+    "description": "Driver Verifier's special pool detected memory corruption, meaning a driver wrote to memory it should not have — the offending driver is identified.",
+    "fix": [
+      "Check the minidump for the driver identified by special pool and update or remove it.",
+      "Continue running Driver Verifier until all corrupting drivers are identified and fixed."
+    ]
+  },
+  {
+    "code": "0x000000C4",
+    "severity": "critical",
+    "issue": "Driver Verifier Detected Violation (DRIVER_VERIFIER_DETECTED_VIOLATION)",
+    "description": "Driver Verifier caught a driver violating kernel rules, such as corrupting memory, using invalid handles, or calling routines at the wrong IRQL.",
+    "fix": [
+      "Check the minidump for the driver flagged by Driver Verifier and update or remove it.",
+      "Disable Driver Verifier with 'verifier /reset' after the faulty driver is resolved."
+    ]
+  },
+  {
+    "code": "0x000000C5",
+    "severity": "critical",
+    "issue": "Driver Corrupted Pool (DRIVER_CORRUPTED_EXPOOL)",
+    "description": "A driver corrupted the executive memory pool, typically by writing beyond an allocated buffer boundary.",
+    "fix": [
+      "Use Driver Verifier with special pool to identify the driver corrupting pool memory.",
+      "Update the identified driver from the manufacturer's website."
+    ]
+  },
+  {
+    "code": "0x000000C6",
+    "severity": "critical",
+    "issue": "Driver Caught Timeout (DRIVER_CAUGHT_MODIFYING_POOL_TYPE)",
+    "description": "A driver was caught modifying pool type after allocation, which is illegal and indicates a serious driver bug.",
+    "fix": [
+      "Check the minidump for the offending driver and update it.",
+      "Use Driver Verifier to reproduce and confirm the fix."
+    ]
+  },
+  {
+    "code": "0x000000C7",
+    "severity": "critical",
+    "issue": "Timer or DPC Invalid (TIMER_OR_DPC_INVALID)",
+    "description": "A kernel timer or DPC object was found to be invalid, typically from a driver freeing a timer or DPC that was still queued.",
+    "fix": [
+      "Use Driver Verifier to identify the driver mishandling timer or DPC objects.",
+      "Update the faulting driver identified in the minidump."
+    ]
+  },
+  {
+    "code": "0x000000C8",
+    "severity": "critical",
+    "issue": "Irq Not Less or Equal — USB (IRQL_NOT_LESS_OR_EQUAL_USB)",
+    "description": "A USB driver accessed memory at an invalid IRQL, typically from a faulty USB controller or device driver.",
+    "fix": [
+      "Update USB controller and motherboard chipset drivers.",
+      "Disconnect all USB devices and reconnect one by one to identify the problematic device."
+    ]
+  },
+  {
+    "code": "0x000000C9",
+    "severity": "critical",
+    "issue": "Driver Verifier Irp Violation (DRIVER_VERIFIER_IOMANAGER_VIOLATION)",
+    "description": "Driver Verifier detected an I/O manager violation, meaning a driver mishandled an IRP (I/O Request Packet).",
+    "fix": [
+      "Check the minidump for the driver flagged by Driver Verifier and update it.",
+      "Disable Driver Verifier with 'verifier /reset' after resolving the issue."
+    ]
+  },
+  {
+    "code": "0x000000CA",
+    "severity": "critical",
+    "issue": "Plug and Play Fatal Error (PNP_DETECTED_FATAL_ERROR)",
+    "description": "The Plug and Play (PnP) manager encountered a fatal error, often from corrupted device drivers or hardware enumeration failures.",
+    "fix": [
+      "Boot into Safe Mode and uninstall recently added device drivers.",
+      "Run 'sfc /scannow' and update all device drivers from the manufacturers' websites."
+    ]
+  },
+  {
+    "code": "0x000000CB",
+    "severity": "critical",
+    "issue": "Driver Left Locked Pages in Process (DRIVER_LEFT_LOCKED_PAGES_IN_PROCESS)",
+    "description": "A driver left locked memory pages behind after an I/O operation completed, indicating a memory leak that will eventually exhaust system resources.",
+    "fix": [
+      "Use Poolmon to identify the pool tag associated with the leaked locked pages.",
+      "Update the driver corresponding to the identified pool tag."
+    ]
+  },
+  {
+    "code": "0x000000CC",
+    "severity": "critical",
+    "issue": "Page Fault in Nonpaged Area — Driver (PAGE_FAULT_IN_NONPAGED_AREA_DRIVER)",
+    "description": "A driver accessed nonpaged memory that was not present, typically from a driver referencing freed memory or a hardware memory fault.",
+    "fix": [
+      "Use BlueScreenView to identify the faulting driver from the minidump and update it.",
+      "Run MemTest86 to rule out faulty RAM as the cause."
+    ]
+  },
+  {
+    "code": "0x000000CE",
+    "severity": "critical",
+    "issue": "Driver Underrun Buffer (DRIVER_UNDERRUN_BUFFER)",
+    "description": "A driver underran a buffer, meaning it read or wrote before the start of the allocated buffer — indicating a serious driver bug.",
+    "fix": [
+      "Use Driver Verifier with special pool to identify the driver with buffer underruns.",
+      "Update the identified driver from the manufacturer's website."
+    ]
+  },
+  {
+    "code": "0x000000CF",
+    "severity": "critical",
+    "issue": "Verifier Driver Overran Buffer (VERIFIER_DRIVER_OVERRAN_BUFFER)",
+    "description": "Driver Verifier detected a buffer overrun, meaning a driver wrote past the end of an allocated buffer — a common driver bug.",
+    "fix": [
+      "Check the minidump for the driver flagged by Driver Verifier and update it.",
+      "Disable Driver Verifier with 'verifier /reset' after the driver is fixed."
+    ]
+  },
+  {
+    "code": "0x000000D0",
+    "severity": "critical",
+    "issue": "Driver Corrupt MM Pool (DRIVER_CORRUPTED_MMPOOL)",
+    "description": "A driver corrupted the memory manager pool, typically by writing beyond allocated boundaries — detected by pool corruption checks.",
+    "fix": [
+      "Run Driver Verifier with special pool to identify the corrupting driver.",
+      "Update the identified driver and run 'sfc /scannow' to repair any system damage."
+    ]
+  },
+  {
+    "code": "0x000000D2",
+    "severity": "critical",
+    "issue": "Ndis Driver Internal Error (NDIS_DRIVER_INTERNAL_ERROR)",
+    "description": "The NDIS network driver encountered an internal error, typically from a faulty network adapter driver or corrupted network stack.",
+    "fix": [
+      "Update the network adapter driver from the manufacturer's website.",
+      "Reset the network stack with 'netsh winsock reset' and 'netsh int ip reset'."
+    ]
+  },
+  {
+    "code": "0x000000D3",
+    "severity": "critical",
+    "issue": "Driver Port I/O Error (DRIVER_PORTIO_CORRUPTION)",
+    "description": "A driver corrupted I/O port operations, typically from a driver directly accessing hardware ports without proper kernel mediation.",
+    "fix": [
+      "Use Driver Verifier to identify the driver performing invalid port I/O.",
+      "Update the identified driver or remove the hardware requiring direct port access."
+    ]
+  },
+  {
+    "code": "0x000000D4",
+    "severity": "critical",
+    "issue": "System Scan at Raised IRQL (SYSTEM_SCAN_AT_RAISED_IRQL_CAUGHT_IMPROPER_DRIVER)",
+    "description": "A driver was caught performing an improper operation at a raised IRQL, typically from a driver accessing paged memory at DISPATCH_LEVEL or above.",
+    "fix": [
+      "Check the minidump for the driver flagged by the system scan and update it.",
+      "Use Driver Verifier to confirm the fix and prevent recurrence."
+    ]
+  },
+  {
+    "code": "0x000000D5",
+    "severity": "critical",
+    "issue": "Driver Page Fault Without IRQL (DRIVER_PAGE_FAULT_NOT_LESS_OR_EQUAL)",
+    "description": "A driver accessed an invalid page at an elevated IRQL, typically from a driver referencing paged memory inappropriately.",
+    "fix": [
+      "Use BlueScreenView to identify the faulting driver from the minidump and update it.",
+      "Run 'sfc /scannow' and test RAM with MemTest86 to rule out hardware causes."
+    ]
+  },
+  {
+    "code": "0x000000D6",
+    "severity": "critical",
+    "issue": "Driver Page Fault Beyond End of Allocation (DRIVER_PAGE_FAULT_BEYOND_END_OF_ALLOCATION)",
+    "description": "A driver accessed memory beyond the end of its allocation, indicating a buffer overrun in a kernel-mode driver.",
+    "fix": [
+      "Use Driver Verifier with special pool to identify the driver overrunning its allocation.",
+      "Update the identified driver from the manufacturer's website."
+    ]
+  },
+  {
+    "code": "0x000000D7",
+    "severity": "critical",
+    "issue": "Driver Corrupt System Pool (DRIVER_CORRUPTED_SYSPOOL)",
+    "description": "A driver corrupted the system memory pool, detected by pool integrity checks — typically from a driver writing to freed or unowned memory.",
+    "fix": [
+      "Run Driver Verifier to identify the driver corrupting the system pool.",
+      "Update the identified driver and run 'sfc /scannow' to repair system files."
+    ]
+  },
+  {
+    "code": "0x000000D8",
+    "severity": "critical",
+    "issue": "Driver Used Excessive Ptes (DRIVER_USED_EXCESSIVE_PTES)",
+    "description": "A driver consumed an excessive number of Page Table Entries (PTEs), indicating a memory mapping leak that will eventually exhaust system resources.",
+    "fix": [
+      "Use Poolmon or xperf to identify the driver consuming excessive PTEs.",
+      "Update the identified driver and monitor PTE usage after the update."
+    ]
+  },
+  {
+    "code": "0x000000D9",
+    "severity": "critical",
+    "issue": "Locked Pages Track Error (LOCKED_PAGES_TRACKER_CORRUPTION)",
+    "description": "The locked pages tracker was found to be corrupted, typically from a driver improperly locking or unlocking memory pages.",
+    "fix": [
+      "Use Driver Verifier to identify the driver corrupting the locked pages tracker.",
+      "Update the identified driver and run 'sfc /scannow' to repair system integrity."
+    ]
+  },
+  {
+    "code": "0x000000DA",
+    "severity": "critical",
+    "issue": "System Pte Misuse (SYSTEM_PTE_MISUSE)",
+    "description": "The system detected misuse of Page Table Entries (PTEs), typically from a driver improperly mapping or unmapping system memory.",
+    "fix": [
+      "Use Driver Verifier to identify the driver misusing system PTEs.",
+      "Update the identified driver from the manufacturer's website."
+    ]
+  },
+  {
+    "code": "0x000000DB",
+    "severity": "critical",
+    "issue": "Driver Corrupt Driver List (DRIVER_CORRUPTED_DRIVER_LIST)",
+    "description": "The kernel driver list was found to be corrupted, typically from a driver improperly unregistering or a driver overwriting kernel data structures.",
+    "fix": [
+      "Run 'sfc /scannow' to repair corrupted system driver files.",
+      "Use Driver Verifier to identify the driver corrupting the driver list and update it."
+    ]
   }
 ]
