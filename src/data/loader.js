@@ -1,8 +1,9 @@
 import errorCodes from '../../data/windows_error_codes.json'
 import bloatware from '../../data/bloatware.json'
 import compatibility from '../../data/compatibility.json'
+import hardware from '../../data/hardware.json'
 
-export { errorCodes, bloatware, compatibility }
+export { errorCodes, bloatware, compatibility, hardware }
 
 export const severityOrder = { critical: 0, warning: 1, info: 2 }
 
@@ -50,10 +51,11 @@ export function searchCompatibility(query, component) {
 
 export const bloatwareCategories = [...new Set(bloatware.map((b) => b.category))]
 export const compatComponents = [...new Set(compatibility.map((c) => c.component))]
+export const hardwareComponents = [...new Set(hardware.map((c) => c.component))]
 
 export const stats = {
   errorCodes: errorCodes.length,
   bloatware: bloatware.length,
-  guides: compatibility.length,
-  components: compatComponents.length,
+  guides: hardware.length,
+  components: compatibility.length,
 }

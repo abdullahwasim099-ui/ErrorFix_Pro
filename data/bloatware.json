@@ -312,5 +312,244 @@
       "services_msc": true,
       "settings": true
     }
+  },
+  {
+    "processName": "McAfeeSecurity.exe",
+    "category": "Bloatware",
+    "manufacturer": "McAfee",
+    "recommendation": {
+      "win10": "Uninstall via Settings > Apps and use Windows Defender instead. Often comes pre-installed on new PCs and drastically slows down system performance.",
+      "win11": "Use the official McAfee Consumer Product Removal tool (MCPR) if standard uninstallation fails or leaves behind remnants. Windows Defender is sufficient for most users."
+    },
+    "common_issues": "High CPU, disk, and memory usage. Aggressive pop-ups prompting for paid subscriptions. Slows down boot times significantly.",
+    "removal_methods": {
+      "settings_apps": true,
+      "mcafee_removal_tool": true
+    }
+  },
+  {
+    "processName": "NortonSecurity.exe",
+    "category": "Bloatware",
+    "manufacturer": "Symantec",
+    "recommendation": {
+      "win10": "Uninstall via Settings > Apps. Windows Defender provides adequate protection without the massive resource overhead.",
+      "win11": "Use the Norton Remove and Reinstall tool if needed to fully strip the software from your system. Stick to Windows Defender."
+    },
+    "common_issues": "Causes noticeable system lag, especially on older hardware. Constant notifications for upsells and 'system tune-ups'.",
+    "removal_methods": {
+      "settings_apps": true,
+      "norton_removal_tool": true
+    }
+  },
+  {
+    "processName": "CCleaner.exe",
+    "category": "Potentially Unwanted Program (PUP)",
+    "manufacturer": "Piriform",
+    "recommendation": {
+      "win10": "Uninstall. Modern Windows versions handle temporary files and registry cleaning natively. CCleaner's registry cleaner can actually cause system instability.",
+      "win11": "Remove via Settings > Apps. Use Windows Storage Sense instead for automated cleanup."
+    },
+    "common_issues": "Runs unnecessary background monitoring. Often bundles bundled software during installation. Registry cleaning is risky and unneeded.",
+    "removal_methods": {
+      "settings_apps": true
+    }
+  },
+  {
+    "processName": "uTorrent.exe",
+    "category": "Potentially Unwanted Program (PUP)",
+    "manufacturer": "BitTorrent",
+    "recommendation": {
+      "win10": "Uninstall. uTorrent is notorious for bundled adware and tracking. Use open-source alternatives like qBittorrent.",
+      "win11": "Remove via Settings > Apps. Switch to qBittorrent, which is ad-free and open-source."
+    },
+    "common_issues": "Aggressive advertising within the app. Has historically bundled cryptocurrency miners without user consent.",
+    "removal_methods": {
+      "settings_apps": true
+    }
+  },
+  {
+    "processName": "QuickTime.exe",
+    "category": "Bloatware",
+    "manufacturer": "Apple",
+    "recommendation": {
+      "win10": "Uninstall immediately. Apple stopped supporting QuickTime for Windows years ago, leaving it vulnerable to unpatched security exploits.",
+      "win11": "Remove via Settings > Apps. Use modern media players like VLC or the built-in Windows Media Player."
+    },
+    "common_issues": "Severe security vulnerabilities due to lack of updates. Runs background update checkers that do nothing.",
+    "removal_methods": {
+      "settings_apps": true
+    }
+  },
+  {
+    "processName": "SupportAssist.exe",
+    "category": "Bloatware",
+    "manufacturer": "Dell",
+    "recommendation": {
+      "win10": "Uninstall unless specifically troubleshooting a hardware issue with Dell support. Often uses significant background resources.",
+      "win11": "Remove via Settings > Apps. You can download drivers manually from Dell's website instead of relying on this background service."
+    },
+    "common_issues": "High CPU and RAM usage during automated 'scans'. Intrusive notifications.",
+    "removal_methods": {
+      "settings_apps": true
+    }
+  },
+  {
+    "processName": "HPSupportAssistant.exe",
+    "category": "Bloatware",
+    "manufacturer": "HP",
+    "recommendation": {
+      "win10": "Uninstall. Like Dell's tool, it's mostly unnecessary and consumes background resources. Update drivers manually.",
+      "win11": "Remove via Settings > Apps. Use Windows Update and manual downloads from HP's site for essential drivers."
+    },
+    "common_issues": "Bloated interface, frequent background processing causing system lag, and constant notifications.",
+    "removal_methods": {
+      "settings_apps": true
+    }
+  },
+  {
+    "processName": "LenovoSupport.exe",
+    "category": "Bloatware",
+    "manufacturer": "Lenovo",
+    "recommendation": {
+      "win10": "Uninstall. Lenovo Vantage and Support tools are heavy on resources. Manual driver updates are preferred.",
+      "win11": "Remove via Settings > Apps. Use Lenovo System Update manually if needed, but disable background services."
+    },
+    "common_issues": "High background resource usage. Telemetry data collection.",
+    "removal_methods": {
+      "settings_apps": true
+    }
+  },
+  {
+    "processName": "WinZip.exe",
+    "category": "Bloatware",
+    "manufacturer": "Corel",
+    "recommendation": {
+      "win10": "Uninstall via Settings > Apps. Windows natively supports ZIP extraction. Use 7-Zip for better format support and no ads.",
+      "win11": "Remove via Settings > Apps. Windows 11 now natively supports ZIP, RAR, and 7z. WinZip is entirely obsolete for most users."
+    },
+    "common_issues": "Constant pop-ups pushing you to buy the full version. Slower and more bloated than free alternatives.",
+    "removal_methods": {
+      "settings_apps": true
+    }
+  },
+  {
+    "processName": "CyberLinkPowerDVD.exe",
+    "category": "Bloatware",
+    "manufacturer": "CyberLink",
+    "recommendation": {
+      "win10": "Uninstall if you don't use physical DVD/Blu-ray drives. VLC Media Player is a much better, free alternative.",
+      "win11": "Remove via Settings > Apps. Most modern PCs lack optical drives, rendering this pre-installed software useless."
+    },
+    "common_issues": "Takes up significant disk space. Includes background services that slow down boot times.",
+    "removal_methods": {
+      "settings_apps": true
+    }
+  },
+  {
+    "processName": "RealPlayer.exe",
+    "category": "Bloatware",
+    "manufacturer": "RealNetworks",
+    "recommendation": {
+      "win10": "Uninstall immediately. Has not been supported for years and poses severe security risks.",
+      "win11": "Remove via Settings > Apps. Use VLC or Windows Media Player instead."
+    },
+    "common_issues": "Major security vulnerabilities. Extremely outdated format.",
+    "removal_methods": {
+      "settings_apps": true
+    }
+  },
+  {
+    "processName": "Webex.exe",
+    "category": "Bloatware",
+    "manufacturer": "Cisco",
+    "recommendation": {
+      "win10": "Uninstall if you don't actively use it for work or school. It often auto-starts and consumes RAM.",
+      "win11": "Remove via Settings > Apps. Use the web version if you only occasionally join Webex meetings."
+    },
+    "common_issues": "High memory footprint. Stays resident in the system tray even when not in use.",
+    "removal_methods": {
+      "settings_apps": true
+    }
+  },
+  {
+    "processName": "AvastUI.exe",
+    "category": "Bloatware",
+    "manufacturer": "Avast",
+    "recommendation": {
+      "win10": "Uninstall. Avast has become bloated with upsells and has a history of selling user data. Use Windows Defender.",
+      "win11": "Use the Avast Uninstall Utility (avastclear.exe) to completely remove it. Windows Defender is preferred."
+    },
+    "common_issues": "Sells user browsing data. Intrusive pop-ups. High resource usage compared to native Defender.",
+    "removal_methods": {
+      "settings_apps": true,
+      "avast_removal_tool": true
+    }
+  },
+  {
+    "processName": "AVGUI.exe",
+    "category": "Bloatware",
+    "manufacturer": "AVG",
+    "recommendation": {
+      "win10": "Uninstall. AVG is now owned by Avast and suffers from the same bloat and data privacy concerns.",
+      "win11": "Use the AVG Clear tool to remove all traces. Rely on Windows Defender for security."
+    },
+    "common_issues": "Bundles unnecessary 'tune-up' utilities. Frequent, alarming pop-ups designed to sell premium upgrades.",
+    "removal_methods": {
+      "settings_apps": true,
+      "avg_clear_tool": true
+    }
+  },
+  {
+    "processName": "BaiduNetdisk.exe",
+    "category": "Potentially Unwanted Program (PUP)",
+    "manufacturer": "Baidu",
+    "recommendation": {
+      "win10": "Uninstall unless specifically required for accessing Chinese web services. Known for aggressive background behavior.",
+      "win11": "Remove via Settings > Apps. Often bundled with free software downloads."
+    },
+    "common_issues": "High network bandwidth usage in the background. Difficult to completely remove standardly.",
+    "removal_methods": {
+      "settings_apps": true,
+      "anti_virus_scan": true
+    }
+  },
+  {
+    "processName": "Kies.exe",
+    "category": "Bloatware",
+    "manufacturer": "Samsung",
+    "recommendation": {
+      "win10": "Uninstall. Obsolete software for older Samsung phones. Use Samsung Smart Switch if absolutely necessary.",
+      "win11": "Remove via Settings > Apps."
+    },
+    "common_issues": "Buggy, slow, and outdated. Runs background services unnecessarily.",
+    "removal_methods": {
+      "settings_apps": true
+    }
+  },
+  {
+    "processName": "DriverBooster.exe",
+    "category": "Bloatware",
+    "manufacturer": "IObit",
+    "recommendation": {
+      "win10": "Uninstall. Third-party driver updaters often install incorrect or unstable drivers. Rely on Windows Update and official manufacturer sites.",
+      "win11": "Remove via Settings > Apps. Windows Update handles drivers perfectly well for 99% of hardware."
+    },
+    "common_issues": "Installs wrong drivers causing BSODs (Blue Screen of Death). Pushes aggressive ads for other IObit products.",
+    "removal_methods": {
+      "settings_apps": true
+    }
+  },
+  {
+    "processName": "AdvancedSystemCare.exe",
+    "category": "Potentially Unwanted Program (PUP)",
+    "manufacturer": "IObit",
+    "recommendation": {
+      "win10": "Uninstall. 'PC Tune-up' utilities generally do more harm than good by messing with registry keys and disabling necessary services.",
+      "win11": "Remove via Settings > Apps. Windows 11 does a great job maintaining itself."
+    },
+    "common_issues": "Causes system instability. Deletes necessary registry keys. Displays fake error messages to encourage premium upgrades.",
+    "removal_methods": {
+      "settings_apps": true
+    }
   }
 ]

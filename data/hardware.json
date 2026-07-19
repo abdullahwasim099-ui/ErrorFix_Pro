@@ -1,0 +1,1308 @@
+[
+  {
+    "component": "RAM",
+    "question": "What is XMP and should I enable it?",
+    "answer": "XMP (Extreme Memory Profile) is an Intel technology that allows RAM to run at its advertised speeds rather than the default JEDEC baseline. Enable XMP in the BIOS/UEFI to achieve the rated speed of your RAM kit. For AMD systems, the equivalent is EXPO (Extended Profiles for Overclocking).",
+    "steps": [
+      "Enter BIOS/UEFI by pressing DEL or F2 during boot.",
+      "Navigate to the AI Overclock / Tweaker / Extreme Tweaker section.",
+      "Enable XMP (or EXPO for AMD) and select Profile 1.",
+      "Save and exit. Verify the new speed in CPU-Z or Task Manager > Performance > Memory."
+    ]
+  },
+  {
+    "component": "Storage",
+    "question": "Can I use a Gen4 NVMe SSD in a Gen3 motherboard slot?",
+    "answer": "Yes, a Gen4 NVMe SSD is backward compatible with a Gen3 motherboard slot, but it will run at Gen3 speeds (max ~3,500 MB/s) instead of its full Gen4 potential (~7,000 MB/s). No damage will occur, but you won't get the advertised maximum speed.",
+    "steps": [
+      "Confirm the motherboard's M.2 slot PCIe generation in the manual.",
+      "Install the Gen4 drive in the Gen3 slot; it will negotiate to Gen3 speeds automatically.",
+      "Benchmark with CrystalDiskMark to confirm actual speeds match Gen3 limits.",
+      "If you later upgrade to a Gen4 motherboard, the drive will operate at full Gen4 speeds."
+    ]
+  },
+  {
+    "component": "Storage",
+    "question": "How do I clone my existing drive to a new SSD?",
+    "answer": "Use a disk cloning tool such as Macrium Reflect Free, Clonezilla, or the SSD manufacturer's software (e.g., Samsung Data Migration, Kingston SSD Manager). Connect the new SSD via USB enclosure or internal slot, clone the source drive, then swap the drives and boot from the new SSD.",
+    "steps": [
+      "Download and install a cloning tool (Macrium Reflect Free is recommended for most users).",
+      "Connect the new SSD via a USB enclosure or a spare internal SATA/NVMe slot.",
+      "Select the source drive (your current OS drive) and target the new SSD.",
+      "Start the clone process, then power off, swap the drives, and boot from the new SSD."
+    ]
+  },
+  {
+    "component": "GPU",
+    "question": "Do I need to uninstall old GPU drivers before installing a new GPU?",
+    "answer": "Yes, especially if switching between AMD and NVIDIA. Use Display Driver Uninstaller (DDU) in Safe Mode to completely remove the old drivers, then install the new GPU and download fresh drivers from the manufacturer's website. This prevents driver conflicts and stability issues.",
+    "steps": [
+      "Download DDU and the latest driver for your new GPU from the manufacturer's website.",
+      "Boot into Safe Mode and run DDU to remove the old GPU drivers completely.",
+      "Power off, install the new GPU, and connect the required PCIe power cables.",
+      "Boot normally and install the fresh drivers downloaded in step 1."
+    ]
+  },
+  {
+    "component": "GPU",
+    "question": "What is PCIe lane bifurcation and does it affect GPU performance?",
+    "answer": "PCIe lane bifurcation splits a single x16 slot into multiple smaller slots (e.g., x8/x8 or x4/x4/x4/x4). Running a GPU at x8 Gen4 has minimal performance impact (<1-3%) compared to x16 Gen4 for most gaming workloads. However, x4 may cause a slight performance drop in bandwidth-heavy scenarios.",
+    "steps": [
+      "Check your motherboard manual to see if the primary slot supports x16 or drops to x8 when a second slot is populated.",
+      "For single-GPU setups, use the primary x16 slot closest to the CPU for maximum bandwidth.",
+      "If using multiple GPUs, verify the bifurcation mode in BIOS and accept the minor performance tradeoff.",
+      "Benchmark with 3DMark or game benchmarks to quantify any performance difference."
+    ]
+  },
+  {
+    "component": "CPU",
+    "question": "Do I need to update my BIOS before installing a new CPU?",
+    "answer": "If the new CPU was released after your motherboard's BIOS version, a BIOS update is required for compatibility. Check the motherboard's CPU support list for the minimum BIOS version needed. Some boards support BIOS FlashBack, which allows updating without a compatible CPU installed.",
+    "steps": [
+      "Find the minimum BIOS version required for the new CPU on the manufacturer's CPU support page.",
+      "Download the BIOS file and extract it to a USB flash drive formatted as FAT32.",
+      "If the current CPU is incompatible, use BIOS FlashBack (if supported) or install an older compatible CPU temporarily.",
+      "Update the BIOS, power off, and install the new CPU."
+    ]
+  },
+  {
+    "component": "CPU",
+    "question": "What is thermal throttling and how do I prevent it?",
+    "answer": "Thermal throttling occurs when a CPU reduces its clock speed to prevent overheating. To prevent it, ensure adequate cooling (air or AIO liquid cooler), apply quality thermal paste, and maintain good case airflow. Monitor temperatures with HWMonitor or Core Temp.",
+    "steps": [
+      "Check current CPU temperatures under load with HWMonitor or Core Temp.",
+      "If temperatures exceed 90°C, reapply thermal paste and reseat the cooler.",
+      "Improve case airflow by adding intake/exhaust fans and managing cable routing.",
+      "Consider upgrading to a higher-end air cooler or AIO liquid cooler if throttling persists."
+    ]
+  },
+  {
+    "component": "PSU",
+    "question": "How do I calculate the PSU wattage I need?",
+    "answer": "Use a PSU calculator like OuterVision or PCPartPicker to estimate total system power draw. Add the TDP of the CPU and GPU, then add 50-100W for other components (RAM, storage, fans). Choose a PSU with 20-30% headroom above the estimated total for stability and future upgrades.",
+    "steps": [
+      "Find the TDP of your CPU and GPU from their spec sheets.",
+      "Add 50-100W for motherboard, RAM, storage, and peripherals.",
+      "Multiply the total by 1.2-1.3 to account for headroom and efficiency curves.",
+      "Choose a PSU with an 80 PLUS Bronze or higher rating for efficiency and reliability."
+    ]
+  },
+  {
+    "component": "PSU",
+    "question": "What is the 12VHPWR connector and do I need it?",
+    "answer": "The 12VHPWR connector is a new 16-pin power connector introduced with ATX 3.0 PSUs, required for NVIDIA RTX 40-series GPUs. It can deliver up to 600W. If your GPU requires it, ensure your PSU has a native 12VHPWR cable or use the included adapter from multiple 8-pin PCIe connectors.",
+    "steps": [
+      "Check if your GPU requires a 12VHPWR connector (RTX 40-series and newer).",
+      "If yes, verify your PSU has a native 12VHPWR cable or use the bundled adapter.",
+      "Ensure the connector is fully seated to avoid overheating issues (listen for a click).",
+      "Avoid sharp bends near the connector; maintain at least 35mm of straight cable before bending."
+    ]
+  },
+  {
+    "component": "Motherboard",
+    "question": "How do I update my BIOS safely?",
+    "answer": "Download the latest BIOS from the motherboard manufacturer's website, extract it to a FAT32-formatted USB drive, and use the BIOS flash utility in the UEFI. Never power off during the update. Some boards support BIOS FlashBack, which allows updating without a CPU or RAM installed.",
+    "steps": [
+      "Download the latest BIOS from the manufacturer's website for your exact motherboard model.",
+      "Extract the BIOS file to a USB flash drive formatted as FAT32.",
+      "Enter BIOS/UEFI and use the EZ Flash / M-Flash / BIOS Flashback utility to update.",
+      "Do not power off during the update. After completion, load optimized defaults and reconfigure settings."
+    ]
+  },
+  {
+    "component": "Cooling",
+    "question": "How many case fans do I need and what's the ideal configuration?",
+    "answer": "A balanced configuration of 2-3 intake fans at the front and 1-2 exhaust fans at the rear/top provides optimal airflow. Positive pressure (more intake than exhaust) reduces dust buildup. Use dust filters on intake fans. High-static-pressure fans are best for intake through filters; high-airflow fans for exhaust.",
+    "steps": [
+      "Install 2-3 intake fans at the front of the case behind dust filters.",
+      "Install 1 exhaust fan at the rear and optionally 1-2 at the top for a balanced airflow setup.",
+      "Ensure intake CFM slightly exceeds exhaust CFM to maintain positive pressure and reduce dust.",
+      "Use high-static-pressure fans for intake (through filters/radiators) and high-airflow fans for exhaust."
+    ]
+  },
+  {
+    "component": "Networking",
+    "question": "Should I use Wi-Fi or Ethernet for gaming?",
+    "answer": "Ethernet provides the lowest latency, highest stability, and highest bandwidth, making it ideal for competitive gaming. Wi-Fi 6/6E is a viable alternative if running a cable is impractical, with latency as low as 2-5ms on a strong signal. Avoid Wi-Fi 5 or older for serious gaming due to higher latency and congestion.",
+    "steps": [
+      "If possible, use a wired Ethernet connection (Cat6 or better) for the lowest latency.",
+      "If Wi-Fi is necessary, ensure your router supports Wi-Fi 6 (802.11ax) or better.",
+      "Position the router in the same room or line-of-sight for the strongest signal.",
+      "Use a Wi-Fi analyzer app to select the least congested channel for your network."
+    ]
+  },
+  {
+    "component": "Storage",
+    "question": "Can I use a PCIe 4.0 NVMe SSD on a PCIe 3.0 motherboard?",
+    "answer": "Yes, NVMe SSDs are backwards compatible. A PCIe 4.0 NVMe SSD will work in a PCIe 3.0 M.2 slot, but its maximum sequential read and write speeds will be capped at the PCIe 3.0 x4 limit (roughly 3500 MB/s).",
+    "steps": [
+      "Install the PCIe 4.0 SSD into your motherboard's M.2 slot.",
+      "Ensure the drive is initialized in your OS Disk Management.",
+      "Run a benchmark to verify speeds are hitting the PCIe 3.0 limits (~3500 MB/s)."
+    ]
+  },
+  {
+    "component": "Storage",
+    "question": "Do I need a heatsink for my NVMe SSD?",
+    "answer": "PCIe 3.0 SSDs generally do not require heatsinks, but PCIe 4.0 and 5.0 SSDs run much hotter and almost always require a heatsink to prevent thermal throttling. Many mid-to-high-end motherboards come with integrated M.2 heatsinks.",
+    "steps": [
+      "Check if your motherboard includes a built-in M.2 heatsink.",
+      "If it does, purchase an SSD without a pre-installed heatsink, or remove the motherboard's heatsink if you buy an SSD with one.",
+      "If your motherboard lacks one and you are buying a Gen 4 or Gen 5 drive, buy a model that includes a heatsink."
+    ]
+  },
+  {
+    "component": "RAM",
+    "question": "What is XMP and EXPO, and how do I enable them?",
+    "answer": "XMP (Intel) and EXPO (AMD) are memory profiles that allow RAM to run at its advertised overclocked speeds rather than the default JEDEC speeds (e.g., 4800 MT/s). Without enabling these in the BIOS, your high-speed RAM will run slower than rated.",
+    "steps": [
+      "Boot into your motherboard's BIOS/UEFI.",
+      "Look for a setting named 'XMP' (Extreme Memory Profile), 'DOCP', or 'EXPO'.",
+      "Enable Profile 1.",
+      "Save changes and exit. Verify the speed in the OS using Task Manager or CPU-Z."
+    ]
+  },
+  {
+    "component": "PSU",
+    "question": "What is an 80 PLUS rating?",
+    "answer": "The 80 PLUS rating is a certification that indicates the power efficiency of a PSU at different loads. The tiers are White, Bronze, Silver, Gold, Platinum, and Titanium. Higher tiers mean the PSU wastes less power as heat, resulting in a cooler and potentially quieter system.",
+    "steps": [
+      "Determine your budget and system requirements.",
+      "For standard builds, 80 PLUS Bronze or Gold is the sweet spot for price to performance.",
+      "For high-end or always-on workstations, consider Platinum or Titanium for long-term energy savings."
+    ]
+  },
+  {
+    "component": "Case",
+    "question": "How does motherboard I/O shield installation work?",
+    "answer": "The I/O shield is a metal plate that covers the rear ports of the motherboard. Most modern mid-range and high-end motherboards now feature a pre-installed I/O shield, making installation easier and safer. Budget boards may still use a separate snap-in shield.",
+    "steps": [
+      "Check if your motherboard has a pre-installed I/O shield.",
+      "If it does not, snap the included metal shield into the rectangular cutout at the rear of the case from the inside BEFORE installing the motherboard.",
+      "Ensure the motherboard ports align with the shield cutouts without bending any metal prongs into the ports."
+    ]
+  },
+  {
+    "component": "Networking",
+    "question": "Do I need a motherboard with built-in Wi-Fi?",
+    "answer": "If you cannot use an Ethernet cable, a motherboard with built-in Wi-Fi is highly recommended. Built-in Wi-Fi (especially Wi-Fi 6E or Wi-Fi 7) generally performs better than USB adapters and doesn't take up a PCIe slot like a dedicated Wi-Fi card.",
+    "steps": [
+      "Determine if you will have access to a wired Ethernet connection.",
+      "If not, filter your motherboard search to include 'Wi-Fi' models.",
+      "If you already have a non-Wi-Fi board, purchase a PCIe Wi-Fi card (preferable) or a high-quality USB Wi-Fi adapter."
+    ]
+  },
+  {
+    "component": "Storage",
+    "question": "How do I install an M.2 NVMe SSD?",
+    "answer": "M.2 SSDs plug into a specific slot on the motherboard at a 30-degree angle, lay flat, and are secured with a tiny screw or a tool-less latch.",
+    "steps": [
+      "Locate the M.2 slot on the motherboard (often under a metal heatsink plate).",
+      "Insert the SSD into the slot at a slight angle until fully seated.",
+      "Press the back end down and secure it using the motherboard's M.2 screw or tool-less clip.",
+      "Reattach the motherboard heatsink (remember to peel off the plastic film on the thermal pad)."
+    ]
+  },
+  {
+    "component": "GPU",
+    "question": "How do I choose the right power supply (PSU) for my GPU?",
+    "answer": "NVIDIA and AMD list recommended PSU wattages for their GPUs based on typical system configurations. However, transient power spikes can exceed these recommendations. It is generally advised to buy a PSU slightly above the recommended wattage (e.g., 850W for a 750W recommendation) for system stability.",
+    "steps": [
+      "Check the GPU manufacturer's recommended PSU wattage.",
+      "Calculate your system's total estimated wattage using an online calculator.",
+      "Choose a high-quality PSU (Tier A or B on PSU tier lists) that meets or exceeds the highest of those two numbers."
+    ]
+  },
+  {
+    "component": "Motherboard",
+    "question": "What are VRMs and why do they matter?",
+    "answer": "VRMs (Voltage Regulator Modules) control the power delivered to the CPU. High-quality VRMs with good cooling (heatsinks) are essential for stability, especially when using high-end CPUs (like a Core i9 or Ryzen 9) or overclocking, to prevent overheating and throttling.",
+    "steps": [
+      "If you are buying a high-end CPU, ensure the motherboard has robust VRM cooling (large metal heatsinks around the CPU socket).",
+      "Check hardware reviews to see how the motherboard's VRMs perform under load.",
+      "If using a budget CPU, basic VRMs are usually sufficient."
+    ]
+  },
+  {
+    "component": "RAM",
+    "question": "Does RAM clearance matter for AIO liquid coolers?",
+    "answer": "Yes, especially when top-mounting an AIO radiator. A thick radiator combined with thick fans might conflict with tall RGB RAM modules, preventing installation. Front-mounting an AIO usually avoids RAM clearance issues but can affect GPU clearance.",
+    "steps": [
+      "Check your case specifications for top radiator support and maximum RAM height.",
+      "If your case has limited clearance, choose low-profile RAM or consider front-mounting the AIO.",
+      "Verify that front-mounting the AIO leaves enough room for your GPU."
+    ]
+  },
+  {
+    "component": "CPU",
+    "question": "Do I need to apply thermal paste?",
+    "answer": "Thermal paste is necessary to fill microscopic imperfections between the CPU and cooler, ensuring efficient heat transfer. Most aftermarket coolers come with thermal paste pre-applied or include a small tube. If reusing a cooler, you must clean off the old paste and apply new paste.",
+    "steps": [
+      "Check if your new cooler has pre-applied thermal paste (usually a grey grid on the bottom).",
+      "If not, or if reinstalling, clean both surfaces with isopropyl alcohol and a microfiber cloth.",
+      "Apply a pea-sized drop of thermal paste to the center of the CPU.",
+      "Install the cooler evenly to spread the paste."
+    ]
+  },
+  {
+    "component": "Case",
+    "question": "What is airflow and why is it important?",
+    "answer": "Airflow refers to the movement of air through your PC case. Good airflow replaces hot air with cool air, preventing components from overheating, which can cause thermal throttling and reduced lifespan. An ideal setup uses front/bottom fans for intake and rear/top fans for exhaust.",
+    "steps": [
+      "Ensure your case has a mesh front panel for optimal intake.",
+      "Install intake fans at the front (pulling cool air in).",
+      "Install exhaust fans at the rear and top (pushing hot air out).",
+      "Ensure cables are managed neatly to avoid obstructing airflow paths."
+    ]
+  },
+  {
+    "component": "Storage",
+    "question": "Can I use both M.2 NVMe and SATA SSDs simultaneously?",
+    "answer": "Yes, most motherboards support using M.2 NVMe SSDs and SATA SSDs/HDDs at the same time. However, on some older or budget motherboards, populating certain M.2 slots might disable specific SATA ports due to shared PCIe lanes. Check your motherboard manual.",
+    "steps": [
+      "Check your motherboard manual's storage section.",
+      "Look for notes indicating if any SATA ports share bandwidth with M.2 slots.",
+      "If they do, plug your SATA drives into the non-shared ports."
+    ]
+  },
+  {
+    "component": "GPU",
+    "question": "What is GPU sag and how do I fix it?",
+    "answer": "GPU sag occurs when the weight of a large, heavy graphics card causes it to droop at the far end, putting stress on the PCIe slot. To fix it, use a GPU support bracket, an anti-sag bracket included with the motherboard/case, or even a customized prop.",
+    "steps": [
+      "Inspect your installed GPU to see if the far end sags noticeably lower than the PCIe slot.",
+      "If it does, install a GPU support bracket (often a vertical stand or a horizontal arm attaching to the PCIe slot covers).",
+      "Adjust the support until the GPU sits perfectly level."
+    ]
+  },
+  {
+    "component": "Networking",
+    "question": "Do I need a dedicated sound card or network card?",
+    "answer": "For the vast majority of users, the onboard audio and networking (Ethernet and Wi-Fi) on modern motherboards are excellent and sufficient. Dedicated cards are only necessary for audiophiles with high-impedance headphones, or if you need specific features like 10-Gigabit Ethernet and your board only has 1GbE.",
+    "steps": [
+      "Use the onboard audio and networking first.",
+      "If you experience audio interference or need specialized connectivity, consider a dedicated PCIe card or external USB DAC/Amp."
+    ]
+  },
+  {
+    "component": "RAM",
+    "question": "What does CAS Latency (CL) mean?",
+    "answer": "CAS Latency is the delay (in clock cycles) between the memory controller requesting data and the RAM delivering it. Lower CL is better. When comparing RAM, a higher speed (MT/s) with a slightly higher CL is often better than slower RAM with a lower CL, but balancing both yields the best performance.",
+    "steps": [
+      "When buying RAM, look at both the speed (e.g., 6000 MT/s) and the CAS Latency (e.g., CL30).",
+      "For DDR5, 6000 MT/s CL30 is currently considered a sweet spot for price-to-performance.",
+      "For DDR4, 3200 MT/s CL16 or 3600 MT/s CL18 are standard sweet spots."
+    ]
+  },
+  {
+    "component": "GPU",
+    "question": "What is DLSS and FSR?",
+    "answer": "DLSS (Deep Learning Super Sampling) is NVIDIA's AI upscaling technology, while FSR (FidelityFX Super Resolution) is AMD's open-source equivalent. Both render games at a lower internal resolution and upscale them to your monitor's resolution, significantly boosting frame rates with minimal loss in visual quality.",
+    "steps": [
+      "If you have an NVIDIA RTX GPU, enable DLSS in supported games for a performance boost.",
+      "If you have an AMD, Intel, or older NVIDIA GPU, enable FSR in supported games.",
+      "Experiment with different quality presets (Quality, Balanced, Performance) to find the best balance of frame rate and visual clarity."
+    ]
+  },
+  {
+    "component": "Motherboard",
+    "question": "What are PCIe lanes?",
+    "answer": "PCIe lanes are data connections between components (like the GPU and SSDs) and the CPU or chipset. They are denoted as x1, x4, x8, or x16. A GPU typically uses an x16 slot, while an NVMe SSD uses an x4 slot. High-end platforms offer more total lanes, allowing for more high-speed devices.",
+    "steps": [
+      "Ensure you install your primary GPU in the top PCIe x16 slot, which connects directly to the CPU for the lowest latency.",
+      "Install primary NVMe SSDs in the M.2 slots closest to the CPU.",
+      "Refer to your motherboard manual to see how PCIe lanes are distributed among the remaining slots."
+    ]
+  },
+  {
+    "component": "Storage",
+    "question": "What do numbers like 2280 or 22110 mean on M.2 SSDs?",
+    "answer": "These numbers indicate the physical size of the M.2 drive. The first two digits are the width in millimeters (always 22mm), and the remaining digits are the length (e.g., 80mm or 110mm). 2280 is the standard size for consumer NVMe SSDs, while 22110 is often used for enterprise drives with power-loss protection capacitors.",
+    "steps": [
+      "Check your motherboard specifications to ensure it supports M.2 2280 (almost all do).",
+      "If buying a longer 22110 drive, verify your motherboard has a standoff at the 110mm mark."
+    ]
+  },
+  {
+    "component": "Cooling",
+    "question": "Can I use thermal pads instead of thermal paste for my CPU?",
+    "answer": "No, standard thermal pads should not be used on CPUs. They are designed for VRMs, memory chips, and SSDs where gaps are larger. CPUs require a very thin, even layer of thermal paste (or specialized phase-change metal pads like PTM7950) for optimal heat transfer.",
+    "steps": [
+      "Use high-quality thermal paste for the CPU and GPU core.",
+      "Use thermal pads only for VRMs, VRAM, and M.2 SSDs, ensuring you use the correct thickness (e.g., 1.0mm, 1.5mm) specified by the manufacturer."
+    ]
+  },
+  {
+    "component": "GPU",
+    "question": "Is it safe to vertically mount my GPU?",
+    "answer": "Yes, vertical mounting is safe and popular for aesthetics. However, you need a vertical mounting bracket and a PCIe riser cable. Be aware that mounting the GPU too close to a glass side panel can severely choke its airflow, leading to high temperatures.",
+    "steps": [
+      "Ensure your case supports vertical GPU mounting or buy a universal vertical bracket.",
+      "Purchase a high-quality PCIe riser cable that matches your GPU's PCIe generation (e.g., a Gen 4 riser for a Gen 4 GPU) to prevent crashing.",
+      "Verify there is at least 1.5 to 2 inches of clearance between the GPU fans and the side panel for intake air."
+    ]
+  },
+  {
+    "component": "Cooling",
+    "question": "How do I connect 6 fans if my motherboard only has 3 fan headers?",
+    "answer": "You can use fan splitter cables or a fan hub. A simple Y-splitter allows two fans to share one header. For more than two fans per header, use a powered fan hub that connects to the motherboard for a PWM signal but draws power directly from the PSU (via SATA power) to avoid overloading the header.",
+    "steps": [
+      "Check your motherboard manual for the amperage limit of your fan headers (typically 1A or 2A).",
+      "Add up the amperage of the fans you want to put on a splitter (e.g., three 0.2A fans = 0.6A).",
+      "If the total exceeds the header limit, use a SATA-powered fan hub instead."
+    ]
+  },
+  {
+    "component": "CPU",
+    "question": "What is AMD Precision Boost Overdrive (PBO)?",
+    "answer": "PBO is AMD's automated overclocking algorithm. It allows the CPU to boost its clock speeds higher and for longer durations than stock settings, provided there is sufficient thermal and power headroom. It is a safe and easy way to get extra performance out of Ryzen CPUs.",
+    "steps": [
+      "Ensure you have a high-quality CPU cooler.",
+      "Enter the BIOS and locate the AMD Overclocking or PBO menu.",
+      "Set PBO to 'Enabled' or use advanced settings like 'Curve Optimizer' to undervolt the CPU, which lowers temperatures and allows for even higher boosts."
+    ]
+  },
+  {
+    "component": "PSU",
+    "question": "Can I reuse cables from my old modular power supply on a new one?",
+    "answer": "NO! You should NEVER mix modular cables between different power supplies, even if they are from the same brand. The pinouts on the PSU side are not standardized and can vary between models. Using the wrong cables can send incorrect voltages and permanently destroy your motherboard, GPU, or storage drives.",
+    "steps": [
+      "Remove all old modular cables from your case when upgrading your PSU.",
+      "Only use the cables that came in the box with your new PSU.",
+      "If you want custom sleeved cables, purchase extensions (which are universally compatible since they attach to the ends of existing cables) or replacement cables explicitly verified for your exact PSU model."
+    ]
+  },
+  {
+    "component": "Storage",
+    "question": "What is an SSD TBW rating?",
+    "answer": "TBW stands for Terabytes Written. It is a manufacturer's endurance rating indicating how much data can be written to the SSD over its lifespan before the flash memory degrades or the warranty expires. For the average consumer, modern SSD TBW ratings (e.g., 600 TBW for a 1TB drive) are massive and will easily outlast the useful life of the PC.",
+    "steps": [
+      "Check the TBW rating if you are doing heavy video editing or database work.",
+      "For gaming and general use, you do not need to worry about TBW.",
+      "Always keep backups of important data regardless of the TBW rating."
+    ]
+  },
+  {
+    "component": "Motherboard",
+    "question": "What is a CMOS battery and when should I replace it?",
+    "answer": "The CMOS battery is a small coin-cell battery (usually a CR2032) on the motherboard that powers the chip storing your BIOS settings and system clock when the PC is unplugged. If your PC loses its time/date or forgets your XMP/EXPO settings every time you unplug it, the battery is likely dead and needs replacing.",
+    "steps": [
+      "Purchase a standard CR2032 battery.",
+      "Power down the PC and unplug the PSU.",
+      "Locate the battery on the motherboard, press the small metal latch to pop it out, and insert the new one.",
+      "Boot up and reconfigure your BIOS settings."
+    ]
+  },
+  {
+    "component": "CPU",
+    "question": "What is Intel Turbo Boost?",
+    "answer": "Intel Turbo Boost is a technology that automatically accelerates the processor's clock speed above the base clock frequency when the operating system requests the highest performance state, provided the CPU is operating below power, current, and temperature limits.",
+    "steps": [
+      "Turbo Boost is enabled by default in the BIOS.",
+      "Ensure you have a capable cooler; better cooling allows the CPU to sustain Turbo Boost frequencies for longer periods.",
+      "Monitor frequencies with tools like HWMonitor under load to verify it is boosting."
+    ]
+  },
+  {
+    "component": "GPU",
+    "question": "Do I need to use separate PCIe power cables for my GPU?",
+    "answer": "Yes, for high-power GPUs (requiring 2 or 3 8-pin PCIe connectors), it is highly recommended to use separate, individual cables from the PSU rather than the 'pigtail' or daisy-chained connectors on a single cable. This prevents overloading a single cable and ensures stable power delivery.",
+    "steps": [
+      "Check how many 8-pin power connectors your GPU requires.",
+      "Route that exact number of separate PCIe power cables from your PSU to the GPU.",
+      "Leave the daisy-chained/pigtail ends dangling or zip-tie them out of the way."
+    ]
+  },
+  {
+    "component": "Motherboard",
+    "question": "Can I use an ATX power supply in a Mini-ITX case?",
+    "answer": "It depends strictly on the specific case. Many true Small Form Factor (SFF) Mini-ITX cases require an SFX or SFX-L power supply to save space. Some larger ITX cases will accept a full-size ATX power supply. Always check the case specifications for PSU form factor compatibility and maximum length.",
+    "steps": [
+      "Check the spec sheet of the ITX case for PSU compatibility.",
+      "If SFX is required, do not buy an ATX PSU. If SFX-L is supported, ensure it won't block long GPUs or cables.",
+      "If ATX is supported, pay close attention to the maximum allowed length (e.g., 160mm) to ensure cables can still route cleanly."
+    ]
+  },
+  {
+    "component": "Storage",
+    "question": "What is a NAS drive and should I use it in my desktop PC?",
+    "answer": "NAS (Network Attached Storage) drives, like WD Red or Seagate IronWolf, are optimized for 24/7 continuous operation, vibration resistance in multi-drive enclosures, and RAID arrays. While you can use them in a desktop PC, they are often louder, slower (5400 RPM), and more expensive than standard desktop drives. Stick to standard 7200 RPM desktop drives (like WD Blue or Seagate Barracuda) for basic bulk storage.",
+    "steps": [
+      "Use NAS drives only if you are building a server, a NAS, or a massive RAID array.",
+      "For a regular PC, use NVMe/SATA SSDs for the OS and games, and standard 7200 RPM HDDs for bulk media."
+    ]
+  },
+  {
+    "component": "RAM",
+    "question": "Why does my PC crash when I enable XMP/EXPO?",
+    "answer": "XMP/EXPO is technically an overclock. If it crashes, it means your CPU's memory controller or the motherboard cannot handle that specific speed or timing. This is common when using four sticks of very fast RAM, or using RAM that is not on the motherboard's Qualified Vendor List (QVL).",
+    "steps": [
+      "Ensure the RAM is installed in the primary slots (usually 2 and 4).",
+      "Update your motherboard BIOS to the latest version, which often improves memory stability.",
+      "If it still crashes, try manually lowering the RAM frequency slightly in the BIOS (e.g., from 6000 MT/s down to 5600 MT/s)."
+    ]
+  },
+  {
+    "component": "Motherboard",
+    "question": "What is a Q-Code or Debug LED?",
+    "answer": "Debug LEDs or Q-Code (hexadecimal) displays are diagnostic tools on motherboards to help troubleshoot boot failures. A set of 4 LEDs (usually labeled CPU, DRAM, VGA, BOOT) will light up to indicate where the boot process is hanging. A Q-Code display provides a specific 2-digit code for more granular troubleshooting.",
+    "steps": [
+      "If your PC fails to POST, check the motherboard for illuminated diagnostic LEDs.",
+      "If the DRAM light stays on, reseat the RAM. If VGA, reseat the GPU. If CPU, check CPU power cables and socket.",
+      "If you have a Q-Code display, consult your motherboard manual to translate the code."
+    ]
+  },
+  {
+    "component": "GPU",
+    "question": "Do I need a dual GPU setup (SLI/CrossFire)?",
+    "answer": "No. Multi-GPU setups (NVIDIA SLI or AMD CrossFire) are essentially dead for modern gaming. Almost no modern games support it, and driver support has been dropped by manufacturers. A single, more powerful GPU is always a better choice than two weaker GPUs. Dual GPUs are now only useful for specialized 3D rendering or AI workloads.",
+    "steps": [
+      "Do not plan or build a PC for SLI/CrossFire for gaming.",
+      "Spend your budget on the single best GPU you can afford."
+    ]
+  },
+  {
+    "component": "Motherboard",
+    "question": "Do I need to install chipset drivers?",
+    "answer": "Yes. While Windows will install generic drivers that allow your system to function, installing the official chipset drivers from AMD or Intel (via their website or your motherboard manufacturer's site) ensures optimal performance, power management, and proper communication between the CPU, motherboard, and peripherals.",
+    "steps": [
+      "Navigate to the AMD or Intel driver support website.",
+      "Select your exact motherboard chipset (e.g., B650, Z790).",
+      "Download and install the latest chipset drivers, then restart your PC."
+    ]
+  },
+  {
+    "component": "Storage",
+    "question": "What is an SSHD?",
+    "answer": "A Solid State Hybrid Drive (SSHD) combines a traditional mechanical hard drive with a small amount of fast flash memory (NAND). The drive learns which files you access most often and caches them in the flash memory for faster load times. While popular in the past for budget builds, the dramatic drop in pure SSD prices has made SSHDs largely obsolete.",
+    "steps": [
+      "Avoid buying SSHDs for modern builds.",
+      "Opt for a dedicated NVMe/SATA SSD for your OS/frequent apps and a standard HDD for mass storage."
+    ]
+  },
+  {
+    "component": "Case",
+    "question": "What are motherboard standoffs?",
+    "answer": "Standoffs are small brass or black metal pegs that screw into the PC case. The motherboard then rests on top of these standoffs and is screwed into them. This creates a gap between the motherboard and the metal case tray, preventing short circuits. NEVER screw a motherboard directly flat against the case tray.",
+    "steps": [
+      "Check if your case has pre-installed standoffs for your motherboard size (ATX usually requires 9).",
+      "If not, use the included standoff tool to screw them into the correct holes marked for your form factor.",
+      "Ensure there is a standoff under every mounting hole on the motherboard, and NO extra standoffs touching the bare back of the board."
+    ]
+  },
+  {
+    "component": "Networking",
+    "question": "What is Powerline networking?",
+    "answer": "A Powerline adapter kit uses your home's existing electrical wiring to transmit network data. You plug one adapter into the wall near your router and connect it via Ethernet, and plug the second adapter near your PC, connecting it via Ethernet. It offers a more stable connection than Wi-Fi for gaming, though maximum speeds depend heavily on the quality of your home's wiring.",
+    "steps": [
+      "Use Powerline if you cannot run a long Ethernet cable but experience unstable Wi-Fi.",
+      "Plug the adapters directly into wall outlets, NEVER into surge protectors or power strips, as they filter out the data signal."
+    ]
+  },
+  {
+    "component": "Motherboard",
+    "question": "How do I connect the front panel case headers?",
+    "answer": "Connecting the front panel headers (power switch, reset switch, HDD LED, Power LED) can be tedious. These are tiny individual pins. Check your motherboard manual for the 'Front Panel Header' or 'F_PANEL' layout. The power and reset switches don't have a specific polarity (positive/negative), but the LEDs do.",
+    "steps": [
+      "Consult your motherboard manual to find the exact pin layout.",
+      "Match the labels on the tiny case cables (e.g., PLED+, PLED-, PWR_SW, RESET_SW) to the pins.",
+      "Use a flashlight and tweezers or needle-nose pliers if you have large fingers."
+    ]
+  },
+  {
+    "component": "Motherboard",
+    "question": "How do I clear the CMOS to reset my BIOS?",
+    "answer": "Clearing the CMOS resets your BIOS to factory defaults, which is useful if a bad overclock prevents your PC from booting. You can do this by shorting the CMOS jumper pins or removing the CMOS battery.",
+    "steps": [
+      "Turn off the PC and unplug the power supply.",
+      "Find the two pins labeled 'CLR_CMOS' or 'JBAT1' on the motherboard and touch them together with a metal screwdriver for 5-10 seconds.",
+      "Alternatively, remove the shiny coin-cell battery for 5 minutes, then put it back in."
+    ]
+  },
+  {
+    "component": "CPU",
+    "question": "How do I install an Intel LGA CPU without bending the pins?",
+    "answer": "Intel CPUs use the LGA (Land Grid Array) socket, meaning the fragile pins are on the motherboard, not the CPU. Extreme care must be taken not to drop anything onto the motherboard socket.",
+    "steps": [
+      "Open the socket retention arm. Do not remove the black plastic protective cover yet.",
+      "Gently lower the CPU vertically into the socket, aligning the gold triangle on the CPU corner with the triangle on the socket.",
+      "Close the retention arm and lock it in place. The black plastic cover will pop off automatically."
+    ]
+  },
+  {
+    "component": "CPU",
+    "question": "How do I install an AMD PGA CPU without bending the pins?",
+    "answer": "Older AMD CPUs (AM4 and earlier) use PGA (Pin Grid Array), meaning the fragile pins are on the bottom of the CPU itself. Hold the CPU only by its edges.",
+    "steps": [
+      "Lift the metal retention arm on the motherboard socket to a 90-degree angle.",
+      "Align the golden triangle on the corner of the CPU with the triangle on the socket.",
+      "Gently drop the CPU in. It should fall perfectly flat under its own weight. Do NOT push down.",
+      "Lower the retention arm and lock it into place."
+    ]
+  },
+  {
+    "component": "GPU",
+    "question": "How do I safely remove a GPU from the PCIe slot?",
+    "answer": "Removing a GPU requires pushing down the retention clip at the end of the PCIe slot. If you just pull, you can rip the PCIe slot completely off the motherboard.",
+    "steps": [
+      "Turn off the PC, unplug it, and disconnect the PCIe power cables from the GPU.",
+      "Unscrew the GPU bracket from the case.",
+      "Reach under the GPU towards the right side of the PCIe slot and push DOWN or AWAY on the plastic retention tab until you hear a click.",
+      "Pull the GPU straight out."
+    ]
+  },
+  {
+    "component": "RAM",
+    "question": "Why does my PC only show half of my installed RAM?",
+    "answer": "If Windows or the BIOS only detects half your RAM (e.g., 8GB instead of 16GB), one of the sticks is likely not seated properly, or there is a speck of dust on the contacts.",
+    "steps": [
+      "Turn off the PC and unplug it.",
+      "Remove all RAM sticks and blow out the RAM slots with compressed air.",
+      "Re-seat the RAM sticks, pushing down firmly on both ends until the retention clips snap into place. You should hear a distinct 'click'.",
+      "Boot the PC and check the BIOS to see if the full capacity is recognized."
+    ]
+  },
+  {
+    "component": "Storage",
+    "question": "Where should I mount a 2.5-inch SATA SSD?",
+    "answer": "Most modern cases have dedicated mounting brackets for 2.5-inch drives behind the motherboard tray or on top of the PSU shroud. Because SSDs have no moving parts, they can technically be mounted anywhere.",
+    "steps": [
+      "Locate the 2.5-inch drive trays or sleds in your case.",
+      "Screw the SSD onto the sled using the small screws provided with the case.",
+      "Slide the sled back into place and connect the SATA data and SATA power cables."
+    ]
+  },
+  {
+    "component": "Storage",
+    "question": "Do I need to install the tiny M.2 standoff before installing my NVMe SSD?",
+    "answer": "YES. The M.2 standoff keeps the SSD parallel to the motherboard. If you screw the SSD directly flat against the motherboard without the standoff, you will bend and potentially snap the SSD.",
+    "steps": [
+      "Check if your motherboard already has a standoff pre-installed at the 80mm mark (for a standard 2280 drive).",
+      "If not, find the tiny standoff screw in the motherboard box and screw it into the correct hole.",
+      "Insert the SSD into the slot at an angle, push it down so it rests on the standoff, and secure it with the final tiny screw."
+    ]
+  },
+  {
+    "component": "Cooling",
+    "question": "What is the correct orientation for an AIO liquid cooler radiator?",
+    "answer": "To prevent air bubbles from getting trapped in the pump (which causes noise and reduces lifespan), the pump block should never be the highest point in the loop. The ideal setup is mounting the radiator at the top of the case.",
+    "steps": [
+      "Top mount: This is the best orientation, as all air naturally rises to the top of the radiator, away from the pump.",
+      "Front mount: Ensure the top of the radiator is physically higher than the CPU pump block. The radiator tubes should ideally be at the bottom, though tubes at the top are acceptable if the radiator is taller than the pump.",
+      "Bottom mount: DO NOT do this. It forces all air bubbles into the pump."
+    ]
+  },
+  {
+    "component": "Cooling",
+    "question": "How do I adjust my case fan speeds (Fan Curve)?",
+    "answer": "Adjusting your fan curve allows you to balance cooling performance and noise. A fan curve dictates how fast the fans spin at different temperature thresholds.",
+    "steps": [
+      "Boot into your motherboard's BIOS/UEFI and find the 'Hardware Monitor' or 'Q-Fan Control' section.",
+      "Alternatively, use software in Windows like 'Fan Control' (a highly recommended open-source app).",
+      "Set a curve so the fans spin quietly at idle (e.g., 30% speed at 40°C) and ramp up under load (e.g., 80% speed at 75°C)."
+    ]
+  },
+  {
+    "component": "PSU",
+    "question": "Should my power supply fan face up or down?",
+    "answer": "It depends on your PC case. If your case has a ventilation grill and a dust filter on the bottom, the PSU fan should face DOWN. This allows it to pull in cool air from outside the case. If your case is placed on thick carpet, or lacks a bottom vent, face the fan UP to pull air from inside the case.",
+    "steps": [
+      "Check the bottom of your PC case. If there is a vent and filter, install the PSU with the fan facing downward.",
+      "If you place your PC on thick carpet, put a piece of wood or hard plastic under it to ensure the PSU can breathe.",
+      "If the case lacks a bottom vent, install the PSU with the fan facing upward."
+    ]
+  },
+  {
+    "component": "PSU",
+    "question": "How do I perform a paperclip test on my power supply?",
+    "answer": "The paperclip test is a simple way to verify if a power supply is completely dead before installing it. It works by shorting the 'Power On' pin to a 'Ground' pin on the 24-pin cable, tricking the PSU into turning on.",
+    "steps": [
+      "Disconnect the PSU from all PC components and plug it into the wall. Ensure the PSU switch is set to 'O' (Off).",
+      "Take a metal paperclip and bend it into a 'U' shape.",
+      "Insert one end of the paperclip into the green wire pin (PS_ON) and the other end into any black wire pin (Ground) on the 24-pin connector.",
+      "Flip the PSU switch to 'I' (On). If the PSU fan spins, the unit is receiving power."
+    ]
+  },
+  {
+    "component": "Case",
+    "question": "What is positive vs. negative air pressure in a PC case?",
+    "answer": "Positive pressure means you have more air blowing INTO the case (intake) than blowing OUT (exhaust). This forces air out of every small crack in the case, keeping dust out (assuming intake fans have filters). Negative pressure means more exhaust than intake, which sucks dust in through every unfiltered crack.",
+    "steps": [
+      "For a cleaner PC, aim for slightly positive pressure.",
+      "Count your fans and their CFM ratings. Try to have more intake fan capacity (at the front/bottom) than exhaust fan capacity (at the rear/top).",
+      "Adjust fan curves so intake fans spin slightly faster than exhaust fans at idle."
+    ]
+  },
+  {
+    "component": "Case",
+    "question": "How do I properly route cables for good cable management?",
+    "answer": "Good cable management improves aesthetics and can slightly improve airflow. The key is to route everything behind the motherboard tray and only bring cables to the front side exactly where they need to plug in.",
+    "steps": [
+      "Install the PSU and pass all cables through the large grommet to the back of the motherboard tray.",
+      "Route the thick 24-pin motherboard cable and 8-pin CPU power cable first.",
+      "Use zip ties or velcro straps to bundle cables together along the built-in routing channels.",
+      "Pass the cables back to the front through the cutout closest to their respective ports."
+    ]
+  },
+  {
+    "component": "General",
+    "question": "Do I need an anti-static wrist strap to build a PC?",
+    "answer": "While static electricity (ESD) can technically damage PC components, modern hardware is highly resilient. An anti-static wrist strap is not strictly necessary for most people, provided you take basic precautions.",
+    "steps": [
+      "Avoid building on a carpeted floor if possible. Build on a wooden or glass table.",
+      "Leave your power supply plugged into the wall but switched OFF (O). Periodically touch the bare metal casing of the PSU to ground yourself and discharge any static."
+    ]
+  },
+  {
+    "component": "General",
+    "question": "What should I do immediately after turning on my newly built PC for the first time?",
+    "answer": "Before installing Windows, you should boot into the BIOS to verify all components are detected correctly and running at safe temperatures.",
+    "steps": [
+      "Turn on the PC and repeatedly press the DEL or F2 key to enter the BIOS.",
+      "Verify that the CPU model and total RAM capacity are correct.",
+      "Check the CPU temperature. It should be between 30°C and 45°C. If it rapidly climbs towards 90°C, turn off the PC immediately; your cooler is not installed correctly.",
+      "Enable XMP/EXPO for your RAM, then proceed to install Windows."
+    ]
+  },
+  {
+    "component": "Motherboard",
+    "question": "How do I update my BIOS without a compatible CPU installed?",
+    "answer": "If you buy a new CPU for an older motherboard, the PC won't boot until the BIOS is updated. Many mid-to-high-end boards have a 'BIOS Flashback' feature that lets you update the BIOS using only a USB drive and a power supply, without a CPU or RAM installed.",
+    "steps": [
+      "Download the BIOS file on another PC, rename it as instructed by the motherboard manual (e.g., MSI.ROM), and put it on a FAT32-formatted USB drive.",
+      "Plug the 24-pin motherboard and 8-pin CPU power cables into the board. Turn on the PSU.",
+      "Insert the USB drive into the specific 'BIOS' USB port on the rear I/O.",
+      "Press the BIOS Flashback button. An LED will flash for several minutes. When it stops, the update is complete."
+    ]
+  },
+  {
+    "component": "GPU",
+    "question": "What is Coil Whine and how do I fix it?",
+    "answer": "Coil whine is a high-pitched buzzing or squealing noise that comes from a graphics card when it's under heavy load (especially at very high frame rates). It is caused by the vibration of electromagnetic coils on the PCB. It is completely harmless, but can be annoying.",
+    "steps": [
+      "Limit your in-game frame rate to match your monitor's refresh rate (e.g., 144 FPS). Very high frame rates (like 500+ FPS in game menus) exacerbate coil whine.",
+      "Undervolt your GPU to reduce the power flowing through the coils.",
+      "If the whine is unbearable, you can try returning the GPU, but replacement cards often have it too. It usually lessens over time as the coils 'break in'."
+    ]
+  },
+  {
+    "component": "Cooling",
+    "question": "How do I apply thermal paste if I'm using a bare-die CPU (like a laptop or direct die cooling)?",
+    "answer": "Unlike standard desktop CPUs with an Integrated Heat Spreader (IHS), bare-die processors require thermal paste to be spread manually over 100% of the silicon surface. A pea-sized dot is NOT sufficient, as any uncovered corner can cause catastrophic overheating.",
+    "steps": [
+      "Apply a line of thermal paste across the bare die.",
+      "Use a small plastic spatula to manually spread the paste into a thin, even layer covering the entire silicon chip.",
+      "Carefully mount the cooler flat to avoid squeezing all the paste out of the sides."
+    ]
+  },
+  {
+    "component": "RAM",
+    "question": "How do I clean the gold contacts on my RAM or GPU?",
+    "answer": "If a component isn't being recognized, the gold contact pins might be dirty or oxidized. You can clean them safely without damaging the component.",
+    "steps": [
+      "Take a soft, standard pencil eraser (white or pink).",
+      "Gently rub the eraser back and forth along the gold contact pins on both sides of the stick.",
+      "Wipe away any eraser shavings with a microfiber cloth and a small amount of 90%+ isopropyl alcohol."
+    ]
+  },
+  {
+    "component": "Storage",
+    "question": "How do I format a new HDD or SSD in Windows?",
+    "answer": "When you install a brand new drive, Windows won't show it in File Explorer until it's initialized and formatted via the Disk Management utility.",
+    "steps": [
+      "Right-click the Start button and select 'Disk Management'.",
+      "A prompt should appear asking you to initialize the new disk. Choose GPT (GUID Partition Table) for modern systems and click OK.",
+      "Right-click the 'Unallocated' space on the new drive and select 'New Simple Volume'.",
+      "Follow the wizard to assign a drive letter and format the drive as NTFS."
+    ]
+  },
+  {
+    "component": "Motherboard",
+    "question": "What is an IO shield and how do I install it?",
+    "answer": "The IO shield is the metal plate that covers the rear ports of your motherboard. Many modern motherboards have it pre-installed, but budget boards still use a separate piece.",
+    "steps": [
+      "Check if your motherboard has a pre-installed IO shield. If so, do nothing.",
+      "If it's separate, snap it into the rectangular cutout at the back of the case from the INSIDE before installing the motherboard.",
+      "Ensure it clicks into all four corners and that no metal prongs are blocking the port holes."
+    ]
+  },
+  {
+    "component": "Cooling",
+    "question": "How tight should I screw down my CPU cooler?",
+    "answer": "Over-tightening a CPU cooler can damage the motherboard traces or bend the pins in an LGA socket, causing memory channels to fail. Under-tightening leads to poor thermal contact and overheating.",
+    "steps": [
+      "Tighten the screws in a cross or X-pattern (e.g., top-left, bottom-right, top-right, bottom-left) to apply even pressure.",
+      "Turn each screw a few times, then move to the next. Do not tighten one screw completely before moving to the next.",
+      "Stop tightening when you feel firm resistance. Do not force it further."
+    ]
+  },
+  {
+    "component": "GPU",
+    "question": "How do I install a GPU support bracket for a heavy graphics card?",
+    "answer": "Modern high-end GPUs are very heavy and can sag over time, which strains the PCIe slot. A support bracket or anti-sag stand prevents this.",
+    "steps": [
+      "For a stand-style support, place it directly under the far right corner of the GPU (away from the fans) and adjust the height until the GPU is level.",
+      "For a PCIe bracket-style support, unscrew the PCIe slot covers below the GPU, slot the bracket in, and screw it tight against the case chassis.",
+      "Ensure the support bracket does not touch or obstruct any of the GPU's cooling fans."
+    ]
+  },
+  {
+    "component": "General",
+    "question": "What is the correct way to apply thermal paste?",
+    "answer": "There are many debates (pea method, X method, spreading), but for most standard desktop CPUs, the 'pea' or 'rice grain' method in the center of the CPU is the most reliable and least messy.",
+    "steps": [
+      "Clean the CPU and cooler surfaces with isopropyl alcohol.",
+      "Squeeze a dot of thermal paste about the size of a small pea onto the direct center of the CPU.",
+      "Place the cooler directly down onto the CPU. The pressure from the cooler will spread the paste evenly outward in a circle."
+    ]
+  },
+  {
+    "component": "Motherboard",
+    "question": "How do I know which RAM slots to use?",
+    "answer": "Using the correct RAM slots is crucial for dual-channel performance. If you have two sticks of RAM and a motherboard with four slots, you cannot just put them anywhere.",
+    "steps": [
+      "Consult your motherboard manual for the exact recommended configuration.",
+      "Generally, for two sticks, you should use the 2nd and 4th slots, counting outwards away from the CPU (often labeled A2 and B2).",
+      "Using the wrong slots can cause the system to fail to POST or run in single-channel mode, halving memory bandwidth."
+    ]
+  },
+  {
+    "component": "PSU",
+    "question": "Where do I plug in the CPU power cable vs the PCIe power cable?",
+    "answer": "Both CPU and PCIe power cables often have 8 pins, but they are wired differently and are NOT interchangeable. Forcing the wrong cable can fry your components.",
+    "steps": [
+      "Look at the labels on the cables. They are usually marked 'CPU' or 'EPS' for the motherboard, and 'PCIe' or 'VGA' for the graphics card.",
+      "The CPU cable splits into a 4+4 pin configuration, while the PCIe cable splits into a 6+2 pin configuration.",
+      "Plug the 4+4 CPU cable into the top-left of the motherboard. Plug the 6+2 PCIe cable into the graphics card."
+    ]
+  },
+  {
+    "component": "Storage",
+    "question": "How do I prevent my mechanical hard drive (HDD) from vibrating and making noise?",
+    "answer": "Mechanical hard drives have spinning disks that create vibrations. If mounted directly to the metal chassis without dampening, these vibrations amplify and create a loud humming noise.",
+    "steps": [
+      "Use the rubber grommets or anti-vibration mounting washers included with your PC case or HDD cage.",
+      "Ensure all screws are tightened securely so the drive cannot rattle, but the rubber can still absorb the vibration.",
+      "If the noise persists, consider moving the drive to a lower bay or replacing it with a silent SSD."
+    ]
+  },
+  {
+    "component": "Cooling",
+    "question": "What is the difference between a 3-pin and 4-pin fan header?",
+    "answer": "4-pin headers support PWM (Pulse Width Modulation), which allows for precise speed control and lower minimum RPMs. 3-pin headers use DC voltage control, which is less precise.",
+    "steps": [
+      "You can plug a 3-pin fan into a 4-pin header, or a 4-pin fan into a 3-pin header. The plastic tab ensures it aligns correctly.",
+      "If you plug a 3-pin fan into a 4-pin header, it will run at 100% speed unless you go into the BIOS and change that specific fan header from 'PWM' mode to 'DC' mode."
+    ]
+  },
+  {
+    "component": "Motherboard",
+    "question": "What is a motherboard standoff and why is it important?",
+    "answer": "Standoffs are the small brass or black metal pegs that screw into the case. The motherboard sits on top of them. They are critical because they prevent the solder points on the back of the motherboard from touching the metal case and causing a short circuit.",
+    "steps": [
+      "Check your case to see if the standoffs are pre-installed for your motherboard size (ATX, mATX, ITX).",
+      "If not, screw them into the appropriate holes using the provided tool.",
+      "Ensure there are NO extra standoffs installed that don't align with a hole in the motherboard, as an extra standoff touching the bare PCB can fry the board."
+    ]
+  },
+  {
+    "component": "General",
+    "question": "Why is my PC turning on but there is no display on the monitor?",
+    "answer": "This is the most common issue for new builders. It is almost always caused by plugging the monitor into the wrong port on the back of the PC.",
+    "steps": [
+      "Check the back of your PC. You will see video ports near the top (on the motherboard IO shield) and video ports further down (on the graphics card).",
+      "If you installed a dedicated graphics card, you MUST plug your monitor into the graphics card, NOT the motherboard.",
+      "If you don't have a graphics card, ensure your CPU has integrated graphics; otherwise, the motherboard ports will not output a signal."
+    ]
+  },
+  {
+    "component": "RAM",
+    "question": "Do I need to push down hard to install RAM?",
+    "answer": "Yes, installing RAM requires a surprising amount of force. Many builders are afraid of breaking the motherboard, so they don't push hard enough, resulting in the PC not booting.",
+    "steps": [
+      "Open the retention clips on the ends of the RAM slot (some motherboards only have a clip on one end).",
+      "Align the notch on the RAM stick with the notch in the slot.",
+      "Push straight down firmly on both ends of the RAM stick simultaneously.",
+      "The retention clips should snap back into place automatically with a loud 'click'. If they don't, the RAM is not fully seated."
+    ]
+  },
+  {
+    "component": "PSU",
+    "question": "Can I use power cables from my old modular power supply on my new one?",
+    "answer": "NEVER DO THIS. While the ends that plug into your components (motherboard, GPU, SATA) are standardized, the ends that plug into the power supply unit itself are NOT standardized.",
+    "steps": [
+      "Remove all old power cables from your case when replacing a modular power supply.",
+      "Only use the cables that came in the box with your new power supply.",
+      "Mixing cables between different PSU brands (or even different models from the same brand) can instantly destroy your components."
+    ]
+  },
+  {
+    "component": "Cooling",
+    "question": "How do I clean dust out of my PC?",
+    "answer": "Dust acts as an insulator, trapping heat and causing components to overheat. Regular cleaning keeps your PC running cool and quiet.",
+    "steps": [
+      "Turn off the PC, unplug it, and take it outside or to a well-ventilated area.",
+      "Use a can of compressed air or an electric datavac to blow dust out of the heatsinks, fans, and case.",
+      "Hold the fan blades still with your finger while blowing air on them; letting them spin freely at high speeds from compressed air can damage the bearings.",
+      "Do not use a standard vacuum cleaner, as it can generate static electricity."
+    ]
+  },
+  {
+    "component": "GPU",
+    "question": "Do I need to use two separate cables for my GPU, or can I use the pigtail/daisy-chain cable?",
+    "answer": "High-end GPUs can draw a lot of power. While a single cable with two 8-pin connectors (a pigtail) might work for mid-range cards, it's safer to use two separate cables from the PSU for high-end cards to prevent melting wires or instability.",
+    "steps": [
+      "If your GPU requires two 8-pin power connectors, run two completely separate PCIe cables from the power supply.",
+      "Plug the main 8-pin connector of each cable into the GPU.",
+      "Leave the extra pigtail connectors dangling, or zip-tie them back against the main cable for a cleaner look."
+    ]
+  },
+  {
+    "component": "Motherboard",
+    "question": "What should I do if a motherboard screw strips or gets stuck in the standoff?",
+    "answer": "A stuck motherboard screw usually happens when the screw threads lock into the brass standoff, causing the standoff to spin freely in the case when you try to unscrew it.",
+    "steps": [
+      "Use a pair of needle-nose pliers to grip the brass standoff from behind the motherboard tray to stop it from spinning.",
+      "While holding the standoff tightly with the pliers, use a screwdriver to unscrew the screw from the front.",
+      "If you cannot reach behind the tray, you may have to grip the base of the standoff from the front, taking extreme care not to scratch the motherboard traces."
+    ]
+  },
+  {
+    "component": "Storage",
+    "question": "What is the difference between SATA data and SATA power cables?",
+    "answer": "SATA drives (both 2.5-inch SSDs and 3.5-inch HDDs) require two separate cables to function: one for data and one for power.",
+    "steps": [
+      "The SATA Data cable is the smaller, L-shaped cable that connects the drive directly to the motherboard.",
+      "The SATA Power cable is the wider, flatter cable that comes directly from your power supply.",
+      "Both must be securely plugged into the back of the drive for it to work."
+    ]
+  },
+  {
+    "component": "General",
+    "question": "How do I safely transport my desktop PC in a car?",
+    "answer": "Transporting a PC requires care to prevent heavy components (like the GPU and CPU cooler) from bouncing around and breaking the motherboard.",
+    "steps": [
+      "The safest method is to remove the graphics card and any large, heavy air cooler entirely and transport them in their original boxes.",
+      "If you cannot remove them, lay the PC case flat on its side so the motherboard is parallel to the floor, meaning the GPU and cooler are pointing straight up. This prevents leverage from snapping the PCIe slot.",
+      "Place the PC on a soft surface (like a folded blanket on a car seat) and secure it with a seatbelt."
+    ]
+  },
+  {
+    "component": "Case",
+    "question": "Where should I connect my case fans?",
+    "answer": "Case fans can be connected to the motherboard or directly to the power supply, but the motherboard is strongly preferred for speed control.",
+    "steps": [
+      "Look for 4-pin headers on your motherboard labeled 'SYS_FAN' or 'CHA_FAN' (Chassis Fan).",
+      "Plug the case fan cables directly into these headers. The motherboard will now be able to monitor their RPM and control their speed.",
+      "Avoid connecting fans directly to the power supply (via Molex adapters) unless absolutely necessary, as they will run at 100% speed at all times and be very loud."
+    ]
+  },
+  {
+    "component": "Motherboard",
+    "question": "What does the 'Flash BIOS' button on the back of the motherboard do?",
+    "answer": "The Flash BIOS button allows you to update the motherboard's firmware without needing to enter the BIOS menu, and in many cases, without even having a CPU, RAM, or GPU installed. This is critical if you buy a new CPU that requires a BIOS update to be recognized by an older motherboard.",
+    "steps": [
+      "Download the BIOS update file onto a USB drive and rename it according to the manufacturer's instructions.",
+      "Plug the USB drive into the specific USB port designated for BIOS flashing (usually marked with a white outline).",
+      "Connect power to the motherboard, press the Flash BIOS button, and wait for the LED to stop flashing."
+    ]
+  },
+  {
+    "component": "CPU",
+    "question": "Do I need to peel the plastic off the bottom of my CPU cooler?",
+    "answer": "YES. Most aftermarket CPU coolers and AIO liquid coolers come with a clear plastic film over the copper cold plate to protect it from scratches during shipping. If you do not remove this film, heat cannot transfer from the CPU to the cooler, and your PC will overheat immediately.",
+    "steps": [
+      "Before applying thermal paste or mounting the cooler, inspect the bottom metal plate.",
+      "Look for a clear plastic film, often with red text saying 'REMOVE BEFORE INSTALLATION'.",
+      "Peel it off completely and discard it."
+    ]
+  },
+  {
+    "component": "General",
+    "question": "What is POST and why is my PC stuck on it?",
+    "answer": "POST stands for Power-On Self-Test. It's the initial diagnostic sequence the motherboard runs to ensure the CPU, RAM, and GPU are functioning before handing control to the operating system. If it fails, the PC won't boot.",
+    "steps": [
+      "Check the motherboard's debug LEDs or Q-Code display to identify which component is failing the test.",
+      "If it hangs on DRAM, reseat the RAM. If it hangs on VGA, reseat the GPU and check its power cables.",
+      "If it passes POST, you will see the motherboard manufacturer's logo on the screen."
+    ]
+  },
+  {
+    "component": "Networking",
+    "question": "How do I install the Wi-Fi antennas that came with my motherboard?",
+    "answer": "If your motherboard has built-in Wi-Fi, it will include two gold threaded connectors on the rear IO shield and a set of antennas in the box. The Wi-Fi and Bluetooth will have terrible range if you don't connect them.",
+    "steps": [
+      "Locate the two gold threaded coaxial posts on the back of your PC.",
+      "Screw the included antennas onto the posts until they are hand-tight.",
+      "Adjust the angle of the antennas (usually 45 degrees outward) for optimal signal reception."
+    ]
+  },
+  {
+    "component": "Case",
+    "question": "How do I remove the tempered glass side panel without breaking it?",
+    "answer": "Tempered glass is very strong against blunt force on the flat side, but incredibly fragile on its edges and corners. A small tap on a hard surface like tile can cause the entire panel to shatter into thousands of pieces.",
+    "steps": [
+      "Never remove the glass panel while the PC is standing on a tile or granite floor.",
+      "Lay the PC on its side, or place it on a carpeted surface.",
+      "Unscrew the thumbscrews, gently pull the panel away, and place it safely on a bed or couch."
+    ]
+  },
+  {
+    "component": "PSU",
+    "question": "What happens if I plug my PC into a standard wall outlet instead of a surge protector?",
+    "answer": "While it will work normally, plugging directly into the wall exposes your expensive PC components to power surges from lightning strikes or grid fluctuations. A power surge can instantly destroy the PSU, motherboard, and other components.",
+    "steps": [
+      "Always plug your PC and monitor into a high-quality surge protector.",
+      "Check the surge protector's Joule rating (higher is better, ideally 2000+).",
+      "Replace surge protectors every 3-5 years, as their protective components degrade over time."
+    ]
+  },
+  {
+    "component": "Storage",
+    "question": "Why is my new 1TB drive only showing 931GB in Windows?",
+    "answer": "This is completely normal and is due to the difference between how storage manufacturers and Windows calculate a Gigabyte. Manufacturers use the decimal system (1GB = 1,000,000,000 bytes), while Windows uses the binary system (1 GiB = 1,073,741,824 bytes).",
+    "steps": [
+      "Do not return the drive; you are not missing any storage.",
+      "To calculate the true usable capacity in Windows, multiply the advertised capacity by roughly 0.93."
+    ]
+  },
+  {
+    "component": "GPU",
+    "question": "How do I know which PCIe slot to put my graphics card in?",
+    "answer": "Most ATX motherboards have multiple long PCIe slots that a GPU can fit into. However, not all slots provide the same bandwidth. Putting the GPU in the wrong slot can severely limit its performance.",
+    "steps": [
+      "Always install your primary graphics card in the TOP PCIe slot, closest to the CPU.",
+      "This top slot is wired directly to the CPU and provides the full x16 bandwidth required for optimal gaming performance.",
+      "Lower slots often route through the chipset and provide less bandwidth (e.g., x4 or x8)."
+    ]
+  },
+  {
+    "component": "Cooling",
+    "question": "Can I mix different brands or models of fans in the same case?",
+    "answer": "Yes, you can mix any standard 120mm or 140mm PC fans. However, if they have different maximum speeds (RPM), sound profiles, or RGB systems, it might look and sound slightly inconsistent.",
+    "steps": [
+      "You can connect different fans to different motherboard headers to control their speeds independently.",
+      "If using a fan splitter cable, avoid mixing a 3000 RPM fan and a 1200 RPM fan on the same splitter, as the motherboard will struggle to read the RPM signal correctly.",
+      "Be aware that different brands of RGB fans usually require their own proprietary RGB hubs (e.g., Corsair iCUE vs. NZXT CAM)."
+    ]
+  },
+  {
+    "component": "Motherboard",
+    "question": "What is the difference between a 3-pin 5V ARGB header and a 4-pin 12V RGB header?",
+    "answer": "These two headers control lighting but are completely incompatible. 4-pin 12V RGB changes the color of the entire fan/strip at once. 3-pin 5V ARGB (Addressable RGB) can change the color of individual LEDs on the same fan, allowing for rainbow effects.",
+    "steps": [
+      "Check the cable on your RGB device. 4-pin cables go to 12V headers. 3-pin cables (which often look like 4 pins with one blocked out) go to 5V headers.",
+      "NEVER force a 3-pin ARGB cable onto a 4-pin 12V header; the higher voltage will instantly burn out the LEDs."
+    ]
+  },
+  {
+    "component": "RAM",
+    "question": "Does the speed of my RAM really matter for gaming?",
+    "answer": "Yes, but with diminishing returns. Upgrading from very slow RAM to standard speed RAM offers a huge performance boost, especially on AMD Ryzen systems. Upgrading from standard speed to extreme enthusiast speed offers only minimal gains (1-3%) for a massive price increase.",
+    "steps": [
+      "For DDR4, aim for 3200 MHz or 3600 MHz.",
+      "For DDR5, aim for 6000 MHz.",
+      "Don't overspend on extremely high-speed kits (e.g., DDR5 8000 MHz) for a gaming build; put that money toward a better GPU instead."
+    ]
+  },
+  {
+    "component": "PSU",
+    "question": "What does the ECO switch on my power supply do?",
+    "answer": "The ECO mode (or Zero RPM mode) switch tells the power supply's fan not to spin when the PC is idle or under low load, making the system quieter. The fan will only turn on when the PSU gets hot under heavy gaming load.",
+    "steps": [
+      "If you prioritize a silent PC while browsing the web, turn ECO mode ON.",
+      "If you prefer maximum cooling and don't mind a slight hum, turn ECO mode OFF so the fan spins constantly."
+    ]
+  },
+  {
+    "component": "Motherboard",
+    "question": "Do I need to install the motherboard standoffs if they aren't pre-installed?",
+    "answer": "Yes, absolutely. Standoffs are essential for preventing the conductive solder points on the back of the motherboard from touching the metal chassis. If they touch, it causes a short circuit that can instantly fry the motherboard and CPU when you turn the PC on.",
+    "steps": [
+      "Check your case manual to see where standoffs belong for your motherboard size (ATX, micro-ATX, Mini-ITX).",
+      "Screw the brass or black metal standoffs into the marked holes on the case tray using the provided tool.",
+      "Never install a standoff where there is no corresponding screw hole on the motherboard."
+    ]
+  },
+  {
+    "component": "Storage",
+    "question": "How do I secure an M.2 NVMe SSD if I lost the tiny screw?",
+    "answer": "The tiny M.2 screw is unfortunately unique to the motherboard manufacturer and often impossible to replace at a local hardware store. Running an M.2 drive without a screw causes it to sit at a 30-degree angle, preventing a solid connection.",
+    "steps": [
+      "Check the motherboard box thoroughly; the screw is often in a microscopic plastic bag.",
+      "Some modern motherboards (like newer ASUS or MSI boards) use a toolless plastic latch (M.2 Q-Latch) instead of a screw. Check if you can simply rotate a plastic tab to hold the drive down.",
+      "If you truly lost the screw, you can purchase an 'M.2 screw kit' online for a few dollars. Do not try to force a random screw in, as it will strip the standoff."
+    ]
+  },
+  {
+    "component": "GPU",
+    "question": "What does the little switch on my graphics card do?",
+    "answer": "Many mid-range to high-end graphics cards feature a dual BIOS switch. This switch typically toggles between an 'OC' (Overclock/Performance) mode and a 'Silent' (Quiet) mode.",
+    "steps": [
+      "Turn off the PC before flipping the switch.",
+      "OC Mode runs the fans faster to keep the card cooler, allowing it to sustain higher boost clocks.",
+      "Silent Mode relaxes the fan curve for quieter operation, but the card will run slightly hotter. Choose based on your acoustic preferences."
+    ]
+  },
+  {
+    "component": "Cooling",
+    "question": "Can I clean my PC with a vacuum cleaner?",
+    "answer": "NO. You should never use a standard household vacuum cleaner to clean the inside of a PC. The plastic hose and rushing air generate a massive amount of static electricity, which can discharge into your components and destroy them.",
+    "steps": [
+      "Use cans of compressed air or a specialized, anti-static electric duster (like a DataVac).",
+      "Hold the fans still with a finger so they don't spin uncontrollably while you blow air on them.",
+      "Use 90%+ isopropyl alcohol and a microfiber cloth for stubborn, caked-on dust."
+    ]
+  },
+  {
+    "component": "General",
+    "question": "Why does my PC reboot in an infinite loop after building it?",
+    "answer": "A 'boot loop' usually indicates a hardware failure during the POST process, forcing the motherboard to restart and try again. It is most commonly caused by poorly seated RAM or an overly aggressive memory overclock.",
+    "steps": [
+      "Turn off the power supply.",
+      "Remove all RAM sticks except for one in the primary slot (usually the 2nd slot away from the CPU).",
+      "Clear the CMOS by removing the coin-cell battery for 5 minutes, then replacing it.",
+      "Try to boot again. If it works, add the other RAM sticks back one by one."
+    ]
+  },
+  {
+    "component": "CPU",
+    "question": "How do I know if I applied too much or too little thermal paste?",
+    "answer": "Too little thermal paste will leave gaps between the CPU and cooler, causing high temperatures. Too much paste will squeeze out the sides. While messy, too much paste is generally harmless unless you are using electrically conductive liquid metal.",
+    "steps": [
+      "A pea-sized dot in the center is the standard recommendation for desktop CPUs.",
+      "If your CPU runs at 80°C+ while just browsing the web, you likely have too little paste or poor cooler mounting pressure.",
+      "If paste spills over the edges onto the green PCB, clean it up with a cotton swab and isopropyl alcohol just to be neat."
+    ]
+  },
+  {
+    "component": "PSU",
+    "question": "Why is there a loud click noise from my power supply when I turn the PC on or off?",
+    "answer": "A single, loud click from the power supply when the PC powers on or shuts down is completely normal for high-quality PSUs. This is the sound of an internal mechanical relay engaging or disengaging the inrush current bypass circuit.",
+    "steps": [
+      "Do not panic or return the power supply. The click means the protection circuit is functioning correctly.",
+      "However, if the power supply clicks continuously or rapidly while the PC is running, turn it off immediately as this indicates a severe failure."
+    ]
+  },
+  {
+    "component": "Networking",
+    "question": "Should I install the LAN driver if my internet already works?",
+    "answer": "Windows usually installs a generic network driver that works well enough for basic internet access. However, installing the official LAN driver from your motherboard manufacturer can improve stability, reduce latency, and enable features like 2.5 Gigabit speeds.",
+    "steps": [
+      "Go to your motherboard manufacturer's website and navigate to the support page for your exact model.",
+      "Download the latest LAN or Ethernet driver for Windows.",
+      "Install it and restart your PC."
+    ]
+  },
+  {
+    "component": "RAM",
+    "question": "What is the difference between SODIMM and DIMM?",
+    "answer": "DIMM (Dual In-line Memory Module) is the long stick of RAM used in full-sized desktop computers. SO-DIMM (Small Outline DIMM) is much shorter and used in laptops, mini-PCs, and some extremely compact ITX motherboards. They are physically incompatible with each other.",
+    "steps": [
+      "Always buy standard DIMMs for a normal ATX, micro-ATX, or Mini-ITX desktop build.",
+      "Only buy SO-DIMMs if you are upgrading a laptop or a specialized ultra-compact PC like an Intel NUC."
+    ]
+  },
+  {
+    "component": "Case",
+    "question": "How do I sync all the RGB lights in my case?",
+    "answer": "Syncing RGB can be a nightmare because different manufacturers use proprietary software (e.g., Corsair iCUE, NZXT CAM, ASUS Aura). If you mixed brands, you may have to run 3 different background apps.",
+    "steps": [
+      "For the easiest setup, buy all your RGB fans and accessories from a single brand.",
+      "If you mixed brands, try using an open-source software like 'SignalRGB' or 'OpenRGB', which attempt to control multiple brands of hardware simultaneously without needing the proprietary bloatware."
+    ]
+  },
+  {
+    "component": "Cooling",
+    "question": "What is thermal pad thickness and does it matter?",
+    "answer": "Thermal pads transfer heat from VRMs, VRAM, and M.2 SSDs to their heatsinks. Thickness matters immensely. If a pad is too thin, it won't touch the heatsink. If it's too thick, it will prevent the heatsink from sitting flat, causing other components (like the GPU core) to overheat.",
+    "steps": [
+      "If replacing thermal pads on a GPU or motherboard, you MUST look up the exact required thicknesses for your specific model online.",
+      "They often vary between 0.5mm, 1.0mm, 1.5mm, and 2.0mm on the same circuit board.",
+      "Use a digital caliper to measure the old pads if you cannot find the specs online."
+    ]
+  },
+  {
+    "component": "Storage",
+    "question": "Why is my SSD running so hot?",
+    "answer": "High-performance Gen 4 and Gen 5 NVMe SSDs can get very hot under load (70°C+). If they get too hot, they will thermal throttle and slow down drastically to protect themselves.",
+    "steps": [
+      "Ensure the SSD has a heatsink. Most mid-range to high-end motherboards include built-in metal heatsinks that cover the M.2 slots.",
+      "If your motherboard doesn't have one, buy an inexpensive aftermarket M.2 heatsink.",
+      "Ensure you peeled the plastic off the thermal pad under the motherboard's M.2 heatsink before installing it."
+    ]
+  },
+  {
+    "component": "Motherboard",
+    "question": "What does the flashing red light on my motherboard mean?",
+    "answer": "Many motherboards feature a set of four diagnostic LEDs (usually labeled BOOT, VGA, DRAM, CPU) near the 24-pin power connector. A solid or flashing light indicates which component the motherboard is struggling to initialize during boot.",
+    "steps": [
+      "Look closely at the text printed next to the illuminated LED.",
+      "CPU: Check for bent socket pins or missing CPU power cables.",
+      "DRAM: Reseat the RAM sticks or try booting with just one stick.",
+      "VGA: Reseat the graphics card and check its PCIe power cables.",
+      "BOOT: The PC passed the hardware check but cannot find an operating system. Check your storage drive connections."
+    ]
+  },
+  {
+    "component": "General",
+    "question": "How tight should the screws on the motherboard be?",
+    "answer": "Motherboard screws should be snug, but you do not need to use all your strength. Over-tightening can crack the PCB (Printed Circuit Board) or strip the brass standoffs.",
+    "steps": [
+      "Use a standard Phillips head screwdriver.",
+      "Turn the screw until you feel firm resistance, then give it a tiny quarter-turn more.",
+      "If the motherboard starts to bend or you hear a cracking sound, you are turning way too hard."
+    ]
+  },
+  {
+    "component": "PSU",
+    "question": "Is it safe to use a SATA to PCIe power adapter for my graphics card?",
+    "answer": "NO. Using Molex-to-PCIe or SATA-to-PCIe power adapters is highly dangerous. SATA cables are not rated to carry the massive wattage required by a graphics card. Using these adapters is a common cause of melted wires and PC fires.",
+    "steps": [
+      "If your power supply does not have enough native PCIe power cables for your graphics card, your power supply is inadequate.",
+      "Do not use adapters.",
+      "Purchase a new, higher-wattage power supply that has the necessary PCIe connectors built-in."
+    ]
+  },
+  {
+    "component": "Motherboard",
+    "question": "What is a chipset and why does it matter?",
+    "answer": "The chipset is the silicon controller on the motherboard that manages data flow between the CPU, RAM, storage, and peripherals. It dictates the motherboard's features, such as the number of USB ports, PCIe lanes, and whether overclocking is supported.",
+    "steps": [
+      "High-end chipsets (e.g., Intel Z-series, AMD X-series) support CPU overclocking and offer maximum connectivity.",
+      "Mid-range chipsets (e.g., Intel B-series, AMD B-series) offer a great balance of features and value but may lack extreme overclocking support.",
+      "Entry-level chipsets (e.g., Intel H-series, AMD A-series) are basic and lack many advanced features."
+    ]
+  },
+  {
+    "component": "Motherboard",
+    "question": "Do I need a motherboard with a built-in I/O shield?",
+    "answer": "Built-in I/O shields are very convenient and prevent you from forgetting to install them, but they are not strictly necessary. They are common on mid-range and high-end boards, while budget boards still use snap-in shields.",
+    "steps": [
+      "If your board has a built-in shield, simply align the motherboard with the case standoffs; the shield will naturally fit into the rear cutout.",
+      "If it's separate, remember to snap it into the case BEFORE screwing down the motherboard."
+    ]
+  },
+  {
+    "component": "GPU",
+    "question": "What is the difference between a reference card (Founders Edition) and an AIB (partner) card?",
+    "answer": "Reference cards are designed and sold directly by AMD or NVIDIA. AIB (Add-In Board) cards are customized by partners like ASUS, MSI, or Gigabyte. AIB cards often have much larger custom coolers, factory overclocks, and RGB lighting.",
+    "steps": [
+      "Reference cards are often smaller and fit better in compact cases.",
+      "AIB cards usually run cooler and quieter due to massive heatsinks, but they cost more and require a larger case."
+    ]
+  },
+  {
+    "component": "Storage",
+    "question": "What is an M.2 key (B key, M key, B+M key)?",
+    "answer": "The 'key' refers to the notch on the M.2 drive connector, preventing it from being plugged into an incompatible slot. NVMe PCIe SSDs use an 'M key', while SATA M.2 SSDs use a 'B+M key'.",
+    "steps": [
+      "Check your motherboard manual to ensure the M.2 slot supports PCIe/NVMe (M key).",
+      "Most modern motherboards support both, but older boards might have a slot that only supports SATA M.2 drives."
+    ]
+  },
+  {
+    "component": "Cooling",
+    "question": "Why is my AIO liquid cooler making a gurgling noise?",
+    "answer": "A gurgling or bubbling noise usually means air bubbles are trapped in the pump. This happens if the radiator is mounted incorrectly (e.g., at the bottom of the case).",
+    "steps": [
+      "Ensure the radiator is mounted at the top of the case, or if front-mounted, that the top of the radiator is higher than the pump block.",
+      "To dislodge existing bubbles, carefully tilt the PC back and forth while it's running (if safe to do so) to force the air back into the radiator tank."
+    ]
+  },
+  {
+    "component": "CPU",
+    "question": "What is delidding and should I do it?",
+    "answer": "Delidding is the extreme process of physically removing the Integrated Heat Spreader (IHS) from the CPU to replace the internal thermal interface material (TIM) with liquid metal. It drastically lowers temperatures but instantly voids your warranty and risks permanently destroying the CPU.",
+    "steps": [
+      "Do NOT delid your CPU unless you are an extreme overclocking enthusiast willing to risk destroying the processor.",
+      "For 99.9% of users, a high-quality AIO or large air cooler is more than sufficient."
+    ]
+  },
+  {
+    "component": "RAM",
+    "question": "What does 'ECC' memory mean and do I need it?",
+    "answer": "ECC (Error-Correcting Code) RAM can detect and fix common types of internal data corruption. It is crucial for enterprise servers and workstations where a single flipped bit can crash a database.",
+    "steps": [
+      "For a standard gaming or home PC, you do NOT need ECC RAM.",
+      "Most consumer motherboards and CPUs do not even support ECC RAM functionality."
+    ]
+  },
+  {
+    "component": "PSU",
+    "question": "What is the difference between a single-rail and multi-rail power supply?",
+    "answer": "A single-rail PSU delivers all its 12V power through one massive circuit, while a multi-rail PSU divides the power across several smaller circuits, each with its own over-current protection (OCP).",
+    "steps": [
+      "Single-rail is generally preferred for extreme overclocking because there is no risk of tripping OCP on a single cable.",
+      "Multi-rail is technically safer because it will shut down faster in the event of a short circuit.",
+      "For a standard build, either design from a reputable manufacturer is perfectly fine."
+    ]
+  },
+  {
+    "component": "Case",
+    "question": "What is a 'mesh' front panel and why is it recommended?",
+    "answer": "A mesh front panel is made of perforated metal, allowing air to flow freely into the case. Cases with solid glass or plastic front panels severely restrict intake airflow, causing components to run hotter and fans to spin louder.",
+    "steps": [
+      "If you prioritize low temperatures and quiet operation, always choose a case with a full mesh front panel.",
+      "If you choose a solid front panel case for aesthetics, ensure it has wide ventilation slits on the sides."
+    ]
+  },
+  {
+    "component": "Networking",
+    "question": "Should I buy a PCIe Wi-Fi card or a USB Wi-Fi adapter?",
+    "answer": "A PCIe Wi-Fi card (which plugs into the motherboard internally) is vastly superior. It has larger external antennas, stronger signal reception, and better thermal dissipation than tiny USB adapters.",
+    "steps": [
+      "If your motherboard lacks built-in Wi-Fi, buy a PCIe Wi-Fi 6 or Wi-Fi 6E card.",
+      "Only use a USB Wi-Fi adapter for absolute convenience or on laptops where you cannot install an internal card."
+    ]
+  },
+  {
+    "component": "General",
+    "question": "How do I update my GPU drivers cleanly?",
+    "answer": "Sometimes old driver files cause conflicts resulting in game crashes or stuttering. A 'clean install' removes all traces of the old driver before installing the new one.",
+    "steps": [
+      "Download a free tool called DDU (Display Driver Uninstaller).",
+      "Boot Windows into Safe Mode.",
+      "Run DDU and select 'Clean and restart'.",
+      "Once restarted, install the latest official drivers from AMD, NVIDIA, or Intel."
+    ]
+  },
+  {
+    "component": "Storage",
+    "question": "Can a completely full SSD slow down my PC?",
+    "answer": "YES. SSDs rely on empty space to perform background maintenance tasks like TRIM and wear leveling. If an SSD is over 90% full, write speeds will plummet dramatically, and the drive's lifespan will decrease.",
+    "steps": [
+      "Try to keep at least 15-20% of your SSD space completely empty at all times.",
+      "Use Windows Storage Sense or manually delete old games and large temporary files to free up space."
+    ]
+  },
+  {
+    "component": "GPU",
+    "question": "What is a low-profile graphics card?",
+    "answer": "A low-profile (LP) graphics card is designed to be half the height of a standard GPU. They are meant for ultra-compact Small Form Factor (SFF) office PCs that cannot fit a full-height bracket.",
+    "steps": [
+      "Only buy a low-profile GPU if you are upgrading a pre-built office PC (like a slim Dell OptiPlex).",
+      "They are generally less powerful, run hotter, and cost more than standard-sized equivalents due to the compact cooling constraints."
+    ]
+  },
+  {
+    "component": "Cooling",
+    "question": "Should I replace the thermal paste on my 4-year-old PC?",
+    "answer": "Over many years, thermal paste can dry out and turn into a chalky crust, losing its heat transfer efficiency. If your CPU temperatures have slowly crept up over the years under the same workload, repasting can help.",
+    "steps": [
+      "Monitor your temperatures with software like HWMonitor.",
+      "If the CPU is hitting 85°C+ doing basic tasks, carefully remove the cooler.",
+      "Clean off the old dried paste with 90%+ isopropyl alcohol, apply a new pea-sized drop, and remount the cooler."
+    ]
+  },
+  {
+    "component": "General",
+    "question": "Why is the time and date on my PC always wrong when I turn it on?",
+    "answer": "This is a classic symptom of a dead CMOS battery on the motherboard. Without this battery, the motherboard cannot keep the internal clock running when the PC is unplugged from the wall.",
+    "steps": [
+      "Buy a standard CR2032 coin-cell battery from any convenience store.",
+      "Unplug the PC, locate the shiny battery on the motherboard, and pop it out.",
+      "Insert the new battery, boot the PC, and set the correct time in Windows (or BIOS). It should now save properly."
+    ]
+  }
+]

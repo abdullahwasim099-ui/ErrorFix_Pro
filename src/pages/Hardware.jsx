@@ -1,5 +1,5 @@
 import { Icon } from '../components/Icons.jsx'
-import { compatibility, compatComponents } from '../data/loader.js'
+import { hardware, hardwareComponents } from '../data/loader.js'
 
 const componentIcons = {
   RAM: Icon.Cpu,
@@ -23,7 +23,7 @@ export default function Hardware() {
       </div>
 
       <div className="feature-grid" style={{ marginBottom: 24 }}>
-        {compatComponents.map((c, i) => {
+        {hardwareComponents.map((c, i) => {
           const I = componentIcons[c] || Icon.Cpu
           return (
             <div key={c} className={`card fade-up fade-up-${Math.min(i + 1, 4)}`} style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
@@ -32,7 +32,7 @@ export default function Hardware() {
               </div>
               <div>
                 <div className="card-title" style={{ marginBottom: 0 }}>{c}</div>
-                <div className="card-desc">{compatibility.filter((g) => g.component === c).length} guides</div>
+                <div className="card-desc">{hardware.filter((g) => g.component === c).length} guides</div>
               </div>
             </div>
           )
@@ -40,7 +40,7 @@ export default function Hardware() {
       </div>
 
       <div className="compat-grid">
-        {compatibility.map((g, i) => (
+        {hardware.map((g, i) => (
           <div key={i} className={`compat-item fade-up fade-up-${Math.min(i + 1, 4)}`}>
             <div className="compat-head">
               <span className="compat-comp-badge">{g.component}</span>
