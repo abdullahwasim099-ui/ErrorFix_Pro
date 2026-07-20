@@ -48,11 +48,11 @@ export default function Dashboard() {
             hardware upgrade guidance — all in one place.
           </p>
           <div className="hero-actions">
-            <button className="btn btn-primary" onClick={() => navigate('/errors')}>
-              <Icon.Search /> Search Error Codes
+            <button className="btn btn-primary" onClick={() => navigate('/errors')} aria-label="Search Error Codes">
+              <Icon.Search aria-hidden="true" /> Search Error Codes
             </button>
-            <button className="btn btn-ghost" onClick={() => navigate('/compatibility')}>
-              <Icon.Check /> Check Compatibility
+            <button className="btn btn-ghost" onClick={() => navigate('/compatibility')} aria-label="Check Compatibility">
+              <Icon.Check aria-hidden="true" /> Check Compatibility
             </button>
           </div>
         </div>
