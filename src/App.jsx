@@ -7,7 +7,6 @@ import ErrorLookup from './pages/ErrorLookup.jsx'
 import Bloatware from './pages/Bloatware.jsx'
 import Hardware from './pages/Hardware.jsx'
 import Compatibility from './pages/Compatibility.jsx'
-import Contribute from './pages/Contribute.jsx'
 
 const navItems = [
   { to: '/', label: 'Dashboard', icon: Icon.Dashboard, end: true },
@@ -15,7 +14,6 @@ const navItems = [
   { to: '/bloatware', label: 'Bloatware Cleanup', icon: Icon.Trash },
   { to: '/hardware', label: 'Hardware Guides', icon: Icon.Cpu },
   { to: '/compatibility', label: 'Compatibility', icon: Icon.Check },
-  { to: '/contribute', label: 'Contribute', icon: Icon.Plus },
 ]
 
 export default function App() {
@@ -97,7 +95,6 @@ export default function App() {
           <Route path="/bloatware" element={<Bloatware />} />
           <Route path="/hardware" element={<Hardware />} />
           <Route path="/compatibility" element={<Compatibility />} />
-          <Route path="/contribute" element={<Contribute />} />
         </Routes>
       </main>
     </div>
