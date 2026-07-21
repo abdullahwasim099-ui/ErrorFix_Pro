@@ -1,3 +1,4 @@
+import { useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { Icon } from '../components/Icons.jsx'
 import { stats, errorCodes, bloatware, compatibility } from '../data/loader.js'
@@ -37,6 +38,17 @@ export default function Dashboard() {
   const navigate = useNavigate()
   const criticalCount = errorCodes.filter((e) => e.severity === 'critical').length
   const bloatCount = bloatware.filter((b) => b.category !== 'Safe SystemProcess').length
+
+  useEffect(() => {
+    const scriptUrl = "https://pl30457570.effectivecpmnetwork.com/d57e7be788ba9609cbf44c83fccac0f1/invoke.js";
+    if (!document.querySelector(`script[src="${scriptUrl}"]`)) {
+      const script = document.createElement("script");
+      script.src = scriptUrl;
+      script.async = true;
+      script.setAttribute("data-cfasync", "false");
+      document.body.appendChild(script);
+    }
+  }, []);
 
   return (
     <div>
@@ -94,7 +106,11 @@ export default function Dashboard() {
         </a>
       </div>
 
-      <div className="stat-grid">
+      <div style={{ display: 'flex', justifyContent: 'center', marginTop: 32 }} className="fade-up">
+        <div id="container-d57e7be788ba9609cbf44c83fccac0f1"></div>
+      </div>
+
+      <div className="stat-grid" style={{ marginTop: 32 }}>
         <div className="stat-card fade-up fade-up-1">
           <div className="stat-icon" style={{ background: 'var(--error-soft)', color: 'var(--error)' }}>
             <Icon.Bug />
