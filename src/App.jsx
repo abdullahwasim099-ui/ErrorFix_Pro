@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { NavLink, Routes, Route, useNavigate } from 'react-router-dom'
+import { Analytics } from '@vercel/analytics/react'
 import { useTheme } from './theme/ThemeContext.jsx'
 import { Icon } from './components/Icons.jsx'
 import Dashboard from './pages/Dashboard.jsx'
@@ -100,6 +101,7 @@ export default function App() {
           <Route path="/contribute" element={<Contribute />} />
         </Routes>
       </main>
+      <Analytics />
     </div>
   )
 }
