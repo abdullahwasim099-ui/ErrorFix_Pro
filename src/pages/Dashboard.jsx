@@ -58,6 +58,42 @@ export default function Dashboard() {
         </div>
       </div>
 
+      <div className="premium-banner fade-up" style={{
+        marginTop: 32,
+        padding: 32,
+        borderRadius: 'var(--r-lg)',
+        background: 'linear-gradient(145deg, var(--bg-elev-2) 0%, var(--bg-elev) 100%)',
+        border: '1px solid var(--border-soft)',
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        textAlign: 'center',
+        gap: 16,
+        position: 'relative',
+        overflow: 'hidden'
+      }}>
+        <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: 4, background: 'var(--primary)' }}></div>
+        <div style={{ display: 'flex', alignItems: 'center', gap: 8, color: 'var(--primary)', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.05em', fontSize: 13 }}>
+          <Icon.Alert style={{ width: 18, height: 18 }} />
+          Premium Feature
+        </div>
+        <h2 style={{ fontSize: 22, fontWeight: 700, margin: 0, color: 'var(--text)' }}>
+          Unlock Advanced Diagnostics
+        </h2>
+        <p style={{ margin: 0, color: 'var(--text-muted)', fontSize: 15, maxWidth: 600, lineHeight: 1.6 }}>
+          Scan deep Windows error databases, check comprehensive hardware upgrade paths, and download optimization scripts.
+        </p>
+        <a 
+          href="https://www.effectivecpmnetwork.com/upt6t4u3yy?key=3ee259b98907083d2d155b0c9af3572c"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="btn btn-primary"
+          style={{ marginTop: 8, padding: '12px 24px', fontSize: 15 }}
+        >
+          Access Premium Companion Tools
+        </a>
+      </div>
+
       <div className="stat-grid">
         <div className="stat-card fade-up fade-up-1">
           <div className="stat-icon" style={{ background: 'var(--error-soft)', color: 'var(--error)' }}>
