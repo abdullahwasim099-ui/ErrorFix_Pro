@@ -17,6 +17,11 @@ export default function ErrorLookup() {
   const [query, setQuery] = useState('')
   const [severity, setSeverity] = useState('all')
   const [favorites, setFavorites] = useState([])
+  const [copiedCodes, setCopiedCodes] = useState({})
+  
+  const [reportingError, setReportingError] = useState(null)
+  const [feedbackText, setFeedbackText] = useState('')
+  const [feedbackSubmitted, setFeedbackSubmitted] = useState(false)
 
   useEffect(() => {
     const shared = searchParams.get('q')
@@ -27,6 +32,16 @@ export default function ErrorLookup() {
   const handleToggleFavorite = (code) => {
     const newFavs = toggleFavorite(code)
     setFavorites(newFavs)
+  }
+
+  const handleCopy = (errorItem) => {
+    const textToCopy = `Error: ${errorItem.code}\nIssue: ${errorItem.issue}\nDescription: ${errorItem.description}\n\nFix Steps:\n${errorItem.fix.map((step, i) => `${i + 1}. ${step}`).join('\n')}`;
+    navigator.clipboard.writeText(textToCopy).then(() => {
+      setCopiedCodes((prev) => ({ ...prev, [errorItem.code]: true }));
+      setTimeout(() => {
+        setCopiedCodes((prev) => ({ ...prev, [errorItem.code]: false }));
+      }, 2000);
+    });
   }
 
   const handleExportFavorites = () => {
@@ -46,6 +61,20 @@ export default function ErrorLookup() {
     a.click();
     document.body.removeChild(a);
     URL.revokeObjectURL(url);
+  }
+
+  const handleReportClick = (eItem) => {
+    setReportingError(eItem)
+    setFeedbackText('')
+    setFeedbackSubmitted(false)
+  }
+
+  const handleFeedbackSubmit = (e) => {
+    e.preventDefault()
+    setFeedbackSubmitted(true)
+    setTimeout(() => {
+      setReportingError(null)
+    }, 2000)
   }
 
   const results = useMemo(() => {
@@ -108,28 +137,81 @@ export default function ErrorLookup() {
                   <span className={`badge badge-${e.severity}`}>{e.severity}</span>
                   <span className="error-issue">{e.issue}</span>
                 </div>
-                <button
-                  onClick={() => handleToggleFavorite(e.code)}
-                  aria-label={favorites.includes(e.code) ? `Remove ${e.code} from favorites` : `Add ${e.code} to favorites`}
-                  style={{
-                    background: 'none',
-                    border: 'none',
-                    color: favorites.includes(e.code) ? 'var(--primary)' : 'var(--text-faint)',
-                    cursor: 'pointer',
-                    padding: '4px',
-                    display: 'grid',
-                    placeItems: 'center',
-                    transition: 'color 0.2s ease',
-                    marginTop: '-2px',
-                    marginRight: '-4px'
-                  }}
-                >
-                  {favorites.includes(e.code) ? (
-                    <Icon.BookmarkSolid style={{ width: 20, height: 20 }} aria-hidden="true" />
-                  ) : (
-                    <Icon.Bookmark style={{ width: 20, height: 20 }} aria-hidden="true" />
-                  )}
-                </button>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                  <button
+                    onClick={() => handleCopy(e)}
+                    aria-label={`Copy ${e.code} fix steps to clipboard`}
+                    style={{
+                      background: 'none',
+                      border: 'none',
+                      color: copiedCodes[e.code] ? 'var(--success)' : 'var(--text-faint)',
+                      cursor: 'pointer',
+                      padding: '4px',
+                      display: 'flex',
+                      alignItems: 'center',
+                      gap: '4px',
+                      fontSize: '13px',
+                      transition: 'color 0.2s ease',
+                      marginTop: '-2px'
+                    }}
+                    title="Copy to clipboard"
+                  >
+                    {copiedCodes[e.code] ? (
+                      <>
+                        <Icon.Check style={{ width: 16, height: 16 }} aria-hidden="true" />
+                        Copied
+                      </>
+                    ) : (
+                      <>
+                        <Icon.Copy style={{ width: 16, height: 16 }} aria-hidden="true" />
+                        Copy
+                      </>
+                    )}
+                  </button>
+                  <button
+                    onClick={() => handleReportClick(e)}
+                    aria-label={`Report issue with ${e.code}`}
+                    style={{
+                      background: 'none',
+                      border: 'none',
+                      color: 'var(--text-faint)',
+                      cursor: 'pointer',
+                      padding: '4px',
+                      display: 'flex',
+                      alignItems: 'center',
+                      gap: '4px',
+                      fontSize: '13px',
+                      transition: 'color 0.2s ease',
+                      marginTop: '-2px'
+                    }}
+                    title="Report Issue"
+                  >
+                    <Icon.Flag style={{ width: 16, height: 16 }} aria-hidden="true" />
+                    Report
+                  </button>
+                  <button
+                    onClick={() => handleToggleFavorite(e.code)}
+                    aria-label={favorites.includes(e.code) ? `Remove ${e.code} from favorites` : `Add ${e.code} to favorites`}
+                    style={{
+                      background: 'none',
+                      border: 'none',
+                      color: favorites.includes(e.code) ? 'var(--primary)' : 'var(--text-faint)',
+                      cursor: 'pointer',
+                      padding: '4px',
+                      display: 'grid',
+                      placeItems: 'center',
+                      transition: 'color 0.2s ease',
+                      marginTop: '-2px',
+                      marginRight: '-4px'
+                    }}
+                  >
+                    {favorites.includes(e.code) ? (
+                      <Icon.BookmarkSolid style={{ width: 20, height: 20 }} aria-hidden="true" />
+                    ) : (
+                      <Icon.Bookmark style={{ width: 20, height: 20 }} aria-hidden="true" />
+                    )}
+                  </button>
+                </div>
               </div>
               <div className="error-desc">{e.description}</div>
               <div className="error-fix">
@@ -144,6 +226,78 @@ export default function ErrorLookup() {
           ))
         )}
       </div>
+
+      {reportingError && (
+        <div style={{
+          position: 'fixed',
+          top: 0,
+          left: 0,
+          right: 0,
+          bottom: 0,
+          backgroundColor: 'rgba(0,0,0,0.5)',
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+          zIndex: 9999,
+          padding: '24px'
+        }}>
+          <div className="card fade-up" style={{ width: '100%', maxWidth: '480px', position: 'relative' }}>
+            <button
+              onClick={() => setReportingError(null)}
+              style={{
+                position: 'absolute',
+                top: '16px',
+                right: '16px',
+                background: 'none',
+                border: 'none',
+                color: 'var(--text-faint)',
+                cursor: 'pointer'
+              }}
+            >
+              <Icon.X style={{ width: 20, height: 20 }} />
+            </button>
+            <h3 style={{ margin: '0 0 8px 0', fontSize: '18px' }}>Report Issue</h3>
+            <p style={{ margin: '0 0 24px 0', color: 'var(--text-muted)', fontSize: '14px' }}>
+              Did the fix for <strong>{reportingError.code}</strong> not work? Let us know what happened.
+            </p>
+            {feedbackSubmitted ? (
+              <div style={{ padding: '32px 0', textAlign: 'center', color: 'var(--success)' }}>
+                <Icon.Check style={{ width: 48, height: 48, margin: '0 auto 16px auto', display: 'block' }} />
+                <h4 style={{ margin: 0, fontSize: '16px' }}>Thank you for your feedback!</h4>
+                <p style={{ margin: '8px 0 0 0', color: 'var(--text-muted)' }}>This helps us improve our database.</p>
+              </div>
+            ) : (
+              <form onSubmit={handleFeedbackSubmit}>
+                <textarea
+                  style={{
+                    width: '100%',
+                    minHeight: '120px',
+                    padding: '12px',
+                    borderRadius: 'var(--r-md)',
+                    border: '1px solid var(--border-soft)',
+                    background: 'var(--bg-elev-2)',
+                    color: 'var(--text)',
+                    fontFamily: 'inherit',
+                    marginBottom: '16px',
+                    resize: 'vertical'
+                  }}
+                  placeholder="What happened when you tried the fix? (Optional)"
+                  value={feedbackText}
+                  onChange={(e) => setFeedbackText(e.target.value)}
+                />
+                <div style={{ display: 'flex', justifyContent: 'flex-end', gap: '12px' }}>
+                  <button type="button" className="btn btn-ghost" onClick={() => setReportingError(null)}>
+                    Cancel
+                  </button>
+                  <button type="submit" className="btn btn-primary">
+                    Submit Report
+                  </button>
+                </div>
+              </form>
+            )}
+          </div>
+        </div>
+      )}
     </div>
   )
 }

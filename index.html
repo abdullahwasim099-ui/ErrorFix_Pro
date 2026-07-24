@@ -20,6 +20,19 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+    <script>
+      window.addEventListener('error', function(e) {
+        if (e.message === 'Script error.') {
+          e.preventDefault();
+          e.stopImmediatePropagation();
+        }
+      }, true);
+      window.onerror = function(message) {
+        if (message === 'Script error.') {
+          return true;
+        }
+      };
+    </script>
     <script src="https://pl30463277.effectivecpmnetwork.com/f4/ce/95/f4ce95e67bb344fd9f496214e3874cde.js"></script>
   </head>
   <body>

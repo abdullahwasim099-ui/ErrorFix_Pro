@@ -2,6 +2,7 @@ import { useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { Icon } from '../components/Icons.jsx'
 import { stats, errorCodes, bloatware, compatibility } from '../data/loader.js'
+import { SEO } from '../components/SEO.jsx'
 
 const features = [
   {
@@ -52,6 +53,7 @@ export default function Dashboard() {
 
   return (
     <div>
+      <SEO title="ErrorFix Pro | Windows Error Diagnostics & System Cleanup" />
       <div className="hero fade-up">
         <div className="hero-content">
           <h1>Your ultimate PC diagnostic companion</h1>
