@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { NavLink, Routes, Route, useNavigate } from 'react-router-dom'
+import { NavLink, Routes, Route, useNavigate, Link } from 'react-router-dom'
 import { useTheme } from './theme/ThemeContext.jsx'
 import { Icon } from './components/Icons.jsx'
 import Dashboard from './pages/Dashboard.jsx'
@@ -7,7 +7,16 @@ import ErrorLookup from './pages/ErrorLookup.jsx'
 import Bloatware from './pages/Bloatware.jsx'
 import Hardware from './pages/Hardware.jsx'
 import Compatibility from './pages/Compatibility.jsx'
+import Scanner from './pages/Scanner.jsx'
 import Contribute from './pages/Contribute.jsx'
+import ErrorDetail from './pages/ErrorDetail.jsx'
+import AboutUs from './pages/AboutUs.jsx'
+import PrivacyPolicy from './pages/PrivacyPolicy.jsx'
+import ContactUs from './pages/ContactUs.jsx'
+import AIChatbot from './components/AIChatbot.jsx'
+import CookieBanner from './components/CookieBanner.jsx'
+import ErrorBoundary from './components/ErrorBoundary.jsx'
+import NotFound from './pages/NotFound.jsx'
 
 const navItems = [
   { to: '/', label: 'Dashboard', icon: Icon.Dashboard, end: true },
@@ -15,6 +24,7 @@ const navItems = [
   { to: '/bloatware', label: 'Bloatware Cleanup', icon: Icon.Trash },
   { to: '/hardware', label: 'Hardware Guides', icon: Icon.Cpu },
   { to: '/compatibility', label: 'Compatibility', icon: Icon.Check },
+  { to: '/scanner', label: 'System Scanner', icon: Icon.Activity },
   { to: '/contribute', label: 'Contribute', icon: Icon.Plus },
 ]
 
@@ -58,6 +68,11 @@ export default function App() {
         </nav>
 
         <div className="sidebar-footer">
+          <div className="nav-label" style={{ display: 'flex', flexDirection: 'column', gap: '8px', marginBottom: '16px', padding: '0 16px' }}>
+            <Link to="/about" onClick={closeMobile} style={{ fontSize: '12px', color: 'var(--text-muted)', textDecoration: 'none' }}>About Us</Link>
+            <Link to="/privacy" onClick={closeMobile} style={{ fontSize: '12px', color: 'var(--text-muted)', textDecoration: 'none' }}>Privacy Policy</Link>
+            <Link to="/contact" onClick={closeMobile} style={{ fontSize: '12px', color: 'var(--text-muted)', textDecoration: 'none' }}>Contact Us</Link>
+          </div>
           <button
             className="theme-toggle"
             onClick={toggleTheme}
@@ -91,15 +106,26 @@ export default function App() {
       </div>
 
       <main className="main">
-        <Routes>
-          <Route path="/" element={<Dashboard />} />
-          <Route path="/errors" element={<ErrorLookup />} />
-          <Route path="/bloatware" element={<Bloatware />} />
-          <Route path="/hardware" element={<Hardware />} />
-          <Route path="/compatibility" element={<Compatibility />} />
-          <Route path="/contribute" element={<Contribute />} />
-        </Routes>
+        <ErrorBoundary>
+          <Routes>
+            <Route path="/" element={<Dashboard />} />
+            <Route path="/errors" element={<ErrorLookup />} />
+            <Route path="/error/:code" element={<ErrorDetail />} />
+            <Route path="/bloatware" element={<Bloatware />} />
+            <Route path="/hardware" element={<Hardware />} />
+            <Route path="/compatibility" element={<Compatibility />} />
+            <Route path="/scanner" element={<Scanner />} />
+            <Route path="/contribute" element={<Contribute />} />
+            <Route path="/about" element={<AboutUs />} />
+            <Route path="/privacy" element={<PrivacyPolicy />} />
+            <Route path="/contact" element={<ContactUs />} />
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+        </ErrorBoundary>
       </main>
+      
+      <AIChatbot />
+      <CookieBanner />
     </div>
   )
 }

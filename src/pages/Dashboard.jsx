@@ -40,17 +40,6 @@ export default function Dashboard() {
   const criticalCount = errorCodes.filter((e) => e.severity === 'critical').length
   const bloatCount = bloatware.filter((b) => b.category !== 'Safe SystemProcess').length
 
-  useEffect(() => {
-    const scriptUrl = "https://pl30457570.effectivecpmnetwork.com/d57e7be788ba9609cbf44c83fccac0f1/invoke.js";
-    if (!document.querySelector(`script[src="${scriptUrl}"]`)) {
-      const script = document.createElement("script");
-      script.src = scriptUrl;
-      script.async = true;
-      script.setAttribute("data-cfasync", "false");
-      document.body.appendChild(script);
-    }
-  }, []);
-
   return (
     <div>
       <SEO title="ErrorFix Pro | Windows Error Diagnostics & System Cleanup" />
@@ -72,44 +61,41 @@ export default function Dashboard() {
         </div>
       </div>
 
-      <div className="premium-banner fade-up" style={{
-        marginTop: 32,
-        padding: 32,
-        borderRadius: 'var(--r-lg)',
-        background: 'linear-gradient(145deg, var(--bg-elev-2) 0%, var(--bg-elev) 100%)',
-        border: '1px solid var(--border-soft)',
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
-        textAlign: 'center',
-        gap: 16,
-        position: 'relative',
-        overflow: 'hidden'
-      }}>
-        <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: 4, background: 'var(--primary)' }}></div>
-        <div style={{ display: 'flex', alignItems: 'center', gap: 8, color: 'var(--primary)', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.05em', fontSize: 13 }}>
-          <Icon.Alert style={{ width: 18, height: 18 }} />
-          Premium Feature
-        </div>
-        <h2 style={{ fontSize: 22, fontWeight: 700, margin: 0, color: 'var(--text)' }}>
-          Unlock Advanced Diagnostics
-        </h2>
-        <p style={{ margin: 0, color: 'var(--text-muted)', fontSize: 15, maxWidth: 600, lineHeight: 1.6 }}>
-          Scan deep Windows error databases, check comprehensive hardware upgrade paths, and download optimization scripts.
-        </p>
-        <a 
-          href="https://www.effectivecpmnetwork.com/upt6t4u3yy?key=3ee259b98907083d2d155b0c9af3572c"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="btn btn-primary"
-          style={{ marginTop: 8, padding: '12px 24px', fontSize: 15 }}
-        >
-          Access Premium Companion Tools
-        </a>
+      <div 
+        id="ad-container-native" 
+        style={{ 
+          width: '100%', 
+          maxWidth: '728px', 
+          aspectRatio: '728/90', 
+          margin: '32px auto', 
+          backgroundColor: 'var(--bg-elev-2)',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          border: '1px solid var(--border-soft)',
+          borderRadius: 'var(--r-md)',
+          overflow: 'hidden'
+        }}
+        aria-hidden="true"
+        className="fade-up"
+      >
+        <span style={{ color: 'var(--text-muted)', fontSize: 12 }}>Advertisement</span>
       </div>
 
-      <div style={{ display: 'flex', justifyContent: 'center', marginTop: 32 }} className="fade-up">
-        <div id="container-d57e7be788ba9609cbf44c83fccac0f1"></div>
+      <div className="card fade-up" style={{ marginTop: 32, lineHeight: 1.8 }}>
+        <h2 style={{ fontSize: '1.5rem', marginBottom: 16 }}>How to Use ErrorFix Pro's Diagnostic Utility</h2>
+        <p style={{ marginBottom: 16, color: 'var(--text-muted)' }}>
+          Welcome to ErrorFix Pro, the ultimate PC diagnostic companion designed to help you resolve stubborn Windows error codes, clean up system-slowing bloatware, and ensure optimal hardware compatibility. If you are experiencing unexpected Blue Screens of Death (BSOD), application crashes, or sluggish performance, our built-in tools provide a structured approach to identifying and resolving the root causes without requiring expensive professional repairs.
+        </p>
+        <p style={{ marginBottom: 16, color: 'var(--text-muted)' }}>
+          To begin troubleshooting, start with the <strong>Error Lookup</strong> tool. Windows error codes (like 0x80070005 or DRIVER_IRQL_NOT_LESS_OR_EQUAL) can be incredibly cryptic. Simply navigate to the Error Lookup section and enter your specific stop code into the search bar. Our programmatic database will instantly pull up a comprehensive, step-by-step guide explaining exactly what caused the crash and how to fix it using built-in Windows utilities like Command Prompt, PowerShell, the System File Checker (SFC), and Deployment Image Servicing and Management (DISM).
+        </p>
+        <p style={{ marginBottom: 16, color: 'var(--text-muted)' }}>
+          If your system is running slowly despite having no explicit errors, the issue may be related to pre-installed software consuming valuable memory and CPU cycles. Head over to our <strong>Bloatware Cleanup</strong> module. Here, you can search for common applications that come pre-installed on modern laptops and desktops. We categorize these programs by severity—ranging from safe-to-remove adware to critical system processes that must be left alone. Removing unnecessary bloatware is one of the fastest ways to reclaim storage space and improve your system's boot times.
+        </p>
+        <p style={{ color: 'var(--text-muted)' }}>
+          Finally, for users planning to upgrade their PC, our <strong>Hardware Guides</strong> and <strong>Compatibility Checker</strong> ensure you don't waste money on parts that won't work together. Whether you are adding more RAM, swapping out a failing hard drive for a lightning-fast NVMe SSD, or upgrading your graphics card, our guides walk you through the physical installation process while our compatibility tool highlights potential bottlenecks. Always remember to ground yourself and unplug your power supply before working inside your computer chassis.
+        </p>
       </div>
 
       <div className="stat-grid" style={{ marginTop: 32 }}>
@@ -141,6 +127,27 @@ export default function Dashboard() {
           <div className="stat-value">{stats.components}</div>
           <div className="stat-label">Component Categories</div>
         </div>
+      </div>
+
+      <div 
+        id="ad-container-banner" 
+        style={{ 
+          width: '100%', 
+          maxWidth: '300px', 
+          aspectRatio: '300/250', 
+          margin: '32px auto', 
+          backgroundColor: 'var(--bg-elev-2)',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          border: '1px solid var(--border-soft)',
+          borderRadius: 'var(--r-md)',
+          overflow: 'hidden'
+        }}
+        aria-hidden="true"
+        className="fade-up"
+      >
+        <span style={{ color: 'var(--text-muted)', fontSize: 12 }}>Advertisement</span>
       </div>
 
       <div style={{ marginTop: 32 }}>
@@ -188,3 +195,4 @@ export default function Dashboard() {
     </div>
   )
 }
+

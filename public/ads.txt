@@ -1,0 +1,11 @@
+# Ads.txt file for errorfixpro.co.uk
+# 
+# Please replace the placeholder values with your actual publisher IDs before submitting for review.
+
+# Google AdSense
+# Replace pub-XXXXXXXXXXXXXXXX with your actual AdSense Publisher ID
+google.com, pub-XXXXXXXXXXXXXXXX, DIRECT, f08c47fec0942fa0
+
+# Adsterra
+# Replace XXXXXXXX with your actual Adsterra Publisher ID
+adsterra.com, XXXXXXXX, DIRECT

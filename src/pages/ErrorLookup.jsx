@@ -1,8 +1,10 @@
 import { useMemo, useState, useEffect } from 'react'
-import { useSearchParams } from 'react-router-dom'
+import { useSearchParams, Link } from 'react-router-dom'
 import { Icon } from '../components/Icons.jsx'
 import { searchErrors, severityOrder, errorCodes } from '../data/loader.js'
 import { getFavorites, toggleFavorite } from '../utils/favorites.js'
+import { errorDatabase } from '../data/errorDatabase.js'
+import ImageAnalyzer from '../components/ImageAnalyzer.jsx'
 
 const severityFilters = [
   { key: 'all', label: 'All' },
@@ -104,7 +106,8 @@ export default function ErrorLookup() {
           onChange={(e) => setQuery(e.target.value)}
         />
       </div>
-      <div className="filter-row fade-up" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '16px' }}>
+      <ImageAnalyzer />
+      <div className="filter-row fade-up" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '16px', marginTop: '16px' }}>
         <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
           {severityFilters.map((f) => (
             <button
@@ -136,6 +139,26 @@ export default function ErrorLookup() {
                   <span className="error-code">{e.code}</span>
                   <span className={`badge badge-${e.severity}`}>{e.severity}</span>
                   <span className="error-issue">{e.issue}</span>
+                  {errorDatabase.some(dbErr => dbErr.code.toLowerCase() === e.code.toLowerCase()) && (
+                    <Link 
+                      to={`/error/${e.code}`} 
+                      style={{ 
+                        fontSize: 12, 
+                        fontWeight: 600, 
+                        color: 'var(--primary)', 
+                        textDecoration: 'none',
+                        display: 'flex',
+                        alignItems: 'center',
+                        gap: 4,
+                        background: 'var(--primary-soft)',
+                        padding: '4px 8px',
+                        borderRadius: 'var(--r-full)'
+                      }}
+                    >
+                      Read Full Guide
+                      <Icon.Arrow style={{ width: 12, height: 12 }} />
+                    </Link>
+                  )}
                 </div>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
                   <button
