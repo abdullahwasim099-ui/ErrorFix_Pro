@@ -199,7 +199,7 @@ export default function Scanner() {
 
   return (
     <div className="fade-up">
-      <SEO title="System Diagnostics | ErrorFix Pro" description="Run real-time browser-based diagnostics to analyze CPU, memory, and network performance." />
+      <SEO title="System Diagnostics | ErrorFix Pro" description="Run real-time browser-based diagnostics to analyze CPU, memory, and network performance." canonical="https://errorfixerpro.co.uk/scanner" />
       <div className="page-header">
         <h2 className="page-title">System Diagnostics</h2>
         <p className="page-subtitle">Run a real-time diagnostic check using browser Web APIs to analyze your current system parameters.</p>

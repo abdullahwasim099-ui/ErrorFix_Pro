@@ -24,7 +24,7 @@ export default function NotFound() {
       textAlign: 'center',
       padding: '24px'
     }}>
-      <SEO title="404 - Page Not Found | ErrorFix Pro" />
+      <SEO title="404 - Page Not Found | ErrorFix Pro" canonical="https://errorfixerpro.co.uk" />
       <Icon.Empty style={{ width: 80, height: 80, color: 'var(--border-soft)', marginBottom: '24px' }} />
       <h2 style={{ fontSize: '32px', margin: '0 0 16px 0', color: 'var(--text)' }}>404: Page Not Found</h2>
       <p style={{ color: 'var(--text-muted)', marginBottom: '32px', maxWidth: '500px', fontSize: '16px', lineHeight: 1.5 }}>

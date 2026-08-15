@@ -1,10 +1,11 @@
-import React from 'react';
+const fs = require('fs');
+const path = require('path');
+
+const content = `import React from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { errorDatabase } from '../data/errorDatabase.js';
 import { SEO } from '../components/SEO.jsx';
-import { generateErrorSEO } from '../utils/seo.js';
 import { Icon } from '../components/Icons.jsx';
-import { AdSlot } from '../components/AdSlot.jsx';
 
 export default function ErrorDetail() {
   const { code } = useParams();
@@ -13,7 +14,7 @@ export default function ErrorDetail() {
   if (!errorData) {
     return (
       <div className="fade-up" style={{ padding: '40px 20px', textAlign: 'center' }}>
-        <SEO title="Error Not Found | ErrorFix Pro" canonical="https://errorfixerpro.co.uk/errors" />
+        <SEO title="Error Not Found | ErrorFix Pro" />
         <h2 style={{ fontSize: '2rem', marginBottom: 16 }}>Error Guide Not Found</h2>
         <p style={{ color: 'var(--text-muted)', marginBottom: 24, fontSize: '1.1rem' }}>We couldn't find a detailed guide for the error code: {code}</p>
         <Link to="/errors" className="btn btn-primary" style={{ display: 'inline-flex', alignItems: 'center', gap: 8 }}>
@@ -28,11 +29,58 @@ export default function ErrorDetail() {
     .filter(e => e.code !== errorData.code)
     .slice(0, 4);
 
-  const seoProps = generateErrorSEO(errorData);
+  const schemaData = [];
+  if (errorData) {
+    const techArticleSchema = {
+      "@context": "https://schema.org",
+      "@type": "TechArticle",
+      "headline": \`How to Fix \${errorData.code}: \${errorData.title}\`,
+      "description": errorData.summary,
+      "author": {
+        "@type": "Organization",
+        "name": "ErrorFix Pro"
+      }
+    };
+
+    const howToSchema = {
+      "@context": "https://schema.org",
+      "@type": "HowTo",
+      "name": \`How to Fix \${errorData.code}: \${errorData.title}\`,
+      "description": errorData.summary,
+      "step": errorData.detailedFixes.map((fix, fixIdx) => ({
+        "@type": "HowToSection",
+        "name": fix.title,
+        "itemListElement": fix.steps.map((step, stepIdx) => ({
+          "@type": "HowToStep",
+          "position": stepIdx + 1,
+          "text": step
+        }))
+      }))
+    };
+    
+    const faqSchema = {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": errorData.faq.map(q => ({
+        "@type": "Question",
+        "name": q.question,
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": q.answer
+        }
+      }))
+    };
+    schemaData.push(techArticleSchema, howToSchema, faqSchema);
+  }
 
   return (
     <div className="fade-up error-detail-page">
-      <SEO {...seoProps} />
+      <SEO 
+        title={\`\${errorData.title} | ErrorFix Pro\`} 
+        description={errorData.summary || \`Comprehensive guide to fix \${errorData.code} - \${errorData.title}. Learn root causes and step-by-step solutions.\`}
+        canonical={\`https://errorfixerpro.co.uk/error/\${errorData.code.toLowerCase()}\`}
+        schemaData={schemaData}
+      />
       
       {/* Breadcrumb Navigation */}
       <nav aria-label="breadcrumb" style={{ marginBottom: 24 }}>
@@ -84,9 +132,6 @@ export default function ErrorDetail() {
         </div>
       )}
 
-      {/* Compliant In-Article Ad Placement (Appears after significant content) */}
-      <AdSlot format="rectangle" />
-
       <div className="card fade-up fade-up-2" style={{ marginBottom: 32 }}>
         <h2 style={{ fontSize: '1.8rem', marginBottom: 24, borderBottom: '1px solid var(--border-soft)', paddingBottom: 12, color: 'var(--text)' }}>
           Step-by-Step Fixes
@@ -135,9 +180,6 @@ export default function ErrorDetail() {
         </div>
       </div>
 
-      {/* Leaderboard Ad Slot Before Related Content */}
-      <AdSlot format="leaderboard" />
-
       {/* Related Errors Section */}
       <div className="card fade-up fade-up-4">
         <h2 style={{ fontSize: '1.8rem', marginBottom: 24, borderBottom: '1px solid var(--border-soft)', paddingBottom: 12, color: 'var(--text)' }}>
@@ -145,7 +187,7 @@ export default function ErrorDetail() {
         </h2>
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(250px, 1fr))', gap: '16px' }}>
           {relatedErrors.map((related, idx) => (
-            <Link key={idx} to={`/error/${related.code.toLowerCase()}`} style={{ display: 'block', textDecoration: 'none' }}>
+            <Link key={idx} to={\`/error/\${related.code.toLowerCase()}\`} style={{ display: 'block', textDecoration: 'none' }}>
               <div style={{ background: 'var(--bg-elev-2)', padding: '16px', borderRadius: 'var(--r-md)', border: '1px solid var(--border-soft)', height: '100%', transition: 'border-color 0.2s ease' }} 
                    onMouseOver={(e) => e.currentTarget.style.borderColor = 'var(--primary)'}
                    onMouseOut={(e) => e.currentTarget.style.borderColor = 'var(--border-soft)'}>
@@ -162,3 +204,7 @@ export default function ErrorDetail() {
     </div>
   );
 }
+`;
+
+fs.writeFileSync(path.join(__dirname, 'src', 'pages', 'ErrorDetail.jsx'), content, 'utf8');
+console.log('ErrorDetail.jsx replaced successfully.');

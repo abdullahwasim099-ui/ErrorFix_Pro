@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom'
 import { Icon } from '../components/Icons.jsx'
 import { stats, errorCodes, bloatware, compatibility } from '../data/loader.js'
 import { SEO } from '../components/SEO.jsx'
+import { AdSlot } from '../components/AdSlot.jsx'
 
 const features = [
   {
@@ -42,7 +43,7 @@ export default function Dashboard() {
 
   return (
     <div>
-      <SEO title="ErrorFix Pro | Windows Error Diagnostics & System Cleanup" />
+      <SEO title="ErrorFix Pro | Windows Error Diagnostics & System Cleanup" canonical="https://errorfixerpro.co.uk" />
       <div className="hero fade-up">
         <div className="hero-content">
           <h1>Your ultimate PC diagnostic companion</h1>
@@ -61,25 +62,8 @@ export default function Dashboard() {
         </div>
       </div>
 
-      <div 
-        id="ad-container-native" 
-        style={{ 
-          width: '100%', 
-          maxWidth: '728px', 
-          aspectRatio: '728/90', 
-          margin: '32px auto', 
-          backgroundColor: 'var(--bg-elev-2)',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-          border: '1px solid var(--border-soft)',
-          borderRadius: 'var(--r-md)',
-          overflow: 'hidden'
-        }}
-        aria-hidden="true"
-        className="fade-up"
-      >
-        <span style={{ color: 'var(--text-muted)', fontSize: 12 }}>Advertisement</span>
+      <div className="fade-up" style={{ maxWidth: 728, margin: '0 auto' }}>
+        <AdSlot format="leaderboard" />
       </div>
 
       <div className="card fade-up" style={{ marginTop: 32, lineHeight: 1.8 }}>
@@ -129,25 +113,8 @@ export default function Dashboard() {
         </div>
       </div>
 
-      <div 
-        id="ad-container-banner" 
-        style={{ 
-          width: '100%', 
-          maxWidth: '300px', 
-          aspectRatio: '300/250', 
-          margin: '32px auto', 
-          backgroundColor: 'var(--bg-elev-2)',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-          border: '1px solid var(--border-soft)',
-          borderRadius: 'var(--r-md)',
-          overflow: 'hidden'
-        }}
-        aria-hidden="true"
-        className="fade-up"
-      >
-        <span style={{ color: 'var(--text-muted)', fontSize: 12 }}>Advertisement</span>
+      <div className="fade-up" style={{ maxWidth: 300, margin: '0 auto' }}>
+        <AdSlot format="rectangle" />
       </div>
 
       <div style={{ marginTop: 32 }}>

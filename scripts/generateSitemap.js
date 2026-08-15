@@ -6,7 +6,9 @@ import { errorDatabase } from '../src/data/errorDatabase.js';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-const baseUrl = 'https://errorfixerpro.co.uk';
+const DOMAIN = 'https://errorfixerpro.co.uk';
+const date = new Date().toISOString();
+
 const staticRoutes = [
   '/',
   '/errors',
@@ -17,34 +19,26 @@ const staticRoutes = [
   '/contribute',
   '/about',
   '/privacy',
-  '/contact'
+  '/contact',
+  '/adsense-policies'
 ];
 
-let xml = `<?xml version="1.0" encoding="UTF-8"?>
+const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-`;
-
-for (const route of staticRoutes) {
-  xml += `  <url>
-    <loc>${baseUrl}${route}</loc>
+${staticRoutes.map(route => `  <url>
+    <loc>${DOMAIN}${route}</loc>
+    <lastmod>${date}</lastmod>
     <changefreq>weekly</changefreq>
     <priority>${route === '/' ? '1.0' : '0.8'}</priority>
-  </url>
-`;
-}
+  </url>`).join('\n')}
+${errorDatabase.map(e => `  <url>
+    <loc>${DOMAIN}/error/${e.code.toLowerCase()}</loc>
+    <lastmod>${date}</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>`).join('\n')}
+</urlset>`;
 
-for (const error of errorDatabase) {
-  xml += `  <url>
-    <loc>${baseUrl}/error/${error.code.toLowerCase()}</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-`;
-}
-
-xml += `</urlset>`;
-
-const outputPath = path.join(__dirname, '../public/sitemap.xml');
-fs.writeFileSync(outputPath, xml);
-
+const outputPath = path.join(__dirname, '..', 'public', 'sitemap.xml');
+fs.writeFileSync(outputPath, sitemap, 'utf8');
 console.log(`Sitemap generated successfully at ${outputPath}`);

@@ -17,7 +17,7 @@ export default function ContactUs() {
 
   return (
     <div className="fade-up">
-      <SEO title="Contact Us | ErrorFix Pro" description="Get in touch with the ErrorFix Pro team for support, business inquiries, or feedback." />
+      <SEO title="Contact Us | ErrorFix Pro" description="Get in touch with the ErrorFix Pro team for support, business inquiries, or feedback." canonical="https://errorfixerpro.co.uk/contact" />
       
       <div className="page-header" style={{ marginBottom: 32 }}>
         <h1 className="page-title" style={{ fontSize: '2.5rem', marginBottom: 8, color: 'var(--text)' }}>Contact Us</h1>

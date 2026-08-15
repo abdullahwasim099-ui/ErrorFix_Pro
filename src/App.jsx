@@ -13,9 +13,11 @@ import ErrorDetail from './pages/ErrorDetail.jsx'
 import AboutUs from './pages/AboutUs.jsx'
 import PrivacyPolicy from './pages/PrivacyPolicy.jsx'
 import ContactUs from './pages/ContactUs.jsx'
+import AdSensePolicies from './pages/AdSensePolicies.jsx'
 import AIChatbot from './components/AIChatbot.jsx'
 import CookieBanner from './components/CookieBanner.jsx'
 import ErrorBoundary from './components/ErrorBoundary.jsx'
+import Footer from './components/Footer.jsx'
 import NotFound from './pages/NotFound.jsx'
 
 const navItems = [
@@ -72,6 +74,7 @@ export default function App() {
             <Link to="/about" onClick={closeMobile} style={{ fontSize: '12px', color: 'var(--text-muted)', textDecoration: 'none' }}>About Us</Link>
             <Link to="/privacy" onClick={closeMobile} style={{ fontSize: '12px', color: 'var(--text-muted)', textDecoration: 'none' }}>Privacy Policy</Link>
             <Link to="/contact" onClick={closeMobile} style={{ fontSize: '12px', color: 'var(--text-muted)', textDecoration: 'none' }}>Contact Us</Link>
+            <Link to="/adsense-policies" onClick={closeMobile} style={{ fontSize: '12px', color: 'var(--text-muted)', textDecoration: 'none' }}>AdSense Policies</Link>
           </div>
           <button
             className="theme-toggle"
@@ -119,9 +122,11 @@ export default function App() {
             <Route path="/about" element={<AboutUs />} />
             <Route path="/privacy" element={<PrivacyPolicy />} />
             <Route path="/contact" element={<ContactUs />} />
+            <Route path="/adsense-policies" element={<AdSensePolicies />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </ErrorBoundary>
+        <Footer />
       </main>
       
       <AIChatbot />

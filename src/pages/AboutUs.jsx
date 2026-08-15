@@ -4,7 +4,7 @@ import { SEO } from '../components/SEO.jsx';
 export default function AboutUs() {
   return (
     <div className="fade-up">
-      <SEO title="About Us | ErrorFix Pro" description="Learn more about ErrorFix Pro, our methodology, and the team behind the ultimate Windows diagnostic companion." />
+      <SEO title="About Us | ErrorFix Pro" description="Learn more about ErrorFix Pro, our methodology, and the team behind the ultimate Windows diagnostic companion." canonical="https://errorfixerpro.co.uk/about" />
       <div className="page-header" style={{ marginBottom: 32 }}>
         <h1 className="page-title" style={{ fontSize: '2.5rem', marginBottom: 8, color: 'var(--text)' }}>About Us</h1>
         <p className="page-subtitle" style={{ fontSize: '1.2rem', color: 'var(--text-muted)' }}>The story behind ErrorFix Pro.</p>
