@@ -19,6 +19,7 @@ import CookieBanner from './components/CookieBanner.jsx'
 import ErrorBoundary from './components/ErrorBoundary.jsx'
 import Footer from './components/Footer.jsx'
 import NotFound from './pages/NotFound.jsx'
+import { Analytics } from '@vercel/analytics/react'
 
 const navItems = [
   { to: '/', label: 'Dashboard', icon: Icon.Dashboard, end: true },
@@ -131,6 +132,7 @@ export default function App() {
       
       <AIChatbot />
       <CookieBanner />
+      <Analytics />
     </div>
   )
 }
