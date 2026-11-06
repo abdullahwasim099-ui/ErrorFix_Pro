@@ -1,0 +1,40 @@
+Phase 1: Accessibility (WCAG Compliance)
+Run these one by one to ensure anyone can use your diagnostic tool easily.
+
+Prompt 1: Keyboard Navigation & Screen Readers
+
+"Review the main navigation menu, the 'Search Error Codes' button, and the 'Check Compatibility' button. Add proper HTML5 semantic tags, aria-label attributes, and tabindex properties so a user can fully navigate and use these controls using only a keyboard or a screen reader."
+
+Prompt 2: High Contrast & Text Scaling
+
+"Look at the CSS styling for the dark/light mode toggle and the main hero card ('Your ultimate PC diagnostic companion'). Check the text-to-background color contrast ratios. Suggest styling tweaks to ensure the text meets WCAG AA contrast standards and scales gracefully if a user zooms their browser to 200%."
+
+Phase 2: Feature Implementation (Bite-Sized)
+Instead of asking for a whole system, build them piece by piece.
+
+Prompt 3: Favorites System (Data Structure Only)
+
+"I want to add the 'Add favorites system' showing in my suggested features. Create a simple JavaScript function using localStorage that allows a user to save an error code to a 'Favorites' list, and another function to retrieve the list on page load. Do not write the UI yet, just the storage logic."
+
+Prompt 4: Favorites System (UI Connection)
+
+"Using the localStorage favorites functions we just built, create a small, accessible UI component (like a bookmark icon next to searched error codes) that toggles the saved state and updates visually when clicked."
+
+Prompt 5: Exporting Reports (PDF Structure)
+
+"For the 'Add export PDF' feature, write a client-side function using a lightweight library (like jsPDF) that takes the text results from a 'Check Compatibility' hardware scan and formats it into a clean, downloadable text report. Keep the function modular."
+
+1. Code Health & Architecture Audit
+"Scan the entire directory of my application. Review the overall architecture, file organization, and code quality. Identify any redundant code, memory leaks, or bad practices, and give me a prioritized list of refactoring recommendations to make the codebase cleaner and easier to maintain."
+
+2. User Experience (UX) & Game Feel Optimization
+"Analyze the main game loop, UI elements, and user flow in this repository. Suggest specific features or tweaks to improve the 'game feel' and UX—such as adding better visual feedback, smoother loading states, clearer instructions for new players, or responsive design optimizations for different screen sizes."
+
+3. Performance & Load Time Optimization
+"Look through my source files, asset loading scripts, and configurations. Identify potential performance bottlenecks that could cause lag or long loading times. Provide a detailed plan on how to optimize asset delivery, improve rendering efficiency, and ensure the game runs at a smooth frame rate on lower-end devices."
+
+4. Platform Deployment Readiness (CrazyGames & Microsoft Store)
+"I am preparing this web app for deployment to web game portals (like CrazyGames) and desktop application stores (like the Microsoft Store). Review my project structure, build files, and initialization scripts. Tell me what changes, platform SDK integrations, or configuration adjustments I need to make to ensure a flawless submission and approval process on both platforms."
+
+5. Error Handling & Stability Check
+"Audit the error handling across the entire application. Where are the weakest points where the app or game might crash without warning? Help me write robust try-catch blocks, global error boundaries, or fallback states so that if something fails, the user or player gets a graceful experience instead of a frozen screen."
