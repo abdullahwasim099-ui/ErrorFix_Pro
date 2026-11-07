@@ -12,7 +12,7 @@ export default function About() {
         title="ErrorFix Pro"
         description="A diagnostic utility suite for Windows BSOD codes, Node.js exceptions, Windows Update errors, and bloatware identification."
       >
-        <div className="prose max-w-2xl mt-6" style={{ color: var(--text) }}>
+        <div className="prose max-w-2xl mt-6" style={{ color: 'var(--text)' }}>
           <h2 className="text-2xl font-bold mb-4">Mission</h2>
           <p>
             ErrorFix Pro aims to provide a single, reliable source for error code lookup,

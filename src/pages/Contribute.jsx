@@ -209,6 +209,26 @@ export default function Contribute() {
             Auto‑filled code <code>{form.code}</code> and description based on detection confidence >= 0.7.
           </p>
         )}
+        {/* Detected error codes list */}
+        {detection.errorCodes?.codes?.length > 0 && (
+          <div className="mt-3 p-3 bg-panel rounded">
+            <h5 className="text-sm font-medium mb-2">Detected error codes</h5>
+            <div className="text-xs text-muted">
+              {detection.errorCodes.codes.map((code, i) => {
+                const c = code.code.toUpperCase();
+                const type = code.type === 'bsod' ? 'BSOD' : code.type === 'hresult' ? 'HRESULT' : code.type === 'node' ? 'Node' : 'Generic';
+                const confPct = Math.round(code.confidence * 100);
+                return (
+                  <div key={i} className="flex items-center gap-2 mb-1">
+                    <span className="code">{c}</span>
+                    <span className="text-[var(--muted)] ml-auto">{type}</span>
+                    <span className="text-[var(--muted)] ml-2">{confPct}%</span>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        )}
       </div>
 
       {/* Category selector pills */}

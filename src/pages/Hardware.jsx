@@ -55,7 +55,7 @@ export default function Hardware() {
         </div>
 
         {selected && (
-          <div className="mt-6 prose max-w-none" style={{ color: var(--text) }}>
+          <div className="mt-6 prose max-w-none" style={{ color: 'var(--text)' }}>
             <h3 className="text-lg font-medium mb-3">{selected.title}</h3>
             <p className="text-muted mb-4">{selected.summary}</p>
             <details>

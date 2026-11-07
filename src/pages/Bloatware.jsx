@@ -47,26 +47,7 @@ export default function Bloatware() {
                       <span className="ml-auto text-xs text-muted">{entry.code}</span>
                     </div>
                     <p className="text-xs mt-1">{entry.summary}</p>
-                    {/* Simple review toggle */}
-                    <label
-                      className="checkbox checkbox--small"
-                      style={{ display: 'inline-flex', alignItems: 'center', gap: 4, cursor: 'pointer' }}
-                      onClick={() => toggleReviewed(entry.code)}
-                    >
-                      <span
-        style={{
-          width: 16,
-          height: 16,
-          border: '1px solid var(--border)',
-          borderRadius: 4,
-          flexShrink: 0,
-          background: alreadyReviewed ? 'var(--success)' : 'transparent',
-          transition: 'background .2s',
-        }}
-        />
-        <span className="text-xs text-muted">Reviewed</span>
-      </label>
-                  </div>
+                  </li>
                 );
               })}
             </ul>
@@ -82,7 +63,7 @@ export default function Bloatware() {
             </div>
             <p className="text-xs text-center mt-2">
               {`${reviewedCount} of ${total} reviewed`}
-            </div>
+            </p>
           </div>
         </div>
       </PageHeader>

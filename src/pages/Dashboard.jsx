@@ -16,7 +16,6 @@ export default function Dashboard() {
     setShowDetect(true);
   };
   // simple debounce for live paste
-  const [rawInput, setRawInput] = useState('');
   useEffect(() => {
     const t = setTimeout(() => setDetection(detectSystemInfo(rawInput)), 500);
     return () => clearTimeout(t);
@@ -58,23 +57,6 @@ export default function Dashboard() {
         <div className="stat">
           <div className="value">{4}</div>
           <div className="label">Bloatware Entries</div>
-        </div>
-      </div>
-      <div className="grid grid--2" style={{ gap: '1rem', marginTop: '2rem' }}>
-        <div className="card card--interactive" onClick={() => setShowDetect(true)}>
-          <Layout size={24} className="card__icon" />
-          <h3 className="card__title">Quick System Check</h3>
-          <p className="card__text">Paste a terminal output snippet and instantly see your OS, architecture, Node version, and detected error codes.</p>
-        </div>
-        <div className="card card--interactive" onClick={() => setShowDetect(true)}>
-          <Search className="card__icon" />
-          <h3 className="card__title">Error Lookup</h3>
-          <p className="card__text">Search the full error database by code, title, or description.</p>
-        </div>
-        <div className="card card--interactive" onClick={() => setShowDetect(true)}>
-          <Gift className="card__icon" />
-          <h3 className="card__title">Contribute a Fix</h3>
-          <p className="card__text">Share your diagnostic steps and help grow the knowledge base.</p>
         </div>
       </div>
       {showDetect && (

@@ -113,3 +113,14 @@ a:hover { color: var(--accent-hover); }
 
 /* Responsive utilities */
 @media (max-width: 480px) { .site-nav { justify-content: center; } .form-grid { grid-template-columns: 1fr; } }
+
+/* Cards */
+.card { background: var(--panel); border-radius: var(--radius); padding: 1.5rem; box-shadow: var(--shadow); transition: var(--transition); }
+.card:hover { box-shadow: 0 8px 30px rgba(0,0,0,0.3); }
+.card__title { font-size: 1.25rem; font-weight: 600; margin-bottom: 0.5rem; }
+.card__text { color: var(--muted); font-size: 0.875rem; line-height: 1.5; }
+
+/* Responsive grid */
+.grid { display: grid; gap: 1.5rem; }
+@media (min-width: 480px) { .grid { grid-template-columns: repeat(2, 1fr); } }
+@media (min-width: 768px) { .grid { grid-template-columns: repeat(3, 1fr); } }

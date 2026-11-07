@@ -130,7 +130,7 @@ export default function Errors() {
           {/* Detail panel */}
           <div className="col-span-2 col-span-1@md">
             {selected ? (
-              <div className="prose max-w-none" style={{ color: var(--text) }}>
+              <div className="prose max-w-none" style={{ color: 'var(--text)' }}>
                 <h3 className="text-lg font-medium mb-3">{selected.title}</h3>
                 <p className="text-muted mb-4">{selected.summary}</p>
                 <details className="mt-4">
