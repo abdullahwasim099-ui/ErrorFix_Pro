@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { Code2, Cpu, HardDrive, CheckCircle2, AlertCircle, } from 'lucide-react';
-import { detectSystemInfo } from './utils/systemDetector.js';
+import { detectSystemInfo } from '../utils/systemDetector.js';
 import { getErrorByCode, searchErrors } from '../data/errorDatabase.js';
 import DetectionBadge from '../components/DetectionBadge.jsx';
 import PageHeader from '../components/PageHeader.jsx';
@@ -52,10 +52,10 @@ export default function Contribute() {
     setDetection(detectSystemInfo(next));
   };
 
-  // auto‑prefill when detection confidence >= 0.8
+  // auto‑prefill when detection confidence >= 0.7
   useEffect(() => {
     const topCode = (detection.errorCodes ?? []).slice().sort((a, b) => b.confidence - a.confidence)[0];
-    if (!topCode || topCode.confidence < 0.8) {
+    if (!topCode || topCode.confidence < 0.7) {
       setAutoFilled(false);
       return;
     }
@@ -206,7 +206,7 @@ export default function Contribute() {
         <DetectionBadge detection={detection} onDismiss={() => {}} showEmpty={!rawInput} />
         {autoFilled && (
           <p className="text-xs text-success mt-2">
-            Auto‑filled code <code>{form.code}</code> and description based on detection confidence >= 0.8.
+            Auto‑filled code <code>{form.code}</code> and description based on detection confidence >= 0.7.
           </p>
         )}
       </div>

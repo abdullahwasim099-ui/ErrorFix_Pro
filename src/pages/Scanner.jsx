@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { Play, Stop, Loader2, CheckCircle, AlertCircle, } from 'lucide-react';
-import { detectSystemInfo } from './utils/systemDetector.js';
+import { detectSystemInfo } from '../utils/systemDetector.js';
 import { DetectionBadge } from '../components/DetectionBadge.jsx';
 import { errorDatabase } from '../data/errorDatabase.js';
 import PageHeader from '../components/PageHeader.jsx';

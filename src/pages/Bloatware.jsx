@@ -41,7 +41,7 @@ export default function Bloatware() {
                     <div className="flex items-center gap-2">
                       <Broom
                         className="w-4 h-4"
-                        style={{ color: alreadyReviewed ? var(--success) : var(--muted) }}
+                        style={{ color: alreadyReviewed ? 'var(--success)' : 'var(--muted)' }}
                       />
                       <span className="font-medium">{entry.title}</span>
                       <span className="ml-auto text-xs text-muted">{entry.code}</span>
@@ -60,7 +60,7 @@ export default function Bloatware() {
           border: '1px solid var(--border)',
           borderRadius: 4,
           flexShrink: 0,
-          background: alreadyReviewed ? var(--success) : 'transparent',
+          background: alreadyReviewed ? 'var(--success)' : 'transparent',
           transition: 'background .2s',
         }}
         />
